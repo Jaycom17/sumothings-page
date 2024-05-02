@@ -1,0 +1,41 @@
+<main class="flex">
+    <app-inventory-aside-bar />
+
+<div>
+    <table class="w-full text-left table-auto border-collapse">
+        <thead>
+          <tr class="bg-gray-200 text-gray-800">
+            <th class="p-3">Imagen</th>
+            <th class="p-3">Identificador</th>
+            <th class="p-3">Nombre</th>
+            <th class="p-3">Stock</th>
+            <th class="p-3">Precio de compra</th>
+            <th class="p-3">Precio de venta</th>
+            <th class="p-3">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (product of products; track product.proID) {
+          <tr class="hover:bg-gray-100 border-b">
+            <td class="p-3">
+              <img class="w-14 h-14 object-cover" src="{{product.proImage}}" alt="{{product.proName}}" />
+            </td>
+            <td class="p-3">{{product.proID}}</td>
+            <td class="p-3">{{product.proName}}</td>
+            <td class="p-3">{{product.proStock}}</td>
+            <td class="p-3">{{product.proCostPrice}}</td>
+            <td class="p-3">{{product.proSellingPrice}}</td>
+            <td class="p-3">
+              <button class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition">
+                Edit
+              </button>
+              <button class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition">
+                Delete
+              </button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+</div>
+</main>

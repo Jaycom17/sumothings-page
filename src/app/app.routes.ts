@@ -9,6 +9,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ProductCrudPageComponent } from './pages/product-crud-page/product-crud-page.component';
 import { ProductsPageComponent } from './pages/products-page/products-page.component';
 import { RegisterUserPageComponent } from './pages/register-user-page/register-user-page.component';
+import { InventoryProductPageComponent } from './pages/inventory-product-page/inventory-product-page.component';
 
 export const routes: Routes = [
     { path: '', component: MainPageComponent },
@@ -21,4 +22,5 @@ export const routes: Routes = [
     { path: 'product-crud', component: ProductCrudPageComponent },
     { path: 'products', component: ProductsPageComponent },
     { path: 'register-user', component: RegisterUserPageComponent },
+    { path: 'inventory-product', component: InventoryProductPageComponent },
 ];
