@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { Articulotp } from './articles';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf, NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-articles-crud-page',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NgIf, NgFor],
   templateUrl: './articles-crud-page.component.html',
   styleUrl: './articles-crud-page.component.css'
 })
@@ -24,6 +23,9 @@ export class ArticlesCrudPageComponent {
     { artImg: '', artNombre: 'SumoArt5', artFecha: new Date("01/02/2024"), artDescripcion: 'Art assaasas'}
   ]
   articulo = {artImg: '', artNombre: "Esto es una prueba", artFecha: new Date(), artDescripcion: "Art des asasjhasklasj" };
+  cambiarEstado(){
+    this.btn_estadoC=!this.btn_estadoC;
+  }
   agregararticulo(nombre:string,fecha:string,descripcion:string){
     this.articulo.artImg;
     this.articulo.artNombre=nombre;
