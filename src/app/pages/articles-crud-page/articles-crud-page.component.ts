@@ -12,7 +12,7 @@ import { CommonModule, NgIf, NgFor } from '@angular/common';
 export class ArticlesCrudPageComponent {
   constructor(){ }
   btn_estadoC:boolean=false;
-  btn_estadoR:boolean=false;
+  btn_estadoR:boolean=true;
   btn_estadoU:boolean=false;
   btn_estadoD:boolean=false;
   articulos = [
@@ -23,8 +23,9 @@ export class ArticlesCrudPageComponent {
     { artImg: '', artNombre: 'SumoArt5', artFecha: new Date("01/02/2024"), artDescripcion: 'Art assaasas'}
   ]
   articulo = {artImg: '', artNombre: "Esto es una prueba", artFecha: new Date(), artDescripcion: "Art des asasjhasklasj" };
-  cambiarEstado(){
+  cambiarEstadoC(){
     this.btn_estadoC=!this.btn_estadoC;
+    this.btn_estadoR=!this.btn_estadoR;
   }
   agregararticulo(nombre:string,fecha:string,descripcion:string){
     this.articulo.artImg;
