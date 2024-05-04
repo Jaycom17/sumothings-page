@@ -1,1 +1,18 @@
-<p>articles-page works!</p>
+
+<head>
+</head>
+<body class="bg-white">
+    <div class="grid gap-15 grid-cols-3 grid-rows-3">
+        @for (articulo of articulos; track articulo.artNombre) {
+                <div class="outline outline-offset-1 outline-1 outline-gray-200 bg-white w-[420px] h-[520px] p-4 m-auto rounded-2xl mt-[60px]">
+                    <img src={{articulo.artImg}} alt="https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png">
+                    <h1 class="text-orange-500 text-[50px] mb-5 text-center font-bold">{{articulo.artNombre}}</h1>
+                    <p class="text-black text-[15px] mb-5 text-center font-bold">{{articulo.artFecha}}</p>
+                    <p class="text-black text-[25px] mb-5 text-center font-bold">{{articulo.artDescripcion}}</p>
+                    <button class="bg-orange-500 w-[320px] h-[25px] text-white text-[15px] place-content-center text-center font-bold rounded-2xl mx-8 my-16" (click)="sendEvent(articulo)">Leer más</button>
+                </div>
+            }  
+    </div>
+             
+</body>
+            

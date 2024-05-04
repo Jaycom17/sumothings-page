@@ -1,1 +1,15 @@
-<p>article-page works!</p>
+
+<head>
+</head>
+<body class="bg-white">
+    <div class="mx-12">
+        <div class="bg-white p-4 m-auto rounded-2xl mt-[60px]">
+            <app-articles-page hidden (articuloEvent)="inputData($event)"></app-articles-page>
+            <h1 class="text-orange-500 text-[50px] mb-5 text-center font-bold">{{articulo.artNombre}}</h1>
+            <p class="text-gray-500 text-[15px] mb-5 text-left font-bold">{{articulo.artFecha}} | SUMOTHINGS</p>
+            <p class="text-black text-[20px] mb-5 text-justify font-bold">{{articulo.artDescripcion}}</p>
+            <img src={{articulo.artImg}} alt="https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png">
+        </div> 
+    </div>
+              
+</body>
