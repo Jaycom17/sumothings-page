@@ -13,7 +13,7 @@
                     </div>
                     <div>
                         <label class="text-black text-[25px] mb-5 text-justify font-bold">Fecha artículo:</label><br>
-                        <input class="rounded-2xl w-[600px] h-[25px]" type="Date" value="{{articuloR.artFecha.getDate().toString()}}" #fechaAtr>
+                        <input class="rounded-2xl w-[600px] h-[25px]" type="Date" value="{{articuloR.artFecha.getDate()}}" #fechaAtr>
                     </div>
                     <div>
                         <label class="text-black text-[25px] mb-5 text-justify font-bold">Descripción artículo:</label><br>
@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="grid gap-15 grid-cols-2 grid-rows-1">
-                    <button class="bg-green-500 w-[320px] h-[45px] text-white text-[15px] place-content-center text-center font-bold rounded-2xl mx-8 my-16" (click)="cambiarEstadoC()">{{tag}} artículo</button>   
+                    <button class="bg-green-500 w-[320px] h-[45px] text-white text-[15px] place-content-center text-center font-bold rounded-2xl mx-8 my-16" (click)="cambiarEstadoC2('',nombreAtr.value,fechaAtr.value,descripcionAtr.value)">{{tag}} artículo</button>   
                 </div>
             </div>
             <div>
