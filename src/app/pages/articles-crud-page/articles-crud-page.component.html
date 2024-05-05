@@ -13,7 +13,7 @@
                     </div>
                     <div>
                         <label class="text-black text-[25px] mb-5 text-justify font-bold">Fecha artículo:</label><br>
-                        <input class="rounded-2xl w-[600px] h-[25px]" type="Date" value="{{articuloR.artFecha.getDate()}}" #fechaAtr>
+                        <input class="rounded-2xl w-[600px] h-[25px]" type="Date" [value]="getDateTostring(articuloR.artFecha)" #fechaAtr>
                     </div>
                     <div>
                         <label class="text-black text-[25px] mb-5 text-justify font-bold">Descripción artículo:</label><br>
@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div>
-                <button class="bg-blue-200 w-[320px] h-[320px] text-black text-[15px] place-content-center text-center font-bold rounded-2xl mx-16 my-16" >Subir Imágen</button>
+                <input class="w-[320px] h-[320px] text-black text-[15px] place-content-center text-center font-bold rounded-2xl mx-16 my-16" type="file" (change)="imgSelect($event)">
             </div>
         </div>     
     </div>
@@ -38,7 +38,7 @@
                     <p class="text-black text-[25px] mb-5 text-center font-bold">{{articulo.artDescripcion}}</p>
                     <div class="grid gap-15 grid-cols-2 grid-rows-1">
                         <button class="bg-orange-500 w-[160px] h-[35px] text-white text-[15px] place-content-center text-center font-bold rounded-2xl mx-7 my-16" (click)="cambiarEstadoU(articulo)">Editar</button>
-                        <button class="bg-red-500 w-[160px] h-[35px] text-white text-[15px] place-content-center text-center font-bold rounded-2xl mx-7 my-16">Eliminar</button>   
+                        <button class="bg-red-500 w-[160px] h-[35px] text-white text-[15px] place-content-center text-center font-bold rounded-2xl mx-7 my-16" (click)="eliminarArticulo(articulo)">Eliminar</button>   
                     </div>
                 </div>
             }  
