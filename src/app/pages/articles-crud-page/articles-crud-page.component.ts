@@ -22,17 +22,24 @@ export class ArticlesCrudPageComponent {
     { artImg: '', artNombre: 'SumoArt4', artFecha: new Date("02/02/2024"), artDescripcion: 'Art assaasas'},
     { artImg: '', artNombre: 'SumoArt5', artFecha: new Date("01/02/2024"), artDescripcion: 'Art assaasas'}
   ]
-  articulo = {artImg: '', artNombre: "Esto es una prueba", artFecha: new Date(), artDescripcion: "Art des asasjhasklasj" };
+  index=0;
+  articuloR = {artImg: '', artNombre: '', artFecha: new Date(), artDescripcion: '' };
+  estado = {Crear: 'Crear',Editar: 'Editar'};
+  tag = this.estado.Crear;
   cambiarEstadoC(){
     this.btn_estadoC=!this.btn_estadoC;
     this.btn_estadoR=!this.btn_estadoR;
+    this.tag = this.estado.Crear;
   }
-  agregararticulo(nombre:string,fecha:string,descripcion:string){
-    this.articulo.artImg;
-    this.articulo.artNombre=nombre;
-    this.articulo.artFecha=new Date(fecha);
-    this.articulo.artDescripcion=descripcion;
-    this.articulos.push(this.articulo);
+  cambiarEstadoU(articulo:{artImg:string, artNombre:string, artFecha:Date, artDescripcion:string}){
+    this.btn_estadoC=!this.btn_estadoC;
+    this.btn_estadoR=!this.btn_estadoR;
+    this.articuloR=articulo;
+    this.tag=this.estado.Editar;
+  }
+
+  agregararticulo(articulo:{artImg:string, artNombre:string, artFecha:Date, artDescripcion:string}){
+    this.articulos.push(articulo);
     console.log(this.articulos.join)
   }
 }

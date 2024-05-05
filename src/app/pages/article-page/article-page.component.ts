@@ -9,7 +9,7 @@ import { ArticlesPageComponent } from '../articles-page/articles-page.component'
     imports: [ArticlesPageComponent]
 })
 export class ArticlePageComponent {
-  articulo = {artImg: '', artNombre: "Esto es una prueba", artFecha: new Date(), artDescripcion: "Art des asasjhasklasj" }; 
+  articulo = {artImg: '', artNombre: 'Esto es una prueba', artFecha: new Date(), artDescripcion: 'Art des asasjhasklasj' }; 
   inputData($event:any){
     this.articulo=$event;
   }
