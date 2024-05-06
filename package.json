@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:sumothing-page": "node dist/sumothing-page/server/server.mjs"
+    "serve:ssr:sumothing-page": "node dist/sumothing-page/server/server.mjs",
+    "scanTailwind": ""
   },
   "private": true,
   "dependencies": {

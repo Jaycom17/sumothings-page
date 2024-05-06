@@ -10,8 +10,11 @@ import { ProductCrudPageComponent } from './pages/product-crud-page/product-crud
 import { ProductsPageComponent } from './pages/products-page/products-page.component';
 import { RegisterUserPageComponent } from './pages/register-user-page/register-user-page.component';
 import { ShoppingCartPageComponent } from './pages/shopping-cart-page/shopping-cart-page.component';
+import { PrincipalComponent } from './principal/principal.component';
 
 export const routes: Routes = [
+    { path: 'principal' , component: PrincipalComponent},
+    { path: '**', pathMatch: 'full',  redirectTo: 'principal'},
     { path: '', component: MainPageComponent },
     { path: 'about-us', component: AboutUsPageComponent },
     { path: 'article', component: ArticlePageComponent },
