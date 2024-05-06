@@ -7,7 +7,7 @@ import { ArticlesPageComponent } from './pages/articles-page/articles-page.compo
 import { InventoryPageComponent } from './pages/inventory-page/inventory-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ProductCrudPageComponent } from './pages/product-crud-page/product-crud-page.component';
-import { ProductsPageComponent } from './pages/products-page/products-page.component';
+import { ProductListComponent } from './pages/products-page/products-page.component';
 import { RegisterUserPageComponent } from './pages/register-user-page/register-user-page.component';
 import { InventoryProductPageComponent } from './pages/inventory-product-page/inventory-product-page.component';
 import { InventoryArticlesPageComponent } from './pages/inventory-articles-page/inventory-articles-page.component';
@@ -26,7 +26,7 @@ export const routes: Routes = [
     { path: 'inventory', component: InventoryPageComponent },
     { path: 'login', component: LoginPageComponent },
     { path: 'product-crud', component: ProductCrudPageComponent },
-    { path: 'products', component: ProductsPageComponent },
+    { path: 'products', component: ProductListComponent },
     { path: 'register-user', component: RegisterUserPageComponent },
     { path: 'inventory-product', component: InventoryProductPageComponent },
     { path: 'inventory-articles', component: InventoryArticlesPageComponent },
