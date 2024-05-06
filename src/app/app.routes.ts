@@ -10,6 +10,7 @@ import { ProductCrudPageComponent } from './pages/product-crud-page/product-crud
 import { ProductListComponent } from './pages/products-page/products-page.component';
 import { RegisterUserPageComponent } from './pages/register-user-page/register-user-page.component';
 import { ShoppingCartPageComponent } from './pages/shopping-cart-page/shopping-cart-page.component';
+import { NavbarComponent } from './pages/navbar/navbar.component';
 
 export const routes: Routes = [
     { path: '', component: MainPageComponent },
@@ -22,5 +23,6 @@ export const routes: Routes = [
     { path: 'product-crud', component: ProductCrudPageComponent },
     { path: 'products', component: ProductListComponent },
     { path: 'register-user', component: RegisterUserPageComponent },
-    { path: 'shopping-cart', component: ShoppingCartPageComponent }
+    { path: 'shopping-cart', component: ShoppingCartPageComponent },
+    { path: 'navbar', component: NavbarComponent }
 ];
