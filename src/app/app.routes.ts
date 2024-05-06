@@ -7,7 +7,7 @@ import { ArticlesPageComponent } from './pages/articles-page/articles-page.compo
 import { InventoryPageComponent } from './pages/inventory-page/inventory-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ProductCrudPageComponent } from './pages/product-crud-page/product-crud-page.component';
-import { ProductsPageComponent } from './pages/products-page/products-page.component';
+import { ProductListComponent } from './pages/products-page/products-page.component';
 import { RegisterUserPageComponent } from './pages/register-user-page/register-user-page.component';
 import { ShoppingCartPageComponent } from './pages/shopping-cart-page/shopping-cart-page.component';
 
@@ -20,7 +20,7 @@ export const routes: Routes = [
     { path: 'inventory', component: InventoryPageComponent },
     { path: 'login', component: LoginPageComponent },
     { path: 'product-crud', component: ProductCrudPageComponent },
-    { path: 'products', component: ProductsPageComponent },
+    { path: 'products', component: ProductListComponent },
     { path: 'register-user', component: RegisterUserPageComponent },
     { path: 'shopping-cart', component: ShoppingCartPageComponent }
 ];
