@@ -1,41 +1,54 @@
 <main class="flex">
     <app-inventory-aside-bar />
 
-<div>
+<div class="w-screen h-screen p-2 md:p-4 lg:md-5">
+  
+  <div class="flex flex-col gap-2 justify-around pb-4 md:flex-row lg:flex-row">
+    <a href="/create-product" class="bg-[#CC4558] p-2 rounded-xl font-bold text-center">Crear Producto</a>
+    <button (click)="orderByName()" class="bg-[#CC4558] p-2 rounded-xl font-bold">Ordenar por nombre</button>
+    <button (click)="orderByStock()" class="bg-[#CC4558] p-2 rounded-xl font-bold">Ordenar por stock</button>
+    <button (click)="orderByCategory()" class="bg-[#CC4558] p-2 rounded-xl font-bold">Ordenar por categoria</button>
+  </div>
+
+  <div class="overflow-x-auto">
     <table class="w-full text-left table-auto border-collapse">
-        <thead>
-          <tr class="bg-gray-200 text-gray-800">
-            <th class="p-3">Imagen</th>
-            <th class="p-3">Identificador</th>
-            <th class="p-3">Nombre</th>
-            <th class="p-3">Stock</th>
-            <th class="p-3">Precio de compra</th>
-            <th class="p-3">Precio de venta</th>
-            <th class="p-3">Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (product of products; track product.proID) {
-          <tr class="hover:bg-gray-100 border-b">
-            <td class="p-3">
-              <img class="w-14 h-14 object-cover" src="{{product.proImage}}" alt="{{product.proName}}" />
-            </td>
-            <td class="p-3">{{product.proID}}</td>
-            <td class="p-3">{{product.proName}}</td>
-            <td class="p-3">{{product.proStock}}</td>
-            <td class="p-3">{{product.proCostPrice}}</td>
-            <td class="p-3">{{product.proSellingPrice}}</td>
-            <td class="p-3">
-              <button class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition">
-                Edit
-              </button>
-              <button class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition">
-                Delete
-              </button>
-            </td>
-          </tr>
-          }
-        </tbody>
-      </table>
+      <thead>
+        <tr class="bg-gray-200 text-gray-800">
+          <th class="p-3 text-sm">Imagen</th>
+          <th class="p-3 text-sm">Identificador</th>
+          <th class="p-3 text-sm">Nombre</th>
+          <th class="p-3 text-sm">Stock</th>
+          <th class="p-3 text-sm">Precio de compra</th>
+          <th class="p-3 text-sm">Precio de venta</th>
+          <th class="p-3 text-sm">Categoria</th>
+          <th class="p-3 text-sm">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (product of products; track product.proID) {
+        <tr class="hover:bg-gray-100 border-b">
+          <td class="p-3">
+            <img class="w-10 h-10 object-cover" src="{{product.proImage}}" alt="{{product.proName}}" />
+          </td>
+          <td class="p-3 text-sm">{{product.proID}}</td>
+          <td class="p-3 text-sm">{{product.proName}}</td>
+          <td class="p-3 text-sm">{{product.proStock}}</td>
+          <td class="p-3 text-sm">{{product.proCostPrice}}</td>
+          <td class="p-3 text-sm">{{product.proSellingPrice}}</td>
+          <td class="p-3 text-sm">{{product.proCategory}}</td>
+          <td class="p-3 text-sm">
+            <button class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 transition mr-2">
+              Edit
+            </button>
+            <button (click)="deleteProduct(product.proID)" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition">
+              Delete
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  
 </div>
 </main>
