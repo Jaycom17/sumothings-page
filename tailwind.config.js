@@ -12,7 +12,9 @@ module.exports = {
       fontFamily:{
         "principal":['ui-sans-serif', 'system-ui']
       },
-      
+      screens: {
+        'big-lg': '1600px',
+      },
     },
   },
   plugins: [],
