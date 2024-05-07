@@ -1,6 +1,6 @@
 <nav class="bg-white-800 p-4">
-    <div class="container mx-auto flex items-center justify-between">
-        <div class="items-center">
+    <div class=" mx-auto flex items-center justify-between">
+        <div class=" hidden medio:flex lg:flex items-center gap-3 ">
             <!-- Logo de la empresa -->
             <a routerLink="/">
                 <img src="https://sumothings.com/sumothings/wp-content/uploads/2022/03/cropped-Imagen1.jpg"
@@ -14,16 +14,14 @@
             <a routerLink="/contacto" class="text-black ml-4">Contacto</a>
         </div>
         <div class="flex-col flex">
-            <div class="flex items-center lg:hidden">
+            <div class="flex items-center medio:hidden lg:hidden">
                 <!-- Icono del menú desplegable para dispositivos móviles -->
                 <button (click)="openSideBar()" class="text-black focus:outline-none">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                     </svg>
                 </button>
-            </div>
-            <!-- Menú desplegable para dispositivos móviles -->
-            
+            </div>    
         </div>
         <div class="flex items-center">
             <!-- Barra de búsqueda -->
@@ -41,13 +39,13 @@
         </div>
     </div>
 </nav>
-<div class=" {{isOpen ? '' : 'hidden'}} lg:flex lg:hidden md:hidden flex-col lg:items-center lg:w-auto lg:ml-4" id="menu">
-    <div class=" flex flex-col lg:flex-row">
-        <a routerLink="/" class="text-black lg:mx-4">Inicio</a>
-        <a routerLink="/articulos" class="text-black lg:mx-4">Artículos</a>
-        <a routerLink="/sobre-nosotros" class="text-black lg:mx-4">Sobre Nosotros</a>
-        <a routerLink="/productos" class="text-black lg:mx-4">Productos</a>
-        <a routerLink="/servicio" class="text-black lg:mx-4">Servicio</a>
-        <a routerLink="/contacto" class="text-black lg:mx-4">Contacto</a>
-    </div>
+<div class=" {{isOpen ? '' : 'hidden'}} lg:flex lg:hidden medio:hidden flex-col lg:items-center lg:w-auto lg:ml-4" id="menu">
+    <div class="bg-white-400 flex flex-col lg:flex-row">
+        <a routerLink="/" class="block text-black px-4 py-2 hover:bg-gray-400">Inicio</a>
+        <a routerLink="/articulos" class="block text-black px-4 py-2 hover:bg-gray-400">Artículos</a>
+        <a routerLink="/sobre-nosotros" class="block text-black px-4 py-2 hover:bg-gray-400">Sobre Nosotros</a>
+        <a routerLink="/productos" class="block text-black px-4 py-2 hover:bg-gray-400">Productos</a>
+        <a routerLink="/servicio" class="block text-black px-4 py-2 hover:bg-gray-400">Servicio</a>
+        <a routerLink="/contacto" class="block text-black px-4 py-2 hover:bg-gray-400">Contacto</a>
+      </div>
 </div>
