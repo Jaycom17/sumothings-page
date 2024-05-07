@@ -1,5 +1,5 @@
-<div class="bg-white">
-    <div class="grid gap-15 grid-cols-3 grid-rows-3" *ngIf="btnEstadoF">
+<div class="bg-white sm: md: lg: xl: 2xl:">
+    <div class="grid gap-15 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-rows-3" *ngIf="btnEstadoF">
         @for (articulo of articulos; track articulo.artNombre) {
                 <div class="outline outline-offset-1 outline-1 outline-gray-200 bg-white w-[420px] h-[520px] p-4 m-auto rounded-2xl mt-[60px]">
                     <img src={{articulo.artImg}} alt="SUMOTHINGSARTALT">
