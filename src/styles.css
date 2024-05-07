@@ -2,3 +2,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components{
+
+    .centrar{
+        @apply mt-6 items-center h-20 w-[95%] mx-auto overflow-hidden max-w-screen-xl flex justify-between;
+    
+    }
+    .centrar2{
+        @apply m-10 flex flex-col items-center justify-center;
+    
+    }
+    .btn-custon{
+        @apply inline-block px-3 py-2  shadow-sm font-medium transition duration-700 ease-in-out transform hover:scale-105;
+    }
+    .btn-primary{
+        @apply bg-yellow-300 hover:bg-yellow-600;
+    }
+    .efecto{
+        @apply  shadow-sm rounded-s-full font-medium transition duration-700 ease-in-out transform hover:scale-110;
+    }
+
+}

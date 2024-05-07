@@ -4,7 +4,16 @@ module.exports = {
   "./src/**/*.{html,ts}",
 ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        colorTituloPrincipal: '#77B978', 
+        colorDominica: '#FCAF3B',
+      },
+      fontFamily:{
+        "principal":['ui-sans-serif', 'system-ui']
+      },
+      
+    },
   },
   plugins: [],
 }
