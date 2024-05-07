@@ -1,0 +1,54 @@
+<aside class="flex flex-col h-screen">
+    <button
+      class="sm:hidden p-4 bg-[#FCAF3B] {{ isOpen ? '' : 'bg-white' }}"
+      (click)="openSideBar()"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16m-16 6h16"
+        />
+      </svg>
+    </button>
+
+    <!-- Barra Lateral -->
+    <div
+      id="sidebar"
+      class="w-36 h-full bg-[#FCAF3B] text-black font-bold flex flex-col sm:block {{
+        isOpen ? '' : 'hidden'
+      }}"
+    >
+      <ul class="flex flex-col">
+        <li class="p-4 hover:bg-[#d8a75d]">
+          <a href="/inventory" class="block">Inicio</a>
+        </li>
+        <li class="p-4 hover:bg-[#d8a75d]">
+          <a href="/inventory-product" class="block">Productos</a>
+        </li>
+        <li class="p-4 hover:bg-[#d8a75d]">
+          <a href="/inventory-articles" class="block">Artículos</a>
+        </li>
+        <li class="p-4 hover:bg-[#d8a75d]">
+          <a href="/inventory-dealer" class="block">Proveedores</a>
+        </li>
+        <li class="p-4 hover:bg-[#d8a75d]">
+          <a href="/inventory-clients" class="block">Clientes</a>
+        </li>
+        <li class="p-4 hover:bg-[#d8a75d]">
+          <a href="/inventory-shopping" class="block">Compras</a>
+        </li>
+        <li class="p-4 hover:bg-[#d8a75d]">
+          <a href="/inventory-sale" class="block">Ventas</a>
+        </li>
+      </ul>
+    </div>
+  </aside>

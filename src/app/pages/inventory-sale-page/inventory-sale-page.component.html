@@ -1,0 +1,53 @@
+<main class="flex">
+    <app-inventory-aside-bar />
+
+<div class="w-screen h-screen p-2 md:p-4 lg:md-5">
+  
+  <div class="flex flex-col gap-2 justify-around pb-4 md:flex-row lg:flex-row">
+    <button (click)="orderByDate()" class="bg-[#CC4558] p-2 rounded-xl font-bold">Ordenar por fecha</button>
+    <button (click)="orderByProduct()" class="bg-[#CC4558] p-2 rounded-xl font-bold">Ordenar por producto</button>
+  </div>
+
+  <div class="overflow-x-auto">
+    <table class="w-full text-left table-auto border-collapse">
+      <thead>
+        <tr class="bg-gray-200 text-gray-800">
+          <th class="p-3 text-sm">Identificador</th>
+          <th class="p-3 text-sm">Id producto</th>
+          <th class="p-3 text-sm">Id cliente</th>
+          <th class="p-3 text-sm">Fecha</th>
+          <th class="p-3 text-sm">Unidades</th>
+          <th class="p-3 text-sm">Precio</th>
+          <th class="p-3 text-sm">Impuestos</th>
+            <th class="p-3 text-sm">Total</th>
+
+            <th class="p-3 text-sm">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (sale of sales; track sale.salID) {
+        <tr class="hover:bg-gray-100 border-b">
+          <td class="p-3 text-sm">{{sale.salID}}</td>
+          <td class="p-3 text-sm">{{sale.proID}}</td>
+          <td class="p-3 text-sm">{{sale.cliID}}</td>
+          <td class="p-3 text-sm">{{sale.salDate}}</td>
+          <td class="p-3 text-sm">{{sale.salProductUnits}}</td>
+          <td class="p-3 text-sm">{{sale.salPrice}}</td>
+          <td class="p-3 text-sm">{{sale.salTaxes}}</td>
+          <td class="p-3 text-sm">{{sale.salTotal}}</td>
+          <td class="p-3 text-sm">
+            <button class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 transition mr-2">
+              Edit
+            </button>
+            <button (click)="deleteSale(sale.salID)" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition">
+              Delete
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  
+</div>
+</main>

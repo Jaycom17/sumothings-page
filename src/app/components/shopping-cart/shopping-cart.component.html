@@ -1,0 +1,21 @@
+<div class="p-5 flex flex-col  content-center max-h-[450px] overflow-auto bg-[#F8F8F8] gap-2 w-[400px] md:w-[500px] lg:w-[500px]">
+    @if (products.length !== 0) {
+        @for (product of products; track product.proID) {
+            <article class="flex p-1 max-h-24 items-center bg-white md:max-h-14 md:p-2 lg:max-h-14 lg:pd-2 justify-between">
+                <img src="{{ product.proImage }}" alt="{{ product.proName }}" class="w-14 md:w-10 lg_w-10">
+                <div class="flex justify-between content-between items-center flex-col w-48 md:flex-row lg:flex-row">
+                    <h2 class="truncate max-w-24 font-bold">{{ product.proName }}</h2>
+                    <p class="max-w-24">${{ convertToCurrency(product.proPrice) }}</p>
+                </div>
+                <button class="bg-[#FCAF3B] h-8 p-1 font-bold w-16 rounded-xl" (click)="quitProduct(product.proID)">Quitar</button>
+            </article>
+        }
+        <article class="flex justify-around items-center">
+            <p class="text-center font-bold">Total:</p>
+            <p class="text-center font-bold">${{ convertToCurrency(getTotal()) }}</p>
+            <button class="bg-[#CC4558] h-8 p-1 font-bold w-36 rounded-xl" >Pagar</button>
+        </article>
+    }@else {
+        <p class="text-center font-bold">No hay productos en el carrito</p>
+    }
+</div>

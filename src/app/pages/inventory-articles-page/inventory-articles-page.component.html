@@ -1,0 +1,49 @@
+
+<main class="flex">
+    <app-inventory-aside-bar />
+
+<div class="w-screen h-screen p-2 md:p-4 lg:md-5">
+
+  <div class="flex flex-col gap-2 justify-around pb-4 md:flex-row lg:flex-row">
+    <a href="/create-product" class="bg-[#CC4558] p-2 rounded-xl font-bold text-center">Añadir articulo</a>
+    <button (click)="orderByDate()" class="bg-[#CC4558] p-2 rounded-xl font-bold">Ordenar por fecha</button>
+    <button (click)="orderByAuthor()" class="bg-[#CC4558] p-2 rounded-xl font-bold">Ordenar por autor</button>
+    <button (click)="orderByTitle()" class="bg-[#CC4558] p-2 rounded-xl font-bold">Ordenar por titulo</button>
+  </div>
+
+  <div class="overflow-x-auto">
+    <table class="w-full text-left table-auto border-collapse">
+      <thead>
+        <tr class="bg-gray-200 text-gray-800">
+          <th class="p-3 text-sm">Identificador</th>
+          <th class="p-3 text-sm">Titulo</th>
+          <th class="p-3 text-sm">Descripción</th>
+          <th class="p-3 text-sm">Autor</th>
+          <th class="p-3 text-sm">Fecha</th>
+          <th class="p-3 text-sm">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (article of articles; track article.artID) {
+        <tr class="hover:bg-gray-100 border-b">
+          <td class="p-3 text-sm">{{article.artID}}</td>
+            <td class="p-3 text-sm">{{article.artTitle}}</td>
+            <td class="p-3 text-sm">{{article.artShortDescription}}</td>
+            <td class="p-3 text-sm">{{article.artAuthor}}</td>
+            <td class="p-3 text-sm">{{article.artDate}}</td>
+          <td class="p-3 text-sm">
+            <button class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 transition mr-2">
+              Edit
+            </button>
+            <button (click)="deleteArticle(article.artID)" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition">
+              Delete
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  
+</div>
+</main>
