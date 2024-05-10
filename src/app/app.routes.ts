@@ -7,9 +7,15 @@ import { ArticlesPageComponent } from './pages/articles-page/articles-page.compo
 import { InventoryPageComponent } from './pages/inventory-page/inventory-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ProductCrudPageComponent } from './pages/product-crud-page/product-crud-page.component';
-import { ProductsPageComponent } from './pages/products-page/products-page.component';
+import { ProductListComponent } from './pages/products-page/products-page.component';
 import { RegisterUserPageComponent } from './pages/register-user-page/register-user-page.component';
-import { ShoppingCartPageComponent } from './pages/shopping-cart-page/shopping-cart-page.component';
+import { InventoryProductPageComponent } from './pages/inventory-product-page/inventory-product-page.component';
+import { InventoryArticlesPageComponent } from './pages/inventory-articles-page/inventory-articles-page.component';
+import { CreateProductPageComponent } from './pages/create-product-page/create-product-page.component';
+import { InventoryDealerPageComponent } from './pages/inventory-dealer-page/inventory-dealer-page.component';
+import { InventoryClientsPageComponent } from './pages/inventory-clients-page/inventory-clients-page.component';
+import { InventoryShoppingPageComponent } from './pages/inventory-shopping-page/inventory-shopping-page.component';
+import { InventorySalePageComponent } from './pages/inventory-sale-page/inventory-sale-page.component';
 
 export const routes: Routes = [
     { path: '', component: MainPageComponent },
@@ -20,7 +26,13 @@ export const routes: Routes = [
     { path: 'inventory', component: InventoryPageComponent },
     { path: 'login', component: LoginPageComponent },
     { path: 'product-crud', component: ProductCrudPageComponent },
-    { path: 'products', component: ProductsPageComponent },
+    { path: 'products', component: ProductListComponent },
     { path: 'register-user', component: RegisterUserPageComponent },
-    { path: 'shopping-cart', component: ShoppingCartPageComponent }
+    { path: 'inventory-product', component: InventoryProductPageComponent },
+    { path: 'inventory-articles', component: InventoryArticlesPageComponent },
+    { path: 'create-product', component: CreateProductPageComponent },
+    { path: 'inventory-dealer', component: InventoryDealerPageComponent },
+    { path: 'inventory-clients', component: InventoryClientsPageComponent },
+    { path: 'inventory-shopping', component: InventoryShoppingPageComponent },
+    { path: 'inventory-sale', component: InventorySalePageComponent },
 ];
