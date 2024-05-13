@@ -5,7 +5,7 @@ import { ArticlePageComponent } from './pages/article-page/article-page.componen
 import { ArticlesCrudPageComponent } from './pages/articles-crud-page/articles-crud-page.component';
 import { ArticlesPageComponent } from './pages/articles-page/articles-page.component';
 import { InventoryPageComponent } from './pages/inventory-page/inventory-page.component';
-//import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ProductCrudPageComponent } from './pages/product-crud-page/product-crud-page.component';
 import { ProductListComponent } from './pages/products-page/products-page.component';
 import { RegisterUserPageComponent } from './pages/register-user-page/register-user-page.component';
@@ -26,7 +26,7 @@ export const routes: Routes = [
     { path: 'articles-crud', component: ArticlesCrudPageComponent },
     { path: 'articles', component: ArticlesPageComponent },
     { path: 'inventory', component: InventoryPageComponent },
-    //{ path: 'login', component: LoginPageComponent },
+    { path: 'login', component: LoginPageComponent },
     { path: 'product-crud', component: ProductCrudPageComponent },
     { path: 'products', component: ProductListComponent },
     { path: 'register-user', component: RegisterUserPageComponent },

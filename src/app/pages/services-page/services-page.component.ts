@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { FooterComponent } from '../../components/footer/footer.component';
 
 @Component({
   selector: 'app-services-page',
   standalone: true,
-  imports: [NavbarComponent],
+  imports: [NavbarComponent, FooterComponent],
   templateUrl: './services-page.component.html',
   styleUrl: './services-page.component.css',
 })

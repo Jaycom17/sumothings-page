@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
-import { ArticlePageComponent } from "../article-page/article-page.component";
 import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { FooterComponent } from '../../components/footer/footer.component';
 
 
 @Component({
@@ -8,7 +8,7 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
     standalone: true,
     templateUrl: './articles-page.component.html',
     styleUrl: './articles-page.component.css',
-    imports: [NavbarComponent]
+    imports: [NavbarComponent, FooterComponent]
 })
 export class ArticlesPageComponent {
   articulos = [

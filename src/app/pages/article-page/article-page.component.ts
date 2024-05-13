@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { FooterComponent } from '../../components/footer/footer.component';
 
 @Component({
     selector: 'app-article-page',
     standalone: true,
     templateUrl: './article-page.component.html',
     styleUrl: './article-page.component.css',
-    imports: [NavbarComponent]
+    imports: [NavbarComponent, FooterComponent]
 })
 export class ArticlePageComponent implements OnInit{
   artID: string | null = '';
