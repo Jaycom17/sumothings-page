@@ -1,6 +1,17 @@
-<div class="w-screen">
-  <app-navbar />
-  <div class="mt-10 p-5 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5">
+<app-navbar />
+<main class="flex flex-col items-center">
+  <section class="w-full flex pr-14 pl-14 md:pr-36 md:pl-36 lg:pr-56 lg:pl-56  justify-center items-center flex-col lg:flex-row gap-14 pt-16 pb-10">
+    <img class="h-[10rem] md:h-[10rem] lg:h-[15rem]" src="https://cdn-icons-png.flaticon.com/512/746/746993.png" alt="main-services">
+    <div class=" w-full flex items-center justify-center flex-col">
+        <h1 class=" text-[2.5rem] font-bold">Nuestros servicios</h1>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus quidem placeat dolorem esse harum dicta delectus officia ex commodi recusandae veniam incidunt consequuntur saepe magnam odit totam natus, repudiandae ad.
+        </p>
+    </div>
+</section>
+<div class="w-[90%] md:w-[70%] lg:w-[60%]">
+  <div class="mt-10 p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
     @for (articulo of articulos; track articulo.artID) {
     <div class="flex items-center justify-center w-full">
       <article class="flex flex-col border border-gray-200 p-5 rounded-xl gap-2 items-center">
@@ -23,3 +34,5 @@
     }
   </div>
 </div>
+</main>
+
