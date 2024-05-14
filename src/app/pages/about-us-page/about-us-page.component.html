@@ -1,33 +1,7 @@
 <main>
        
     <div class=" ">
-        <nav class="flex items-center justify-between py-4 px-6 mb-20">
-            <!-- Logo de la empresa  -->
-            <img src="../../../assets/LogoSumothings.png" alt="Logo LogoSumothings" class="w-12 h-12 efecto hover:scale-110">
-        
-            <!-- Buscador -->
-            <div class="flex-grow ml-4 w-32">
-                <form action="/buscar" method="get" class="flex items-center justify-center">
-                    <input type="text" name="q" placeholder="Buscar..." class="px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300 w-96 "> 
-                </form>
-            </div>
-        
-            <!-- Enlaces -->
-            <ul class="flex items-center space-x-6 ">
-                <li class="efecto hover:scale-110"><a routerLink="/ruta-del-componente" class="text-gray-700 hover:text-blue-600">Usuario</a></li>
-                <li class="efecto hover:scale-110"><a routerLink="/ruta-del-componente" class="text-gray-700 hover:text-blue-600">Artículos</a></li>
-                <li class="efecto hover:scale-110"><a routerLink="/ruta-del-componente" class="text-gray-700 hover:text-blue-600">Sobre nosotros</a></li>
-                <li class="efecto hover:scale-110"><a routerLink="/ruta-del-componente" class="text-gray-700 hover:text-blue-600">Productos</a></li>
-                <li class="efecto hover:scale-110"><a routerLink="/ruta-del-componente" class="text-gray-700 hover:text-blue-600">Servicios</a></li>
-                <li class="efecto hover:scale-110"><a routerLink="/ruta-del-componente" class="text-gray-700 hover:text-blue-600">Nosotros</a></li>
-            </ul>
-        
-            <!-- Logos de usuario y carrito -->
-            <div class="flex items-center ">
-                <img src="../../../assets/user.png" alt="Logo Usuario" class="w-12 h-12 efecto hover:scale-110">
-                <img src="../../../assets/carrito.png" alt="Logo Carrito" class="w-12 h-12 ml-4 efecto hover:scale-110">
-            </div>
-        </nav>     
+        <app-navbar/>  
         
         
         <!-- Parte 1-->
@@ -112,27 +86,7 @@
 
      <!-- 5 parte -->
 
-    <footer class="bg-zinc-700">
-        <div class="container mx-auto p-8">
-            <h1 class="text-4xl font-bold mb-4 text-white text-center">Trabajemos juntos en tu próximo proyecto</h1>
-            <p class="text-lg mb-4 text-white text-center">Somos una empresa que entiende las necesidades de nuestros clientes como el pilar fundamental dentro de nuestro negocio, para obtener beneficios mediante servicios y productos diferenciados en un entorno económico y tecnológico disruptivo.</p>
-            <div class="text-center">
-                <a href="#" class="btn-custon btn-primary mb-4 mx-auto">Contáctanos</a>
-            </div>
-    
-            <div class="flex justify-center">
-                <a href="#" class="ml-3">
-                    <i class="fa-brands fa-square-instagram text-white text-3xl m-2 efecto hover:scale-150"></i>
-                </a>
-                <a href="#" class="ml-3">
-                    <i class="fa-brands fa-square-twitter text-white text-3xl m-2 efecto hover:scale-150"></i>
-                </a>
-                <a href="#" class="ml-3">
-                    <i class="fa-brands fa-facebook text-white text-3xl m-2 efecto hover:scale-150"></i>
-                </a>
-            </div>
-        </div>
-    </footer>
+    <app-footer/>
     
     
 </main>
