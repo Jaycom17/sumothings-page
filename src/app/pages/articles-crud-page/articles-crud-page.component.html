@@ -1,9 +1,9 @@
-<div class="bg-white">
-    <div class="grid gap-15 grid-cols-2 grid-rows-1" *ngIf="btn_estadoR">
+<div class="bg-white sm: md: lg: xl: 2xl:">
+    <div class="grid gap-15 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-rows-3" *ngIf="btn_estadoR">
         <button class="bg-orange-500 w-[320px] h-[45px] text-white text-[15px] place-content-center text-center font-bold rounded-2xl mx-8 my-16" (click)="cambiarEstadoC()">Crear artículo</button>   
     </div>
     <div class="bg-gray-300 w-[1020px] h-[720px] p-4 m-auto mt-0 bg-center rounded-2xl" *ngIf="btn_estadoC">
-        <div class="grid gap-60 grid-cols-2 grid-rows-1">
+        <div class="grid gap-15 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-rows-3">
             <div>
                 <div>
                     <h1 class="text-black-500 text-[50px] mb-5 text-center font-bold">Registrar Artículo</h1>
@@ -20,7 +20,7 @@
                         <textarea class="rounded-2xl w-[600px] h-[200px]" rows="4" cols="50" #descripcionAtr>{{articuloR.artDescripcion}}</textarea>
                     </div>
                 </div>
-                <div class="grid gap-15 grid-cols-2 grid-rows-1">
+                <div class="grid gap-15 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-rows-3">
                     <button class="bg-green-500 w-[320px] h-[45px] text-white text-[15px] place-content-center text-center font-bold rounded-2xl mx-8 my-16" (click)="cambiarEstadoC2('',nombreAtr.value,fechaAtr.value,descripcionAtr.value)">{{tag}} artículo</button>   
                 </div>
             </div>
@@ -29,7 +29,7 @@
             </div>
         </div>     
     </div>
-    <div class="grid gap-15 grid-cols-3 grid-rows-3" *ngIf="btn_estadoR">
+    <div class="grid gap-15 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-rows-3" *ngIf="btn_estadoR">
         @for (articulo of articulos; track articulo.artNombre) {
                 <div class="outline outline-offset-1 outline-1 outline-gray-200 bg-white w-[420px] h-[520px] p-4 m-auto rounded-2xl mt-[60px]">
                     <img src={{articulo.artImg}} alt="SUMOTHINGSARTALT">
