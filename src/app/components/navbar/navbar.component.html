@@ -2,16 +2,16 @@
     <div class=" mx-auto flex items-center justify-between">
         <div class=" hidden medio:flex lg:flex items-center gap-3 ">
             <!-- Logo de la empresa -->
-            <a routerLink="/">
-                <img src="https://sumothings.com/sumothings/wp-content/uploads/2022/03/cropped-Imagen1.jpg"
-                    alt="Logo de la empresa" class="h-8 mr-4">
+            <a href="/">
+                <img src="../../../assets/LogoSumothings.png"
+                    alt="Logo de la empresa" class="h-10 mr-4">
             </a>
-            <a routerLink="/" class="text-black font-bold">Inicio</a>
-            <a routerLink="/articulos" class="text-black ml-4">Artículos</a>
-            <a routerLink="/sobre-nosotros" class="text-black ml-4">Sobre Nosotros</a>
-            <a routerLink="/productos" class="text-black ml-4">Productos</a>
-            <a routerLink="/servicio" class="text-black ml-4">Servicio</a>
-            <a routerLink="/contacto" class="text-black ml-4">Contacto</a>
+            <a href="/" class="text-black font-bold">Inicio</a>
+            <a href="/articles" class="text-black ml-4">Artículos</a>
+            <a href="/about-us" class="text-black ml-4">Sobre Nosotros</a>
+            <a href="/products" class="text-black ml-4">Productos</a>
+            <a href="/services" class="text-black ml-4">Servicios</a>
+            <a href="/contact" class="text-black ml-4">Contacto</a>
         </div>
         <div class="flex-col flex">
             <div class="flex items-center medio:hidden lg:hidden">
@@ -23,29 +23,32 @@
                 </button>
             </div>    
         </div>
-        <div class="flex items-center">
+        <div class="flex items-center gap-3">
             <!-- Barra de búsqueda -->
             <input type="text" placeholder="Buscar" class="px-2 py-1 rounded-lg border border-gray-600 mr-4">
             <!-- Icono de persona -->
-            <a routerLink="/perfil">
+            <a href="/perfil">
                 <img src="https://t4.ftcdn.net/jpg/02/29/75/83/240_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"
-                    alt="Icono de persona" class="h-6 w-6 text-black">
+                    alt="Icono de persona" class="h-10 w-10 text-black">
             </a>
             <!-- Icono de carrito de compra -->
-            <a routerLink="/carrito">
+            <button (click)="showCart()">
                 <img src="https://cdn-icons-png.flaticon.com/128/4202/4202388.png" alt="Icono de carrito de compra"
-                    class="h-6 w-6 text-black">
-            </a>
+                    class="h-8 w-8 text-black">
+            </button>
         </div>
     </div>
 </nav>
-<div class=" {{isOpen ? '' : 'hidden'}} lg:flex lg:hidden medio:hidden flex-col lg:items-center lg:w-auto lg:ml-4" id="menu">
+<div class=" {{isOpen ? '' : 'hidden'}} lg:hidden medio:hidden flex-col lg:items-center lg:w-auto lg:ml-4" id="menu">
     <div class="bg-white-400 flex flex-col lg:flex-row">
-        <a routerLink="/" class="block text-black px-4 py-2 hover:bg-gray-400">Inicio</a>
-        <a routerLink="/articulos" class="block text-black px-4 py-2 hover:bg-gray-400">Artículos</a>
-        <a routerLink="/sobre-nosotros" class="block text-black px-4 py-2 hover:bg-gray-400">Sobre Nosotros</a>
-        <a routerLink="/productos" class="block text-black px-4 py-2 hover:bg-gray-400">Productos</a>
-        <a routerLink="/servicio" class="block text-black px-4 py-2 hover:bg-gray-400">Servicio</a>
-        <a routerLink="/contacto" class="block text-black px-4 py-2 hover:bg-gray-400">Contacto</a>
+        <a href="/" class="block text-black px-4 py-2 hover:bg-gray-400">Inicio</a>
+        <a href="/articles" class="block text-black px-4 py-2 hover:bg-gray-400">Artículos</a>
+        <a href="/about-us" class="block text-black px-4 py-2 hover:bg-gray-400">Sobre Nosotros</a>
+        <a href="/products" class="block text-black px-4 py-2 hover:bg-gray-400">Productos</a>
+        <a href="/services" class="block text-black px-4 py-2 hover:bg-gray-400">Servicios</a>
+        <a href="/contact" class="block text-black px-4 py-2 hover:bg-gray-400">Contacto</a>
       </div>
+</div>
+<div class="{{showShoppingCart ? '' : 'hidden'}} p-4 absolute right-0 bg-[#F8F8F8] rounded-2xl">
+    <app-shopping-cart/>
 </div>

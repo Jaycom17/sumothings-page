@@ -3,39 +3,48 @@
 
 <div class="w-screen h-screen p-2 md:p-4 lg:md-5">
   
-  <div class="flex flex-col gap-2 justify-around pb-4 md:flex-row lg:flex-row">
-    <a href="/create-product" class="bg-[#CC4558] p-2 rounded-xl font-bold text-center">Añadir proveedor</a>
-    <button (click)="orderByName()" class="bg-[#CC4558] p-2 rounded-xl font-bold">Ordenar por nombre</button>
-    <button (click)="orderByCedula()" class="bg-[#CC4558] p-2 rounded-xl font-bold">Ordenar por cedula</button>
+  <div class="flex flex-col gap-2 justify-around items-center pb-4 md:flex-row lg:flex-row">
+    <a href="/create-product" class="bg-[#CC4558] p-2 rounded-xl font-bold text-center w-1/2 md:w-1/6">Añadir proveedor</a>
+    <button (click)="orderByName()" class="bg-[#FCAF3B] p-2 rounded-xl font-bold w-1/2 md:w-1/6">Ordenar por nombre</button>
+    <button (click)="orderByCedula()" class="bg-[#FCAF3B] p-2 rounded-xl font-bold w-1/2 md:w-1/6">Ordenar por cedula</button>
   </div>
 
   <div class="overflow-x-auto">
-    <table class="w-full text-left table-auto border-collapse">
-      <thead>
+    <table class="w-full text-left table-auto border-collapse md:table">
+      <thead class="hidden md:table-header-group">
         <tr class="bg-gray-200 text-gray-800">
-          <th class="p-3 text-sm">Cedula</th>
-          <th class="p-3 text-sm">Nombre</th>
-          <th class="p-3 text-sm">Email</th>
-          <th class="p-3 text-sm">Telefono</th>
-            <th class="p-3 text-sm">Acciones</th>
+          <th class="p-3 text-xs md:text-sm">Cedula</th>
+          <th class="p-3 text-xs md:text-sm">Nombre</th>
+          <th class="p-3 text-xs md:text-sm">Email</th>
+          <th class="p-3 text-xs md:text-sm">Telefono</th>
+            <th class="p-3 text-xs md:text-sm">Acciones</th>
         </tr>
       </thead>
       <tbody>
         @for (dealer of dealers; track dealer.deaCedula) {
-        <tr class="hover:bg-gray-100 border-b">
-          <td class="p-3 text-sm">{{dealer.deaCedula}}</td>
-          <td class="p-3 text-sm">{{dealer.deaFullName}}</td>
-          <td class="p-3 text-sm">{{dealer.deaEmail}}</td>
-          <td class="p-3 text-sm">{{dealer.deaPhone}}</td>
-          <td class="p-3 text-sm">
-            <button class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 transition mr-2">
-              Edit
-            </button>
-            <button (click)="deleteDealer(dealer.deaCedula)" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition">
-              Delete
-            </button>
-          </td>
-        </tr>
+          <tr class="flex flex-col md:table-row border-b hover:bg-gray-100 p-3">
+            <td class="p-2 text-sm md:table-cell">
+              <span class="md:hidden font-bold">Cédula: </span>{{dealer.deaCedula}}
+            </td>
+            <td class="p-2 text-sm md:table-cell">
+              <span class="md:hidden font-bold">Nombre Completo: </span>{{dealer.deaFullName}}
+            </td>
+            <td class="p-2 text-sm md:table-cell">
+              <span class="md:hidden font-bold">Correo Electrónico: </span>{{dealer.deaEmail}}
+            </td>
+            <td class="p-2 text-sm md:table-cell">
+              <span class="md:hidden font-bold">Teléfono: </span>{{dealer.deaPhone}}
+            </td>
+            <td class="p-2 text-sm md:table-cell">
+              <!-- Botones adaptados para pantallas pequeñas -->
+              <button class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 transition mr-1">
+                Editar
+              </button>
+              <button (click)="deleteDealer(dealer.deaCedula)" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition">
+                Borrar
+              </button>
+            </td>
+          </tr>
         }
       </tbody>
     </table>

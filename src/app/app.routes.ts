@@ -16,11 +16,13 @@ import { InventoryDealerPageComponent } from './pages/inventory-dealer-page/inve
 import { InventoryClientsPageComponent } from './pages/inventory-clients-page/inventory-clients-page.component';
 import { InventoryShoppingPageComponent } from './pages/inventory-shopping-page/inventory-shopping-page.component';
 import { InventorySalePageComponent } from './pages/inventory-sale-page/inventory-sale-page.component';
+import { ContactPageComponent } from './pages/contact-page/contact-page.component';
+import { ServicesPageComponent } from './pages/services-page/services-page.component';
 
 export const routes: Routes = [
     { path: '', component: MainPageComponent },
     { path: 'about-us', component: AboutUsPageComponent },
-    { path: 'article', component: ArticlePageComponent },
+    { path: 'article/:id', component: ArticlePageComponent },
     { path: 'articles-crud', component: ArticlesCrudPageComponent },
     { path: 'articles', component: ArticlesPageComponent },
     { path: 'inventory', component: InventoryPageComponent },
@@ -35,4 +37,6 @@ export const routes: Routes = [
     { path: 'inventory-clients', component: InventoryClientsPageComponent },
     { path: 'inventory-shopping', component: InventoryShoppingPageComponent },
     { path: 'inventory-sale', component: InventorySalePageComponent },
+    { path: 'contact', component: ContactPageComponent },
+    { path: 'services', component: ServicesPageComponent }
 ];

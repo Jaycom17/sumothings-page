@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
-import { CommonModule, NgIf, NgFor } from '@angular/common';
-import { ArticlePageComponent } from "../article-page/article-page.component";
+import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { FooterComponent } from '../../components/footer/footer.component';
 
 
 @Component({
@@ -8,27 +8,15 @@ import { ArticlePageComponent } from "../article-page/article-page.component";
     standalone: true,
     templateUrl: './articles-page.component.html',
     styleUrl: './articles-page.component.css',
-    imports: [ArticlePageComponent,CommonModule, NgIf, NgFor]
+    imports: [NavbarComponent, FooterComponent]
 })
 export class ArticlesPageComponent {
-  btnEstadoC:boolean=false;
-  btnEstadoF:boolean=true;
   articulos = [
-    { artImg: '', artNombre: 'SumoArt1', artFecha: new Date("05/02/2024"), artDescripcion: 'Art assaasas'},
-    { artImg: '', artNombre: 'SumoArt2', artFecha: new Date("04/02/2024"), artDescripcion: 'Art assaasas'},
-    { artImg: '', artNombre: 'SumoArt3', artFecha: new Date("03/02/2024"), artDescripcion: 'Art assaasas'},
-    { artImg: '', artNombre: 'SumoArt4', artFecha: new Date("02/02/2024"), artDescripcion: 'Art assaasas'},
-    { artImg: '', artNombre: 'SumoArt5', artFecha: new Date("01/02/2024"), artDescripcion: 'Art assaasas'}
+    { artID: 'asuydgw', artNombre: 'SumoArt1', artFecha: "05/02/2024", artDescripcion: 'lorem ipaojnbcdaonj oa joefoifjoiswedhf uhriu hswoeufh hijwhe idugfh iuw fuwhiuwi9fuwhgi wih'},
+    { artID: 'asckdv', artNombre: 'SumoArt2', artFecha: "04/02/2024", artDescripcion: 'lorem ipaojnbcdaonj oa joefoifjoiswedhf uhriu hswoeufh hijwhe idugfh iuw fuwhiuwi9fuwhgi wih'},
+    { artID: 'ewfwcv', artNombre: 'SumoArt3', artFecha: "03/02/2024", artDescripcion: 'lorem ipaojnbcdaonj oa joefoifjoiswedhf uhriu hswoeufh hijwhe idugfh iuw fuwhiuwi9fuwhgi wih'},
+    { artID: '3f34', artNombre: 'SumoArt4', artFecha: "02/02/2024", artDescripcion: 'lorem ipaojnbcdaonj oa joefoifjoiswedhf uhriu hswoeufh hijwhe idugfh iuw fuwhiuwi9fuwhgi wih'},
+    { artID: '234fgr', artNombre: 'SumoArt5', artFecha: "01/02/2024", artDescripcion: 'lorem ipaojnbcdaonj oa joefoifjoiswedhf uhriu hswoeufh hijwhe idugfh iuw fuwhiuwi9fuwhgi wih'}
   ]
-  articuloS = {artImg: '', artNombre: 'Esto es una prueba', artFecha: new Date(), artDescripcion: 'Art des asasjhasklasj' };
-
-  articuloActual(articulo:{artImg:string, artNombre:string, artFecha:Date, artDescripcion:string}){
-    this.cambiarEstado();
-    this.articuloS=articulo;
-  }
-  cambiarEstado(){
-    this.btnEstadoC=!this.btnEstadoC;
-    this.btnEstadoF=!this.btnEstadoF;
-  }
 
 }

@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
+import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { FooterComponent } from '../../components/footer/footer.component';
 
 @Component({
   selector: 'app-product-list',
+  imports: [NavbarComponent, FooterComponent],
+  standalone: true,
   templateUrl: './products-page.component.html',
   styleUrls: ['./products-page.component.css']
 })

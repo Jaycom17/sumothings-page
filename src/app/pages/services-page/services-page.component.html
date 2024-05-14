@@ -1,0 +1,31 @@
+<app-navbar/>
+<main class="flex flex-col items-center">
+    <section class="w-full flex pr-14 pl-14 md:pr-36 md:pl-36 lg:pr-56 lg:pl-56  justify-center items-center flex-col lg:flex-row">
+        <img class="h-[15rem] md:h-[20rem] lg:h-[25rem]" src="https://easycomputer.es/wp-content/uploads/2023/05/engranaje-ordenador-icono.png" alt="main-services">
+        <div class=" w-full flex items-center justify-center flex-col">
+            <h1 class=" text-[2.5rem] font-bold">Nuestros servicios</h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus quidem placeat dolorem esse harum dicta delectus officia ex commodi recusandae veniam incidunt consequuntur saepe magnam odit totam natus, repudiandae ad.
+            </p>
+        </div>
+    </section>
+    <div class="w-[90%] md:w-[70%] lg:w-[60%]">
+        <div class="mt-10 p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          @for (service of services; track service.serTitle) {
+          <div class="flex items-center border border-gray-200 justify-center w-full flex-col rounded-2xl">
+            <img src="{{service.serImage}}" alt="{{service.serTitle}}" class="rounded-t-2xl ">
+            <article class="flex flex-col  p-5 rounded-xl gap-2 items-center">
+              <h1 class="text-orange-500 font-bold text-[1.5rem] text-center">
+                {{ service.serTitle }}
+              </h1>
+              <p class="">
+                {{ service.serDescripcion }}
+              </p>
+            </article>
+          </div>
+          }
+        </div>
+      </div>
+</main>
+<app-footer/>
