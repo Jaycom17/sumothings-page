@@ -13,6 +13,7 @@ export class InventorySalePageComponent {
 
   constructor(private router: Router) {}
 
+
   orderByDate(){
     this.sales.sort((a, b) => a.salDate.localeCompare(b.salDate))
   }

@@ -28,13 +28,13 @@
         @for (sale of sales; track sale.salID) {
         <tr (click)="goToSaleDetail(sale.salID)" class="hover:bg-gray-100 border-b cursor-pointer">
           <td class="p-3 text-sm">{{sale.salID}}</td>
-          <td class="p-3 text-sm">{{sale.proID}}</td>
-          <td class="p-3 text-sm">{{sale.cliName}}</td>
-          <td class="p-3 text-sm">{{sale.salDate}}</td>
-          <td class="p-3 text-sm">{{sale.salProductUnits}}</td>
-          <td class="p-3 text-sm">{{sale.salPrice}}</td>
-          <td class="p-3 text-sm">{{sale.salTaxes}}</td>
-          <td class="p-3 text-sm">{{sale.salTotal}}</td>
+            <td class="p-3 text-sm">{{sale.proID}}</td>
+            <td class="p-3 text-sm">{{sale.cliName}}</td>
+            <td class="p-3 text-sm">{{sale.salDate}}</td>
+            <td class="p-3 text-sm">{{sale.salProductUnits}}</td>
+            <td class="p-3 text-sm">{{sale.salPrice}}</td>
+            <td class="p-3 text-sm">{{sale.salTaxes}}</td>
+            <td class="p-3 text-sm">{{sale.salTotal}}</td>
           <td class="p-3 text-sm">
             <button class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 transition mr-2">
               Edit

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { ShoppingCartComponent } from '../../components/shopping-cart/shopping-cart.component';
+import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { FooterComponent } from '../../components/footer/footer.component';
 
 @Component({
   selector: 'app-main-page',
   standalone: true,
-  imports: [ShoppingCartComponent],
+  imports: [NavbarComponent, FooterComponent],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.css'
 })
