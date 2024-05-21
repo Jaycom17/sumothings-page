@@ -19,6 +19,7 @@ import { InventorySalePageComponent } from './pages/inventory-sale-page/inventor
 import { ContactPageComponent } from './pages/contact-page/contact-page.component';
 import { ServicesPageComponent } from './pages/services-page/services-page.component';
 import { SalePageComponent } from './pages/sale-page/sale-page.component';
+import { ProductsPageComponent } from './pages/products-paga-component'
 
 export const routes: Routes = [
     { path: '', component: MainPageComponent },
@@ -29,7 +30,7 @@ export const routes: Routes = [
     { path: 'inventory', component: InventoryPageComponent },
     { path: 'login', component: LoginPageComponent },
     { path: 'product-crud', component: ProductCrudPageComponent },
-    { path: 'products', component: ProductListComponent },
+    { path: 'products', component: ProductsPageComponent },
     { path: 'register-user', component: RegisterUserPageComponent },
     { path: 'inventory-product', component: InventoryProductPageComponent },
     { path: 'inventory-articles', component: InventoryArticlesPageComponent },
