@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { InventoryAsideBarComponent } from '../../components/inventory-aside-bar/inventory-aside-bar.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inventory-sale-page',
@@ -9,6 +10,8 @@ import { InventoryAsideBarComponent } from '../../components/inventory-aside-bar
   styleUrl: './inventory-sale-page.component.css'
 })
 export class InventorySalePageComponent {
+
+  constructor(private router: Router) {}
 
   orderByDate(){
     this.sales.sort((a, b) => a.salDate.localeCompare(b.salDate))
@@ -20,6 +23,10 @@ export class InventorySalePageComponent {
 
   deleteSale(salID: string){
     this.sales = this.sales.filter(sale => sale.salID !== salID)
+  }
+
+  goToSaleDetail(salID: string){
+    this.router.navigate(['/sale/', salID])
   }
 
   sales = [

@@ -16,6 +16,8 @@ import { InventoryDealerPageComponent } from './pages/inventory-dealer-page/inve
 import { InventoryClientsPageComponent } from './pages/inventory-clients-page/inventory-clients-page.component';
 import { InventoryShoppingPageComponent } from './pages/inventory-shopping-page/inventory-shopping-page.component';
 import { InventorySalePageComponent } from './pages/inventory-sale-page/inventory-sale-page.component';
+import { SalePageComponent } from './pages/sale-page/sale-page.component';
+import { ShoppingPageComponent } from './pages/shopping-page/shopping-page.component';
 
 export const routes: Routes = [
         { path: '', component: MainPageComponent },
@@ -35,4 +37,6 @@ export const routes: Routes = [
         { path: 'inventory-clients', component: InventoryClientsPageComponent },
         { path: 'inventory-shopping', component: InventoryShoppingPageComponent },
         { path: 'inventory-sale', component: InventorySalePageComponent },
+        { path: 'sale/:id', component: SalePageComponent },
+        { path: 'shopping/:id', component: ShoppingPageComponent }
 ];
