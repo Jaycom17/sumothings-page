@@ -17,7 +17,9 @@ import { InventoryShoppingPageComponent } from './pages/inventory-shopping-page/
 import { InventorySalePageComponent } from './pages/inventory-sale-page/inventory-sale-page.component';
 import { SalePageComponent } from './pages/sale-page/sale-page.component';
 import { ShoppingPageComponent } from './pages/shopping-page/shopping-page.component';
-import { ProductListComponent } from './pages/products-page.component'
+import { ProductListComponent } from './pages/products-page/products-page.component'
+import { ContactPageComponent } from './pages/contact-page/contact-page.component';
+import { ServicesPageComponent } from './pages/services-page/services-page.component';
 
 export const routes: Routes = [
     { path: '', component: MainPageComponent },
@@ -37,7 +39,7 @@ export const routes: Routes = [
     { path: 'inventory-clients', component: InventoryClientsPageComponent },
     { path: 'inventory-shopping', component: InventoryShoppingPageComponent },
     { path: 'inventory-sale', component: InventorySalePageComponent },
-    { path: 'contact', component: ContactPageComponent },
+    { path: 'contact', component:  ContactPageComponent},
     { path: 'services', component: ServicesPageComponent },
     { path: 'sale/:id', component: SalePageComponent },
     { path: 'shopping/:id', component: ShoppingPageComponent }
