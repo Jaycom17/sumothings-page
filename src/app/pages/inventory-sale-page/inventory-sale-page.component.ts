@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
 })
 export class InventorySalePageComponent {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
+
 
   orderByDate(){
     this.sales.sort((a, b) => a.salDate.localeCompare(b.salDate))
@@ -25,10 +26,9 @@ export class InventorySalePageComponent {
     this.sales = this.sales.filter(sale => sale.salID !== salID)
   }
 
-  navigateToSale(salID: string){
-    this.router.navigate(['/sale', salID])
+  goToSaleDetail(salID: string){
+    this.router.navigate(['/sale/', salID])
   }
-
 
   sales = [
     { salID: '2', proID: '2', cliName: 'Juan Carlos Perez', salDate: '2021-01-02', salProductUnits: '20', salPrice: '2000', salTaxes: '320', salTotal: '2320' },

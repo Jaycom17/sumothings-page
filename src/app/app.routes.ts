@@ -7,7 +7,6 @@ import { ArticlesPageComponent } from './pages/articles-page/articles-page.compo
 import { InventoryPageComponent } from './pages/inventory-page/inventory-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ProductCrudPageComponent } from './pages/product-crud-page/product-crud-page.component';
-import { ProductListComponent } from './pages/products-page/products-page.component';
 import { RegisterUserPageComponent } from './pages/register-user-page/register-user-page.component';
 import { InventoryProductPageComponent } from './pages/inventory-product-page/inventory-product-page.component';
 import { InventoryArticlesPageComponent } from './pages/inventory-articles-page/inventory-articles-page.component';
@@ -16,9 +15,9 @@ import { InventoryDealerPageComponent } from './pages/inventory-dealer-page/inve
 import { InventoryClientsPageComponent } from './pages/inventory-clients-page/inventory-clients-page.component';
 import { InventoryShoppingPageComponent } from './pages/inventory-shopping-page/inventory-shopping-page.component';
 import { InventorySalePageComponent } from './pages/inventory-sale-page/inventory-sale-page.component';
-import { ContactPageComponent } from './pages/contact-page/contact-page.component';
-import { ServicesPageComponent } from './pages/services-page/services-page.component';
 import { SalePageComponent } from './pages/sale-page/sale-page.component';
+import { ShoppingPageComponent } from './pages/shopping-page/shopping-page.component';
+import { ProductListComponent } from './pages/products-page.component'
 
 export const routes: Routes = [
     { path: '', component: MainPageComponent },
@@ -41,4 +40,5 @@ export const routes: Routes = [
     { path: 'contact', component: ContactPageComponent },
     { path: 'services', component: ServicesPageComponent },
     { path: 'sale/:id', component: SalePageComponent },
+    { path: 'shopping/:id', component: ShoppingPageComponent }
 ];

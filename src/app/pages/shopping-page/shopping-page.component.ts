@@ -2,17 +2,17 @@ import { Component } from '@angular/core';
 import { InventoryAsideBarComponent } from '../../components/inventory-aside-bar/inventory-aside-bar.component';
 
 @Component({
-  selector: 'app-sale-page',
+  selector: 'app-shopping-page',
   standalone: true,
   imports: [InventoryAsideBarComponent],
-  templateUrl: './sale-page.component.html',
-  styleUrl: './sale-page.component.css'
+  templateUrl: './shopping-page.component.html',
+  styleUrl: './shopping-page.component.css'
 })
-export class SalePageComponent {
+export class ShoppingPageComponent {
   factura = {
     id: 1,
     fecha: '2021-06-01',
-    proveedor: 'Juan Perez',
+    cliente: 'Juan Perez',
     total: 1000,
     productos: [
       {

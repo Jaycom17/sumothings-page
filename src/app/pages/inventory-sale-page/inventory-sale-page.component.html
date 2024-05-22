@@ -26,7 +26,7 @@
       </thead>
       <tbody>
         @for (sale of sales; track sale.salID) {
-        <tr (click)="navigateToSale(sale.salID)" class="hover:bg-gray-100 border-b cursor-pointer">
+        <tr (click)="goToSaleDetail(sale.salID)" class="hover:bg-gray-100 border-b cursor-pointer">
           <td class="p-3 text-sm">{{sale.salID}}</td>
             <td class="p-3 text-sm">{{sale.proID}}</td>
             <td class="p-3 text-sm">{{sale.cliName}}</td>
