@@ -7,7 +7,6 @@ import { ArticlesPageComponent } from './pages/articles-page/articles-page.compo
 import { InventoryPageComponent } from './pages/inventory-page/inventory-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ProductCrudPageComponent } from './pages/product-crud-page/product-crud-page.component';
-import { ProductListComponent } from './pages/products-page/products-page.component';
 import { RegisterUserPageComponent } from './pages/register-user-page/register-user-page.component';
 import { InventoryProductPageComponent } from './pages/inventory-product-page/inventory-product-page.component';
 import { InventoryArticlesPageComponent } from './pages/inventory-articles-page/inventory-articles-page.component';
@@ -18,25 +17,28 @@ import { InventoryShoppingPageComponent } from './pages/inventory-shopping-page/
 import { InventorySalePageComponent } from './pages/inventory-sale-page/inventory-sale-page.component';
 import { SalePageComponent } from './pages/sale-page/sale-page.component';
 import { ShoppingPageComponent } from './pages/shopping-page/shopping-page.component';
+import { ProductsPageComponent } from './pages/products-paga-component'
 
 export const routes: Routes = [
-        { path: '', component: MainPageComponent },
-        { path: 'about-us', component: AboutUsPageComponent },
-        { path: 'article', component: ArticlePageComponent },
-        { path: 'articles-crud', component: ArticlesCrudPageComponent },
-        { path: 'articles', component: ArticlesPageComponent },
-        { path: 'inventory', component: InventoryPageComponent },
-        { path: 'login', component: LoginPageComponent },
-        { path: 'product-crud', component: ProductCrudPageComponent },
-        { path: 'products', component: ProductsPageComponent },
-        { path: 'register-user', component: RegisterUserPageComponent },
-        { path: 'inventory-product', component: InventoryProductPageComponent },
-        { path: 'inventory-articles', component: InventoryArticlesPageComponent },
-        { path: 'create-product', component: CreateProductPageComponent },
-        { path: 'inventory-dealer', component: InventoryDealerPageComponent },
-        { path: 'inventory-clients', component: InventoryClientsPageComponent },
-        { path: 'inventory-shopping', component: InventoryShoppingPageComponent },
-        { path: 'inventory-sale', component: InventorySalePageComponent },
-        { path: 'sale/:id', component: SalePageComponent },
-        { path: 'shopping/:id', component: ShoppingPageComponent }
+    { path: '', component: MainPageComponent },
+    { path: 'about-us', component: AboutUsPageComponent },
+    { path: 'article/:id', component: ArticlePageComponent },
+    { path: 'articles-crud', component: ArticlesCrudPageComponent },
+    { path: 'articles', component: ArticlesPageComponent },
+    { path: 'inventory', component: InventoryPageComponent },
+    { path: 'login', component: LoginPageComponent },
+    { path: 'product-crud', component: ProductCrudPageComponent },
+    { path: 'products', component: ProductsPageComponent },
+    { path: 'register-user', component: RegisterUserPageComponent },
+    { path: 'inventory-product', component: InventoryProductPageComponent },
+    { path: 'inventory-articles', component: InventoryArticlesPageComponent },
+    { path: 'create-product', component: CreateProductPageComponent },
+    { path: 'inventory-dealer', component: InventoryDealerPageComponent },
+    { path: 'inventory-clients', component: InventoryClientsPageComponent },
+    { path: 'inventory-shopping', component: InventoryShoppingPageComponent },
+    { path: 'inventory-sale', component: InventorySalePageComponent },
+    { path: 'contact', component: ContactPageComponent },
+    { path: 'services', component: ServicesPageComponent },
+    { path: 'sale/:id', component: SalePageComponent },
+    { path: 'shopping/:id', component: ShoppingPageComponent }
 ];
