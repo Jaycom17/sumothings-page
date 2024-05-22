@@ -17,7 +17,7 @@ import { InventoryShoppingPageComponent } from './pages/inventory-shopping-page/
 import { InventorySalePageComponent } from './pages/inventory-sale-page/inventory-sale-page.component';
 import { SalePageComponent } from './pages/sale-page/sale-page.component';
 import { ShoppingPageComponent } from './pages/shopping-page/shopping-page.component';
-import { ProductsPageComponent } from './pages/products-page-component'
+import { ProductListComponent } from './pages/products-page.component'
 
 export const routes: Routes = [
     { path: '', component: MainPageComponent },
@@ -28,7 +28,7 @@ export const routes: Routes = [
     { path: 'inventory', component: InventoryPageComponent },
     { path: 'login', component: LoginPageComponent },
     { path: 'product-crud', component: ProductCrudPageComponent },
-    { path: 'products', component: ProductsPageComponent },
+    { path: 'products', component: ProductListComponent },
     { path: 'register-user', component: RegisterUserPageComponent },
     { path: 'inventory-product', component: InventoryProductPageComponent },
     { path: 'inventory-articles', component: InventoryArticlesPageComponent },
