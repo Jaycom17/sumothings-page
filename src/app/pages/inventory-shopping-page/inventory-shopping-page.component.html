@@ -27,10 +27,10 @@
       </thead>
       <tbody>
         @for (shopping of shoppings; track shopping.shoID) {
-        <tr class="hover:bg-gray-100 border-b">
+        <tr (click)="goToShoppingDetail(shopping.shoID)" class="hover:bg-gray-100 border-b cursor-pointer">
           <td class="p-3 text-sm">{{shopping.shoID}}</td>
           <td class="p-3 text-sm">{{shopping.proID}}</td>
-          <td class="p-3 text-sm">{{shopping.deaID}}</td>
+          <td class="p-3 text-sm">{{shopping.deaName}}</td>
           <td class="p-3 text-sm">{{shopping.shoDate}}</td>
           <td class="p-3 text-sm">{{shopping.shoProductUnits}}</td>
           <td class="p-3 text-sm">{{shopping.shoPrice}}</td>
