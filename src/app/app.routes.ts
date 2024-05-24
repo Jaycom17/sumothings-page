@@ -20,6 +20,10 @@ import { ShoppingPageComponent } from './pages/shopping-page/shopping-page.compo
 import { ProductListComponent } from './pages/products-page/products-page.component'
 import { ContactPageComponent } from './pages/contact-page/contact-page.component';
 import { ServicesPageComponent } from './pages/services-page/services-page.component';
+import { CreateArticlePageComponent } from './pages/create-article-page/create-article-page.component';
+import { CreateDealerPageComponent } from './pages/create-dealer-page/create-dealer-page.component';
+import { CreateClientPageComponent } from './pages/create-client-page/create-client-page.component';
+import { CreateSalePageComponent } from './pages/create-sale-page/create-sale-page.component';
 
 export const routes: Routes = [
     { path: '', component: MainPageComponent },
@@ -42,5 +46,9 @@ export const routes: Routes = [
     { path: 'contact', component:  ContactPageComponent},
     { path: 'services', component: ServicesPageComponent },
     { path: 'sale/:id', component: SalePageComponent },
-    { path: 'shopping/:id', component: ShoppingPageComponent }
+    { path: 'shopping/:id', component: ShoppingPageComponent },
+    { path: 'create-article', component: CreateArticlePageComponent },
+    { path: 'create-dealer', component: CreateDealerPageComponent},
+    { path: 'create-client', component: CreateClientPageComponent},
+    { path: 'create-sale', component: CreateSalePageComponent}
 ];

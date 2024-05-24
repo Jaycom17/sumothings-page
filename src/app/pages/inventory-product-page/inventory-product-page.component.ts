@@ -27,8 +27,8 @@ export class InventoryProductPageComponent {
   }
 
   searchProduct(event: Event){
-    let search = (event.target as HTMLInputElement).value;
-    this.products = this.productsCopy.filter(product => product.proName.toLowerCase().includes(search.toLowerCase()));
+    let search = (event.target as HTMLInputElement).value.toLowerCase();
+    this.products = this.productsCopy.filter(product => product.proName.toLowerCase().includes(search));
   }
 
   products = [

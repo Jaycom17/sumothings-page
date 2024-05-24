@@ -30,6 +30,11 @@ export class InventorySalePageComponent {
     this.router.navigate(['/sale/', salID])
   }
 
+  searchSale(event: Event){
+    const value = (event.target as HTMLInputElement).value.toLowerCase()
+    this.sales = this.salesCopy.filter(sale => sale.cliName.toLowerCase().includes(value)|| sale.salDate.includes(value));
+  }
+
   sales = [
     { salID: '2', proID: '2', cliName: 'Juan Carlos Perez', salDate: '2021-01-02', salProductUnits: '20', salPrice: '2000', salTaxes: '320', salTotal: '2320' },
     { salID: '1', proID: '1', cliName: 'Juan Camilo', salDate: '2021-01-01', salProductUnits: '10', salPrice: '1000', salTaxes: '160', salTotal: '1160' },
@@ -37,4 +42,6 @@ export class InventorySalePageComponent {
     { salID: '5', proID: '5', cliName: 'Juan Narvaez', salDate: '2021-01-05', salProductUnits: '50', salPrice: '5000', salTaxes: '800', salTotal: '5800' },
     { salID: '4', proID: '4', cliName: 'Juan Sotelo', salDate: '2021-01-04', salProductUnits: '40', salPrice: '4000', salTaxes: '640', salTotal: '4640' },
   ]
+
+  salesCopy = this.sales;
 }
