@@ -24,6 +24,7 @@ import { CreateArticlePageComponent } from './pages/create-article-page/create-a
 import { CreateDealerPageComponent } from './pages/create-dealer-page/create-dealer-page.component';
 import { CreateClientPageComponent } from './pages/create-client-page/create-client-page.component';
 import { CreateSalePageComponent } from './pages/create-sale-page/create-sale-page.component';
+import { AdminLoginPageComponent } from './pages/admin-login-page/admin-login-page.component';
 
 export const routes: Routes = [
     { path: '', component: MainPageComponent },
@@ -50,5 +51,6 @@ export const routes: Routes = [
     { path: 'create-article', component: CreateArticlePageComponent },
     { path: 'create-dealer', component: CreateDealerPageComponent},
     { path: 'create-client', component: CreateClientPageComponent},
-    { path: 'create-sale', component: CreateSalePageComponent}
+    { path: 'create-sale', component: CreateSalePageComponent},
+    { path: 'admin-login', component: AdminLoginPageComponent}
 ];
