@@ -1,7 +1,7 @@
-<main class="flex">
+<main class="flex ">
     <app-inventory-aside-bar />
 
-<div class="w-screen h-screen p-2 md:p-4 lg:md-5">
+<div class="w-screen overflow-auto max-h-screen h-screen p-2 md:p-4 lg:md-5">
   <div class="flex flex-col gap-2 justify-around items-center pb-4 md:flex-row lg:flex-row">
     <div class="relative w-full md:w-1/3">
       <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -18,7 +18,7 @@
     </div>
   </div>
 
-  <div class="overflow-x-auto">
+  <div>
     <table class="w-full text-left table-auto border-collapse md:table">
       <thead class="hidden md:table-header-group">
         <tr class="bg-gray-200 text-gray-800">
@@ -49,7 +49,7 @@
               <button class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 transition mr-1">
                 Editar
               </button>
-              <button (click)="deleteDealer(dealer.deaCedula)" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition">
+              <button (click)="deleteDealer(dealer.deaID)" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition">
                 Borrar
               </button>
             </td>
