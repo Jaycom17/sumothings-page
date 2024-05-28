@@ -39,6 +39,12 @@ export class InventoryDealerPageComponent implements OnInit{
   }
 
   deleteDealer(deaID: string){
+    const confirmDelete = confirm('Are you sure you want to delete this dealer?');
+
+    if(!confirmDelete) return;
+
     this.dealers = this.dealers.filter(dealer => dealer.deaID !== deaID);
+    this.dealersCopy = this.dealersCopy.filter(dealer => dealer.deaID !== deaID);
+    this.dealerService.deleteDealer(deaID).subscribe();
   }
 }
