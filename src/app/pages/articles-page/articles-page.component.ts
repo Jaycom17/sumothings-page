@@ -11,12 +11,21 @@ import { FooterComponent } from '../../components/footer/footer.component';
     imports: [NavbarComponent, FooterComponent]
 })
 export class ArticlesPageComponent {
-  articulos = [
+  articles = [
     { artID: 'asuydgw', artNombre: 'SumoArt1', artFecha: "05/02/2024", artDescripcion: 'lorem ipaojnbcdaonj oa joefoifjoiswedhf uhriu hswoeufh hijwhe idugfh iuw fuwhiuwi9fuwhgi wih'},
     { artID: 'asckdv', artNombre: 'SumoArt2', artFecha: "04/02/2024", artDescripcion: 'lorem ipaojnbcdaonj oa joefoifjoiswedhf uhriu hswoeufh hijwhe idugfh iuw fuwhiuwi9fuwhgi wih'},
     { artID: 'ewfwcv', artNombre: 'SumoArt3', artFecha: "03/02/2024", artDescripcion: 'lorem ipaojnbcdaonj oa joefoifjoiswedhf uhriu hswoeufh hijwhe idugfh iuw fuwhiuwi9fuwhgi wih'},
     { artID: '3f34', artNombre: 'SumoArt4', artFecha: "02/02/2024", artDescripcion: 'lorem ipaojnbcdaonj oa joefoifjoiswedhf uhriu hswoeufh hijwhe idugfh iuw fuwhiuwi9fuwhgi wih'},
     { artID: '234fgr', artNombre: 'SumoArt5', artFecha: "01/02/2024", artDescripcion: 'lorem ipaojnbcdaonj oa joefoifjoiswedhf uhriu hswoeufh hijwhe idugfh iuw fuwhiuwi9fuwhgi wih'}
   ]
+
+  artclesCopy = this.articles;
+
+  searchArticle(event: Event) {
+    const searchValue = (event.target as HTMLInputElement).value;
+    this.articles = this.artclesCopy.filter((article) => {
+      return article.artNombre.toLowerCase().includes(searchValue.toLowerCase())|| article.artFecha.toLowerCase().includes(searchValue.toLowerCase()) || article.artDescripcion.toLowerCase().includes(searchValue.toLowerCase());
+    });
+  }
 
 }
