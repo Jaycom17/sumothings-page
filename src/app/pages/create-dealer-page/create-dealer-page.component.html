@@ -2,7 +2,7 @@
     <app-inventory-aside-bar />
 
     <div class="mx-auto mt-10 bg-slate-200 h-fit p-10 rounded-3xl">
-        <h2 class="text-2xl font-bold text-center mb-6">Registrar Articulo</h2>
+        <h2 class="text-2xl font-bold text-center mb-6">Registrar Proveedor</h2>
         
         <form [formGroup]="dealerForms" (submit)="saveDealer()">
           @if (dealerForms.get('deaFullName')?.hasError('required') && dealerForms.get('deaFullName')?.touched){

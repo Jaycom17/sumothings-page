@@ -19,13 +19,13 @@
     <div class="flex items-center justify-center w-full">
       <article class="flex flex-col border border-gray-200 p-5 rounded-xl gap-2 items-center">
         <h1 class="text-orange-500 font-bold text-[1.5rem] text-center">
-          {{ articulo.artNombre }}
+          {{ articulo.artTitle }}
         </h1>
         <p class="">
-          {{ articulo.artDescripcion }}
+          {{ articulo.artShortDescription }}
         </p>
         <p class="font-bold text-[0.7rem] text-left w-full">
-          {{ articulo.artFecha }}
+          {{ articulo.artDate }}
         </p>
         <a href="/article/{{ articulo.artID }}"
           class="bg-orange-500 p-2 text-white rounded-md w-fit hover:bg-orange-600"
