@@ -31,7 +31,7 @@ export class ArticleServicesService {
     return this.httpClient.put<any>(this.apiUrl, article, { headers, observe: 'response' });
   }
 
-  deleteDealer(articleId: string): Observable<HttpResponse<any>> {
+  deleteArticle(articleId: string): Observable<HttpResponse<any>> {
     return this.httpClient.delete<any>(`${this.apiUrl}/${articleId}`, { observe: 'response' });
   }
 }
