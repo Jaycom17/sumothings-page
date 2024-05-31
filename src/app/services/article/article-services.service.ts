@@ -26,9 +26,9 @@ export class ArticleServicesService {
     return this.httpClient.get(`${this.apiUrl}/${articleId}`).pipe(res => res);
   }
 
-  updateArticle(article: any): Observable<HttpResponse<any>> {
+  updateArticle(articleId: string ,article: any): Observable<HttpResponse<any>> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.httpClient.put<any>(this.apiUrl, article, { headers, observe: 'response' });
+    return this.httpClient.put<any>(`${this.apiUrl}/${articleId}`, article, { headers, observe: 'response' });
   }
 
   deleteArticle(articleId: string): Observable<HttpResponse<any>> {

@@ -1,5 +1,5 @@
 export interface Article {
-    artID: string 
+    artID?: string 
     artTitle: string
     artShortDescription: string
     artContent: string

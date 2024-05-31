@@ -53,7 +53,7 @@ export class InventoryArticlesPageComponent implements OnInit {
     this.articles.sort((a, b) => a.artAuthor.localeCompare(b.artAuthor))
   }
   
-  deleteArticle(artID: string){
+  deleteArticle(artID: string|any){
     const confirmDelete = confirm('Are you sure you want to delete this article?');
 
     if(!confirmDelete) return;

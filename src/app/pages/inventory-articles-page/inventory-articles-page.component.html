@@ -52,9 +52,11 @@
             </td>
             <td class="p-2 text-sm md:table-cell">
               <!-- Botones con etiquetas para mayor claridad en dispositivos móviles -->
-              <button class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 transition mr-1">
-                Editar
-              </button>
+              <a href="/edit-article/{{ article.artID }}"
+              class="bg-blue-500 px-2 py-1 text-white rounded hover:bg-blue-600 transition mr-1"
+              >
+              Editar
+              </a>
               <button (click)="deleteArticle(article.artID)" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition">
                 Borrar
               </button>
