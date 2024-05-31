@@ -54,13 +54,13 @@ export class InventoryArticlesPageComponent implements OnInit {
   }
   
   deleteArticle(artID: string){
-    this.articleService.deleteArticle(artID).subscribe(() => {
-  });
-  this.articleService.getArticles().subscribe((article: Article[]) => {
-    this.articles = article;
-    this.artclesCopy = article;
-  });
-  this.articles = this.articles.filter(article => article.artID !== artID)
+    const confirmDelete = confirm('Are you sure you want to delete this article?');
+
+    if(!confirmDelete) return;
+
+    this.articles = this.articles.filter(article => article.artID !== artID);
+    this.artclesCopy = this.artclesCopy.filter(article => article.artID !== artID);
+    this.articleService.deleteArticle(artID).subscribe();
   }
 
 }
