@@ -1,19 +1,9 @@
 import { Component } from '@angular/core';
-<<<<<<< HEAD
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
 
 @Component({
   selector: 'app-main-page',
-=======
-import { NavbarComponent } from '../../components/navbar/navbar.component';
-import { FooterComponent } from '../../components/footer/footer.component';
-
-@Component({
-  selector: 'app-main-page',
-  standalone: true,
-  imports: [NavbarComponent, FooterComponent],
->>>>>>> 4d1bc7a9b20c6bbe08c9ed55c42fa7b2152f931f
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.css']
 })
