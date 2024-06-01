@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener  } from '@angular/core';
+import { Component, ElementRef, HostListener } from '@angular/core';
 import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
 
 @Component({
@@ -6,26 +6,25 @@ import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component'
   standalone: true,
   imports: [ShoppingCartComponent],
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
-
-export class NavbarComponent{
-    isOpen = false;
-    showShoppingCart = false;
-    openSideBar() {
+export class NavbarComponent {
+  isOpen = false;
+  showShoppingCart = false;
+  openSideBar() {
     this.isOpen = this.isOpen ? false : true;
-    }
-    showCart() {
+  }
+  showCart() {
     this.showShoppingCart = this.showShoppingCart ? false : true;
-    }
+  }
 
-    constructor(private elementRef: ElementRef) {}
+  constructor(private elementRef: ElementRef) {}
 
   closeShoppingCart(event: MouseEvent) {
     if (!this.elementRef.nativeElement.contains(event.target)) {
       this.showShoppingCart = false;
     }
-  } 
+  }
 
   @HostListener('document:mousedown', ['$event'])
   onGlobalClick(event: MouseEvent) {

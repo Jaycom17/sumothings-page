@@ -4,7 +4,6 @@ import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 
 
 
-
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -14,6 +13,7 @@ import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 })
 export class AppComponent {
   title = 'sumothing-page';
+
 }
 
 @Directive({

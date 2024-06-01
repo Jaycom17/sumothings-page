@@ -1,0 +1,77 @@
+<main class="flex">
+    <app-inventory-aside-bar />
+
+    <div class="mx-auto mt-10 bg-slate-200 h-fit p-10 rounded-3xl">
+        <h2 class="text-2xl font-bold text-center mb-6">Registrar Articulo</h2>
+        
+        <form [formGroup]="articleForms" (submit)="saveArticle()">
+
+          @if (articleForms.get('artTitle')?.hasError('required') && articleForms.get('artTitle')?.touched){
+            <p class="text-center text-red-500 text-sm">El título es requerido</p>
+          }
+          @if (articleForms.get('artShortDescription')?.hasError('required') && articleForms.get('artShortDescription')?.touched){
+            <p class="text-center text-red-500 text-sm">La descripción es requerida</p>
+          }
+          @if (articleForms.get('artAuthor')?.hasError('required') && articleForms.get('artAuthor')?.touched){
+            <p class="text-center text-red-500 text-sm">El Autor es requerido</p>
+          }
+          @if (articleForms.get('artDate')?.hasError('required') && articleForms.get('artDate')?.touched){
+            <p class="text-center text-red-500 text-sm">La fecha es requerida</p>
+          }
+          @if (articleForms.get('artContent')?.hasError('required') && articleForms.get('artContent')?.touched){
+            <p class="text-center text-red-500 text-sm">El contenido es requerido</p>
+          }
+
+          <!-- Campo para cargar imagen -->
+          <div class="grid grid-cols-2 gap-3">
+        
+            <!-- Campo para nombre del producto -->
+            <div class="mb-4">
+              <label class="block text-sm font-medium text-gray-700" for="name">
+                Titulo
+              </label>
+              <input type="text" formControlName="artTitle" class="w-full p-2 border rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+        
+            <!-- Campo para precio -->
+            <div class="mb-4">
+              <label class="block text-sm font-medium text-gray-700" for="price">
+                Descripción corta
+              </label>
+              <input type="text" formControlName="artShortDescription" class="w-full p-2 border rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+        
+            <!-- Campo para stock -->
+            <div class="mb-4">
+              <label class="block text-sm font-medium text-gray-700" for="stock">
+                Autor
+              </label>
+              <input type="text" formControlName="artAuthor" class="w-full p-2 border rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+  
+            <div class="mb-4">
+              <label class="block text-sm font-medium text-gray-700" for="Heigh">
+                Fecha
+              </label>
+              <input type="date" formControlName="artDate" class="w-full p-2 border rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500" required >
+            </div>
+
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700" for="Description">
+              Contenido
+            </label>
+            <textarea formControlName="artContent" class="w-[600px] h-[300px] p-2 border rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+          </div>
+              
+      
+          <!-- Botón de enviar -->
+          <div class="text-center">
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
+              Registrar Artículo
+            </button>
+          </div>
+        </form>
+      </div>
+</main>

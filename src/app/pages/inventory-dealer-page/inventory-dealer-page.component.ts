@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { InventoryAsideBarComponent } from '../../components/inventory-aside-bar/inventory-aside-bar.component';
+import { Dealer } from '../../interfaces/Dealer.interface';
+import { DealerServicesService } from '../../services/dealer/dealer-services.service';
 
 @Component({
   selector: 'app-inventory-dealer-page',
@@ -8,7 +10,25 @@ import { InventoryAsideBarComponent } from '../../components/inventory-aside-bar
   templateUrl: './inventory-dealer-page.component.html',
   styleUrl: './inventory-dealer-page.component.css'
 })
-export class InventoryDealerPageComponent {
+export class InventoryDealerPageComponent implements OnInit{
+
+  constructor(private dealerService: DealerServicesService) { }
+
+  dealers: Dealer[] = [];
+
+  dealersCopy: Dealer[] = [];
+
+  ngOnInit(): void {
+    this.dealerService.getDealers().subscribe((dealers: Dealer[]) => {
+      this.dealers = dealers;
+      this.dealersCopy = dealers;
+    });
+  }
+
+  searchDealer(event: Event){
+    const searchValue = (event.target as HTMLInputElement).value;
+    this.dealers = this.dealersCopy.filter(dealer => dealer.deaFullName.toLowerCase().includes(searchValue.toLowerCase()) || dealer.deaCedula.includes(searchValue));
+  }
 
   orderByName(){
     this.dealers.sort((a, b) => a.deaFullName.localeCompare(b.deaFullName));
@@ -18,13 +38,13 @@ export class InventoryDealerPageComponent {
     this.dealers.sort((a, b) => a.deaCedula.localeCompare(b.deaCedula));
   }
 
-  deleteDealer(deaCedula: string){
-    this.dealers = this.dealers.filter(dealer => dealer.deaCedula !== deaCedula);
-  }
+  deleteDealer(deaID: string){
+    const confirmDelete = confirm('Are you sure you want to delete this dealer?');
 
-  dealers = [    
-    {deaCedula: '2', deaFullName: 'Carlos Perez', deaEmail: 'carlos@algo.com', deaPhone: '132234324234'},
-    {deaCedula: '1', deaFullName: 'Arnulfo Perez', deaEmail: 'arnulfo@algo.com', deaPhone: '132234324234'},
-    {deaCedula: '3', deaFullName: 'Juan Perez', deaEmail: 'juan@algo.com', deaPhone: '132234324234'},
-  ]
+    if(!confirmDelete) return;
+
+    this.dealers = this.dealers.filter(dealer => dealer.deaID !== deaID);
+    this.dealersCopy = this.dealersCopy.filter(dealer => dealer.deaID !== deaID);
+    this.dealerService.deleteDealer(deaID).subscribe();
+  }
 }

@@ -26,6 +26,11 @@ export class InventoryProductPageComponent {
     this.products = this.products.filter(product => product.proID !== id);  
   }
 
+  searchProduct(event: Event){
+    let search = (event.target as HTMLInputElement).value.toLowerCase();
+    this.products = this.productsCopy.filter(product => product.proName.toLowerCase().includes(search));
+  }
+
   products = [
     { proID: '1', proName: 'Product 1', proStock: '10', proCostPrice: '100' , proSellingPrice: '200', proImage: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg', proCategory: 'Electronics'},
     { proID: '2', proName: 'Product 2', proStock: '9', proCostPrice: '100' , proSellingPrice: '200', proImage: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg', proCategory: 'Clothing'},
@@ -34,4 +39,6 @@ export class InventoryProductPageComponent {
     { proID: '5', proName: 'Product 5', proStock: '15', proCostPrice: '100' , proSellingPrice: '200', proImage: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg', proCategory: 'Clothing'},
     { proID: '6', proName: 'Product 6', proStock: '3', proCostPrice: '100' , proSellingPrice: '200', proImage: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg', proCategory: 'Footwear'},
   ]
+
+  productsCopy = this.products;
 }

@@ -24,9 +24,15 @@
     "@fortawesome/angular-fontawesome": "^0.14.1",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@ngx-translate/core": "^15.0.0",
+    "@ngx-translate/http-loader": "^8.0.0",
     "express": "^4.18.2",
     "feather-icons": "^4.29.2",
+<<<<<<< HEAD
     "ngx-owl-carousel-o": "^17.0.0",
+=======
+    "ng": "^0.0.0",
+>>>>>>> 4d1bc7a9b20c6bbe08c9ed55c42fa7b2152f931f
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
