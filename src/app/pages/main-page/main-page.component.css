@@ -1,0 +1,25 @@
+@import 'tailwindcss/tailwind.css';
+
+.bg-primary {
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.text-secondary {
+  color: #fb923c;
+}
+
+.text-secondary2 {
+  color: #ffffff;
+}
+
+.bg-secondary {
+  background-color: #fb923c;
+}
+
+.bg-cover {
+  background-size: cover;
+}
+
+.bg-center {
+  background-position: center;
+}
