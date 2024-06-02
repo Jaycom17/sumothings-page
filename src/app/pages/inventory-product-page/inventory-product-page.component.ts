@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { InventoryAsideBarComponent } from '../../components/inventory-aside-bar/inventory-aside-bar.component';
+import { ProductsServiciesService } from '../../services/products/products-servicies.service';
+import { Product } from '../../interfaces/Product.interface';
+
 
 @Component({
   selector: 'app-inventory-product-page',
@@ -8,37 +11,40 @@ import { InventoryAsideBarComponent } from '../../components/inventory-aside-bar
   templateUrl: './inventory-product-page.component.html',
   styleUrl: './inventory-product-page.component.css'
 })
-export class InventoryProductPageComponent {
+export class InventoryProductPageComponent implements OnInit{
+  constructor(private productService: ProductsServiciesService) { }
+  products: Product[] = [];
+  productsCopy: Product[] = [];
+
+  ngOnInit(): void{
+    this.productService.getAllProducts().subscribe((products: Product[]) => {
+      this.products = products;
+      this.productsCopy = products;
+    });
+  }
 
   orderByName(){
     this.products.sort((a, b) => a.proName.localeCompare(b.proName));
   }
 
   orderByStock(){
-    this.products.sort((a, b) => Number.parseInt(a.proStock) - Number.parseInt(b.proStock));
+    this.products.sort((a, b) => (a.proStock) - (b.proStock));
   }
 
   orderByCategory(){
-    this.products.sort((a, b) => a.proCategory.localeCompare(b.proCategory));
+    this.products.sort((a, b) => a.proTypeID.localeCompare(b.proTypeID));
   }
 
-  deleteProduct(id: string){
+  deleteProduct(id: any){
+    const confirmDelete = confirm('Are you sure you want to delete this product?');
+    if(!confirmDelete) return;
     this.products = this.products.filter(product => product.proID !== id);  
+    this.productsCopy = this.productsCopy.filter(product => product.proID !== id);
+    this.productService.deleteProduct(id).subscribe();
   }
 
   searchProduct(event: Event){
     let search = (event.target as HTMLInputElement).value.toLowerCase();
     this.products = this.productsCopy.filter(product => product.proName.toLowerCase().includes(search));
   }
-
-  products = [
-    { proID: '1', proName: 'Product 1', proStock: '10', proCostPrice: '100' , proSellingPrice: '200', proImage: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg', proCategory: 'Electronics'},
-    { proID: '2', proName: 'Product 2', proStock: '9', proCostPrice: '100' , proSellingPrice: '200', proImage: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg', proCategory: 'Clothing'},
-    { proID: '3', proName: 'Product 3', proStock: '8', proCostPrice: '100' , proSellingPrice: '200', proImage: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg', proCategory: 'Footwear'},
-    { proID: '4', proName: 'Product 4', proStock: '11', proCostPrice: '100' , proSellingPrice: '200', proImage: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg', proCategory: 'Electronics'},
-    { proID: '5', proName: 'Product 5', proStock: '15', proCostPrice: '100' , proSellingPrice: '200', proImage: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg', proCategory: 'Clothing'},
-    { proID: '6', proName: 'Product 6', proStock: '3', proCostPrice: '100' , proSellingPrice: '200', proImage: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg', proCategory: 'Footwear'},
-  ]
-
-  productsCopy = this.products;
 }

@@ -2,16 +2,16 @@
     <app-inventory-aside-bar />
 
     <div class="mx-auto mt-10 bg-slate-200 h-fit p-10 rounded-3xl">
-        <h2 class="text-2xl font-bold text-center mb-6">Registrar Producto</h2>
+        <h2 class="text-2xl font-bold text-center mb-6">Actualizar Producto</h2>
         
-        <form  [formGroup]="productForms" (submit)="createProduct()" >
+        <form  [formGroup]="productForms" (submit)="updateProduct()" >
           <!-- Campo para cargar imagen -->
           <div class="grid grid-cols-2 gap-3">
             <div class="mb-4">
               <label class="block text-sm font-medium text-gray-700" for="image">
                 Imagen del Producto
               </label>
-              <input type="file" formControlName="proImage" name="image" id="image" class="w-full p-2 border rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500" (change)="onFileSelected($event)">
+              <input type="file" formControlName="proImage" name="image" id="image" class="w-full p-2 border rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
         
             <!-- Campo para nombre del producto -->
@@ -90,7 +90,7 @@
               <label class="block text-sm font-medium text-gray-700" for="Category">
                 Categoria
               </label>
-              <select formControlName="proTypeID"  name="" id="" class="w-full p-2 border rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <select name="" id="" class="w-full p-2 border rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 @for (typeProduct of typeProducts; track typeProduct.ptID) {
                   <option value="{{typeProduct.ptID}}">{{typeProduct.ptName}}</option>
                 }
@@ -109,7 +109,7 @@
           <!-- Botón de enviar -->
           <div class="text-center">
             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
-              Registrar Producto
+              Actualizar Producto
             </button>
           </div>
         </form>
