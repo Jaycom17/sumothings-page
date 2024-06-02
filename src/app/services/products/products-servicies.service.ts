@@ -17,9 +17,8 @@ export class ProductsServiciesService {
     return this.httpClient.get(this.apiUrl).pipe(res => res);
   }
 
-  createProduct(Product: any): Observable<HttpResponse<any>> {
-    const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.httpClient.post<any>(this.apiUrl, Product, { headers, observe: 'response' });
+  createProduct(Product: FormData): Observable<HttpResponse<any>> {
+    return this.httpClient.post<any>(this.apiUrl, Product, { observe: 'response' });
   }
 
   getProductById(ProductId: string): Observable<any> {

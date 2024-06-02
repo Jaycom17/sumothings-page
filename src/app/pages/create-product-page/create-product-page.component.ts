@@ -5,7 +5,6 @@ import { ProductsServiciesService } from '../../services/products/products-servi
 import { Router } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
 import { TypeproductService } from '../../services/typeProduct/typeproduct.service';
-import { NONE_TYPE } from '@angular/compiler';
 
 @Component({
   selector: 'app-create-product-page',
@@ -19,21 +18,9 @@ import { NONE_TYPE } from '@angular/compiler';
 
 export class CreateProductPageComponent implements OnInit{
   constructor(private productService: ProductsServiciesService, private router: Router, private typeProductsService: TypeproductService) {}
-  productObject = {
-    proName: "", // VARCHAR(128) UNIQUE
-    proStock: 0, // INT
-    proHeight: 0, // NUMERIC(10,2)
-    proWidth: 0, // NUMERIC(10,2)
-    proLength: 0, // NUMERIC(10,2)
-    proWeight: 0, // NUMERIC(10,2)
-    proBuyPrice: 0, // NUMERIC(14,2)
-    proSellPrice: 0, // NUMERIC(14,2)
-    proMinStock: 0, // INT
-    proMaxStock: 0, // INT
-    proDescription: "", // TEXT
-    proImage: null as File | null, // VARCHAR(255)
-    proTypeID: ""
-  };
+  
+  file: File | null = null;
+
   typeProducts= [
     {
       ptID: "",
@@ -50,7 +37,7 @@ export class CreateProductPageComponent implements OnInit{
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
     if (file) {
-      this.productObject.proImage = file;
+      this.file = file;
     }
   }
 
@@ -66,15 +53,33 @@ export class CreateProductPageComponent implements OnInit{
     proMinStock: new FormControl('', [Validators.required]),
     proMaxStock: new FormControl('', [Validators.required]),
     proDescription: new FormControl('', [Validators.required]),
-    proImage: new FormControl('', [Validators.required]),
+    file: new FormControl([Validators.required]),
     proTypeID: new FormControl('', [Validators.required])
   });
 
   createProduct() {
-    this.productObject = this.productForms.value;
-    console.log(this.productForms.value);
+    
+    let updateForm = new FormData();
 
-    this.productService.createProduct(this.productObject).subscribe(
+    updateForm.append('proName', this.productForms.value.proName);
+    updateForm.append('proStock', this.productForms.value.proStock);
+    updateForm.append('proHeight', this.productForms.value.proHeight);
+    updateForm.append('proWidth', this.productForms.value.proWidth);
+    updateForm.append('proLength', this.productForms.value.proLength);
+    updateForm.append('proWeight', this.productForms.value.proWeight);
+    updateForm.append('proBuyPrice', this.productForms.value.proBuyPrice);
+    updateForm.append('proSellPrice', this.productForms.value.proSellPrice);
+    updateForm.append('proMinStock', this.productForms.value.proMinStock);
+    updateForm.append('proMaxStock', this.productForms.value.proMaxStock);
+    updateForm.append('proDescription', this.productForms.value.proDescription);
+    updateForm.append('proTypeID', this.productForms.value.proTypeID);
+    if (this.file) {
+      updateForm.append('file', this.file, this.file.name);
+    }
+
+    console.log(this.productForms.value)
+
+    this.productService.createProduct(updateForm).subscribe(
       (response: HttpResponse<any>) => {
         if (response.status === 200) {
           alert('Product saved successfully');
