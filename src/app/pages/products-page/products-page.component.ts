@@ -16,17 +16,20 @@ export class ProductListComponent implements OnInit{
    // Creamos un array de productos
     arrow = true;
   constructor(private productService: ProductsServiciesService) { }
-  products: Product[] = [
-   
-  ];
+  products: any[] = [];
 
-  productsCopy:Product[] = [];
+  productsCopy:any[] = [];
 
   ngOnInit(): void{
     this.productService.getAllProducts().subscribe((products: Product[]) => {
       this.products = products;
+      this.products.forEach((product) => {
+        product.quantity = 1;
+      });
       this.productsCopy = products;
     });
+
+    
   }
 
   searchProduct(event: Event) {

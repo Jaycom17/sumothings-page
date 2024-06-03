@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { InventoryAsideBarComponent } from '../../components/inventory-aside-bar/inventory-aside-bar.component';
 import { Dealer } from '../../interfaces/Dealer.interface';
 import { DealerServicesService } from '../../services/dealer/dealer-services.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inventory-dealer-page',
@@ -12,7 +13,7 @@ import { DealerServicesService } from '../../services/dealer/dealer-services.ser
 })
 export class InventoryDealerPageComponent implements OnInit{
 
-  constructor(private dealerService: DealerServicesService) { }
+  constructor(private dealerService: DealerServicesService, private router: Router) { }
 
   dealers: Dealer[] = [];
 
@@ -38,7 +39,7 @@ export class InventoryDealerPageComponent implements OnInit{
     this.dealers.sort((a, b) => a.deaCedula.localeCompare(b.deaCedula));
   }
 
-  deleteDealer(deaID: string){
+  deleteDealer(deaID: string | any){
     const confirmDelete = confirm('Are you sure you want to delete this dealer?');
 
     if(!confirmDelete) return;
@@ -46,5 +47,9 @@ export class InventoryDealerPageComponent implements OnInit{
     this.dealers = this.dealers.filter(dealer => dealer.deaID !== deaID);
     this.dealersCopy = this.dealersCopy.filter(dealer => dealer.deaID !== deaID);
     this.dealerService.deleteDealer(deaID).subscribe();
+  }
+
+  goToUpdate(deaID: string | any){
+    this.router.navigate([`update-dealer/${deaID}`]);
   }
 }

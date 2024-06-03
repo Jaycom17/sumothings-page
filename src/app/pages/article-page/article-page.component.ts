@@ -27,4 +27,8 @@ export class ArticlePageComponent implements OnInit{
       this.article = article;
     });
   }
+
+  convertDate(date: string){
+    return new Date(date).toDateString();
+  }
 }

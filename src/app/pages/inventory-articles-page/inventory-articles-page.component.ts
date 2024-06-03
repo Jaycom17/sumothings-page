@@ -14,13 +14,7 @@ export class InventoryArticlesPageComponent implements OnInit {
 
   constructor(private articleService: ArticleServicesService) { }
 
-  articles: Article[] = [
-    { artID: 'asuydgw', artTitle: 'SumoArt1', artContent: "lorem ipaojnbcdaonj oa joefoifjoiswedhf uhriu hswoeufh hijwhe idugfh iuw fuwhiuwi9fuwhgi wih", artShortDescription: 'lorem ipaojnbcdaonj oa joefoifjoiswedhf uhriu hswoeufh hijwhe idugfh iuw fuwhiuwi9fuwhgi wih', artAuthor: "Juanito", artDate: "05/02/2024"},
-    { artID: 'asckdv', artTitle: 'SumoArt2', artContent: "lorem ipaojnbcdaonj oa joefoifjoiswedhf uhriu hswoeufh hijwhe idugfh iuw fuwhiuwi9fuwhgi wih", artShortDescription: 'lorem ipaojnbcdaonj oa joefoifjoiswedhf uhriu hswoeufh hijwhe idugfh iuw fuwhiuwi9fuwhgi wih', artAuthor: "Juanito", artDate: "05/02/2024"},
-    { artID: 'ewfwcv', artTitle: 'SumoArt3', artContent: "lorem ipaojnbcdaonj oa joefoifjoiswedhf uhriu hswoeufh hijwhe idugfh iuw fuwhiuwi9fuwhgi wih", artShortDescription: 'lorem ipaojnbcdaonj oa joefoifjoiswedhf uhriu hswoeufh hijwhe idugfh iuw fuwhiuwi9fuwhgi wih', artAuthor: "Juanito", artDate: "05/02/2024"},
-    { artID: '3f34', artTitle: 'SumoArt4', artContent: "lorem ipaojnbcdaonj oa joefoifjoiswedhf uhriu hswoeufh hijwhe idugfh iuw fuwhiuwi9fuwhgi wih", artShortDescription: 'lorem ipaojnbcdaonj oa joefoifjoiswedhf uhriu hswoeufh hijwhe idugfh iuw fuwhiuwi9fuwhgi wih', artAuthor: "Juanito", artDate: "05/02/2024"},
-    { artID: '234fgr', artTitle: 'SumoArt5', artContent: "lorem ipaojnbcdaonj oa joefoifjoiswedhf uhriu hswoeufh hijwhe idugfh iuw fuwhiuwi9fuwhgi wih", artShortDescription: 'lorem ipaojnbcdaonj oa joefoifjoiswedhf uhriu hswoeufh hijwhe idugfh iuw fuwhiuwi9fuwhgi wih', artAuthor: "Juanito", artDate: "05/02/2024"}
-  ]
+  articles: Article[] = []
 
   articlesCopy: Article[] = [];
 
