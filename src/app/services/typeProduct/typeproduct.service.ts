@@ -24,9 +24,9 @@ export class TypeproductService {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.httpClient.post<any>(this.apiUrl, typeProduct, { headers, observe: 'response' });
   }
-  updateTypeProduct(typeProduct: any): Observable<HttpResponse<any>> {
+  updateTypeProduct(ptID: string, typeProduct: any): Observable<HttpResponse<any>> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.httpClient.put<any>(this.apiUrl, typeProduct, { headers, observe: 'response' });
+    return this.httpClient.put<any>(`${this.apiUrl}/${ptID}`, typeProduct, { headers, observe: 'response' });
   }
   deleteTypeProduct(typeProductId: string): Observable<HttpResponse<any>> {
     return this.httpClient.delete<any>(`${this.apiUrl}/${typeProductId}`, { observe: 'response' });
