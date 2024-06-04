@@ -26,9 +26,9 @@ export class DealerServicesService {
     return this.httpClient.get(`${this.apiUrl}/${dealerId}`).pipe(res => res);
   }
 
-  updateDealer(dealer: any): Observable<HttpResponse<any>> {
+  updateDealer(dealerId: string, dealer: any): Observable<HttpResponse<any>> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.httpClient.put<any>(this.apiUrl, dealer, { headers, observe: 'response' });
+    return this.httpClient.put<any>(`${this.apiUrl}/${dealerId}`, dealer, { headers, observe: 'response' });
   }
 
   deleteDealer(dealerId: string): Observable<HttpResponse<any>> {

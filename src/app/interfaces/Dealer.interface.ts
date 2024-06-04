@@ -1,5 +1,5 @@
 export interface Dealer {
-    deaID: string
+    deaID?: string
     deaCedula: string
     deaFullName: string
     deaEmail: string

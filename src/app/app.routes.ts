@@ -6,7 +6,6 @@ import { ArticlesCrudPageComponent } from './pages/articles-crud-page/articles-c
 import { ArticlesPageComponent } from './pages/articles-page/articles-page.component';
 import { InventoryPageComponent } from './pages/inventory-page/inventory-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
-import { ProductCrudPageComponent } from './pages/product-crud-page/product-crud-page.component';
 import { RegisterUserPageComponent } from './pages/register-user-page/register-user-page.component';
 import { InventoryProductPageComponent } from './pages/inventory-product-page/inventory-product-page.component';
 import { InventoryArticlesPageComponent } from './pages/inventory-articles-page/inventory-articles-page.component';
@@ -27,6 +26,7 @@ import { CreateSalePageComponent } from './pages/create-sale-page/create-sale-pa
 import { AdminLoginPageComponent } from './pages/admin-login-page/admin-login-page.component';
 import { EditArticlePageComponent } from './pages/edit-article-page/edit-article-page/edit-article-page.component';
 import { UpdateProductPageComponent } from './pages/update_product_page/update-product-page/update-product-page.component';
+import { UpdateDealerPageComponent } from './pages/update-dealer-page/update-dealer-page.component';
 
 export const routes: Routes = [
     { path: '', component: MainPageComponent },
@@ -36,7 +36,6 @@ export const routes: Routes = [
     { path: 'articles', component: ArticlesPageComponent },
     { path: 'inventory', component: InventoryPageComponent },
     { path: 'login', component: LoginPageComponent },
-    { path: 'product-crud', component: ProductCrudPageComponent },
     { path: 'products', component: ProductListComponent },
     { path: 'register-user', component: RegisterUserPageComponent },
     { path: 'inventory-product', component: InventoryProductPageComponent },
@@ -56,7 +55,6 @@ export const routes: Routes = [
     { path: 'create-sale', component: CreateSalePageComponent},
     { path: 'admin-login', component: AdminLoginPageComponent},
     { path: 'edit-article/:id', component: EditArticlePageComponent},
-    { path: 'update-product/:id', component: UpdateProductPageComponent}
-    
-
+    { path: 'update-product/:id', component: UpdateProductPageComponent},
+    { path: 'update-dealer/:id', component: UpdateDealerPageComponent}
 ];

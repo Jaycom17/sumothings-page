@@ -46,7 +46,7 @@
             </td>
             <td class="p-2 text-sm md:table-cell">
               <!-- Botones adaptados para pantallas pequeñas -->
-              <button class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 transition mr-1">
+              <button (click)="goToUpdate(dealer.deaID)" class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 transition mr-1">
                 Editar
               </button>
               <button (click)="deleteDealer(dealer.deaID)" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition">
