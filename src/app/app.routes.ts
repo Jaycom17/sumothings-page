@@ -27,6 +27,7 @@ import { AdminLoginPageComponent } from './pages/admin-login-page/admin-login-pa
 import { EditArticlePageComponent } from './pages/edit-article-page/edit-article-page/edit-article-page.component';
 import { UpdateProductPageComponent } from './pages/update_product_page/update-product-page/update-product-page.component';
 import { UpdateDealerPageComponent } from './pages/update-dealer-page/update-dealer-page.component';
+import { TypesPageComponent } from './pages/types-page/types-page.component';
 
 export const routes: Routes = [
     { path: '', component: MainPageComponent },
@@ -55,6 +56,7 @@ export const routes: Routes = [
     { path: 'create-sale', component: CreateSalePageComponent},
     { path: 'admin-login', component: AdminLoginPageComponent},
     { path: 'edit-article/:id', component: EditArticlePageComponent},
-    { path: 'update-product/:id', component: UpdateProductPageComponent},
-    { path: 'update-dealer/:id', component: UpdateDealerPageComponent}
+    { path: 'update-dealer/:id', component: UpdateDealerPageComponent},
+    { path: 'inventory-types', component: TypesPageComponent},
+    { path: 'update-product/:id', component: UpdateProductPageComponent}
 ];
