@@ -26,6 +26,7 @@ import { CreateClientPageComponent } from './pages/create-client-page/create-cli
 import { CreateSalePageComponent } from './pages/create-sale-page/create-sale-page.component';
 import { AdminLoginPageComponent } from './pages/admin-login-page/admin-login-page.component';
 import { EditArticlePageComponent } from './pages/edit-article-page/edit-article-page/edit-article-page.component';
+import { UpdateProductPageComponent } from './pages/update_product_page/update-product-page/update-product-page.component';
 
 export const routes: Routes = [
     { path: '', component: MainPageComponent },
@@ -54,5 +55,8 @@ export const routes: Routes = [
     { path: 'create-client', component: CreateClientPageComponent},
     { path: 'create-sale', component: CreateSalePageComponent},
     { path: 'admin-login', component: AdminLoginPageComponent},
-    { path: 'edit-article/:id', component: EditArticlePageComponent}
+    { path: 'edit-article/:id', component: EditArticlePageComponent},
+    { path: 'update-product/:id', component: UpdateProductPageComponent}
+    
+
 ];

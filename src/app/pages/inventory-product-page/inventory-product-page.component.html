@@ -12,7 +12,7 @@
       </div>
       <input (input)="searchProduct($event)" type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border rounded-lg focus:border-none" placeholder="Buscar producto" />
   </div>
-    <a href="/create-product" class="bg-[#CC4558] p-2 rounded-xl font-bold text-center w-1/2 md:w-1/6">Crear Producto</a>
+    <a href="/create-product" class="bg-[#CC4558] p-2 rounded-xl font-bold text-center w-1/2 md:w-1/6">Crear Producto</a>´
     <div class="w-full flex justify-around mt-2 md:hidden lg:hidden">
       <button (click)="orderByName()" class="bg-[#FCAF3B] p-1 rounded hover:bg-[#daab66]">Por nombre</button>
       <button (click)="orderByStock()" class="bg-[#FCAF3B] p-1 rounded hover:bg-[#daab66]">Por stock</button>
@@ -60,9 +60,7 @@
             <span class="md:hidden font-bold">Categoría: </span>{{product.proTypeID}}
           </td>
           <td class="p-2 text-sm md:table-cell">
-            <button class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 transition mr-1">
-              Editar
-            </button>
+            <a href="/update-product/{{ product.proID }}" class="bg-red-500 text-white px-2 py-1 mr-5 rounded hover:bg-red-600 transition">Editar</a>
             <button (click)="deleteProduct(product.proID)" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition">
               Borrar
             </button>
