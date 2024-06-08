@@ -20,6 +20,7 @@ export class UpdateProductPageComponent {
   constructor(private route: ActivatedRoute ,private productService: ProductsServiciesService,private router: Router , private typeProductsService: TypeproductService) {}
 
   proID: string | any = '';
+
   product:Product = {
     proName: "", 
     proStock: 0, 
@@ -65,23 +66,25 @@ export class UpdateProductPageComponent {
       this.typeProducts = typeProducts;
     });
     this.proID = this.route.snapshot.paramMap.get('id');
+
     this.productService.getProductById(this.proID).subscribe((product: Product) => {
       this.product = product;
-      this.productForms = new FormGroup({
-        proName: new FormControl(this.product.proName, [Validators.required]),
-        proStock: new FormControl(this.product.proHeight, [Validators.required]),
-        proHeight: new FormControl(this.product.proHeight, [Validators.required]),
-        proWidth: new FormControl(this.product.proWidth, [Validators.required]),
-        proLength: new FormControl(this.product.proLength, [Validators.required]),
-        proWeight: new FormControl(this.product.proWeight, [Validators.required]),
-        proBuyPrice: new FormControl(this.product.proBuyPrice, [Validators.required]),
-        proSellPrice: new FormControl(this.product.proSellPrice, [Validators.required]),
-        proMinStock: new FormControl(this.product.proMinStock, [Validators.required]),
-        proMaxStock: new FormControl(this.product.proMaxStock, [Validators.required]),
-        proDescription: new FormControl(this.product.proDescription, [Validators.required]),
-        proImage: new FormControl(this.product.proImage, [Validators.required]),
-        proTypeID: new FormControl(this.product.proTypeID, [Validators.required])
-        });
+      console.log(this.product)
+      this.productForms.setValue({
+        proName: this.product.proName,
+        proStock: this.product.proStock,
+        proHeight: this.product.proHeight,
+        proWidth: this.product.proWidth,
+        proLength: this.product.proLength,
+        proWeight: this.product.proWeight,
+        proBuyPrice: this.product.proBuyPrice,
+        proSellPrice: this.product.proSellPrice,
+        proMinStock: this.product.proMinStock,
+        proMaxStock: this.product.proMaxStock,
+        proDescription: this.product.proDescription,
+        proImage: this.product.proImage,
+        proTypeID: this.product.proTypeID
+      });
     });
   }
 
