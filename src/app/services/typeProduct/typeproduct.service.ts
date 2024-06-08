@@ -15,10 +15,10 @@ export class TypeproductService {
   constructor(private httpClient: HttpClient) { }
 
   getAllTypeProducts(): Observable<any>{
-    return this.httpClient.get(this.apiUrl).pipe(res => res);
+    return this.httpClient.get(this.apiUrl).pipe((res:any) => res);
   }
   getTypeProductById(typeProductId: string): Observable<any> {
-    return this.httpClient.get(`${this.apiUrl}/${typeProductId}`).pipe(res => res);
+    return this.httpClient.get(`${this.apiUrl}/${typeProductId}`).pipe((res:any) => res);
   }
   createTypeProduct(typeProduct: any): Observable<HttpResponse<any>> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
