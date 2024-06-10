@@ -27,7 +27,7 @@
         isOpen ? '' : 'hidden'
       }}"
     >
-      <ul class="flex flex-col">
+      <ul class="flex flex-col border-b-2 border-black">
         <li class="p-4 hover:bg-[#d8a75d]">
           <a href="/inventory" class="block">Inicio</a>
         </li>
@@ -50,7 +50,14 @@
           <a href="/inventory-sale" class="block">Ventas</a>
         </li>
         <li class="p-4 hover:bg-[#d8a75d]">
-          <a href="/inventory-types" class="block">Tipos</a>
+          <a href="/inventory-types" class="block">Categorias Pruductos</a>
+        </li>
+      </ul>
+      <ul class="flex flex-col border-b-2 border-black mt-3">
+        <li class="p-4 hover:bg-[#d8a75d]">
+          <button (click)="logout()">
+            Cerrar Sesión
+          </button>
         </li>
       </ul>
     </div>

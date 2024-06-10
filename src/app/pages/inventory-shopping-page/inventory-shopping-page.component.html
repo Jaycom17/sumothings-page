@@ -1,54 +1,129 @@
 <main class="flex">
-    <app-inventory-aside-bar />
+  <app-inventory-aside-bar />
 
-<div class="w-screen h-screen p-2 md:p-4 lg:md-5">
-  
-  <div class="flex flex-col gap-2 justify-around pb-4 md:flex-row lg:flex-row">
-    <a href="/create-product" class="bg-[#CC4558] p-2 rounded-xl font-bold text-center">Añadir compra</a>
-    <button (click)="orderByDate()" class="bg-[#CC4558] p-2 rounded-xl font-bold">Ordenar por fecha</button>
-    <button (click)="orderByProduct()" class="bg-[#CC4558] p-2 rounded-xl font-bold">Ordenar por producto</button>
+  <div class="w-screen overflow-auto max-h-screen h-screen p-2 md:p-4 lg:md-5">
+    <div
+      class="flex flex-col gap-2 justify-around items-center pb-4 md:flex-row lg:flex-row"
+    >
+    <div class="relative w-full md:w-1/3">
+      <div
+        class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
+      >
+        <svg
+          class="w-4 h-4 text-gray-500 dark:text-gray-400"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 20 20"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+          />
+        </svg>
+      </div>
+      <input
+        (input)="searchShopping($event)"
+        type="search"
+        id="default-search"
+        class="block w-full p-4 ps-10 text-sm text-gray-900 border rounded-lg focus:border-none"
+        placeholder="Buscar Venta"
+      />
+    </div>
+    <a
+        href="/create-shopping"
+        class="bg-[#CC4558] p-2 rounded-xl font-bold text-center w-1/2 md:w-1/6"
+        >Añadir Compra</a
+      >
+      <div class="w-full flex justify-around mt-2 md:hidden lg:hidden">
+        <button
+          (click)="orderByDate()"
+          class="bg-[#FCAF3B] p-1 rounded hover:bg-[#daab66]"
+        >
+          Por fecha
+        </button>
+        <button
+          (click)="orderByProduct()"
+          class="bg-[#FCAF3B] p-1 rounded hover:bg-[#daab66]"
+        >
+          Por producto
+        </button>
+      </div>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table class="w-full text-left table-auto border-collapse md:table">
+        <thead class="hidden md:table-header-group">
+          <tr class="bg-gray-200 text-gray-800">
+            <th class="p-3 text-xs md:text-sm">Identificador</th>
+            <th
+              (click)="orderByProduct()"
+              class="p-3 text-sm cursor-pointer hover:scale-[1.03] duration-300"
+            >
+              <div class="flex">
+                Id Producto
+                <img
+                  class="pl-2 h-5"
+                  src="../../../assets/pointer-down-svgrepo-com.svg"
+                  alt="flecha"
+                />
+              </div>
+            </th>
+            <th class="p-3 text-xs md:text-sm">Proveedor</th>
+            <th
+              (click)="orderByDate()"
+              class="p-3 text-sm cursor-pointer hover:scale-[1.03] duration-300"
+            >
+              <div class="flex">
+                Fecha
+                <img
+                  class="pl-2 h-5"
+                  src="../../../assets/pointer-down-svgrepo-com.svg"
+                  alt="flecha"
+                />
+              </div>
+            </th>
+            <th class="p-3 text-xs md:text-sm">Unidades</th>
+            <th class="p-3 text-xs md:text-sm">Precio</th>
+            <th class="p-3 text-xs md:text-sm">Impuestos</th>
+            <th class="p-3 text-xs md:text-sm">Total</th>
+            <th class="p-3 text-xs md:text-sm">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (shopping of shoppings; track shopping.shoID) {
+          <tr
+            (click)="goToShoppingDetail(shopping.shoID)"
+            class="flex flex-col md:table-row border-b hover:bg-gray-100 p-3 cursor-pointer"
+          >
+            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Identificador: </span>{{ shopping.shoID }}</td>
+            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Producto: </span>{{ shopping.proID }}</td>
+            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Proveedor: </span>{{ shopping.deaName }}</td>
+            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Fecha: </span>{{ shopping.shoDate }}</td>
+            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Unidades: </span>{{ shopping.shoProductUnits }}</td>
+            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Precio: </span>{{ shopping.shoPrice }}</td>
+            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Impuestos: </span>{{ shopping.shoTaxes }}</td>
+            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Total: </span>{{ shopping.shoTotal }}</td>
+            <td class="p-2 text-sm md:table-cell">
+              <button
+                class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 transition mr-2"
+              >
+                Edit
+              </button>
+              <button
+                (click)="deleteShopping(shopping.shoID)"
+                class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
   </div>
-
-  <div class="overflow-x-auto">
-    <table class="w-full text-left table-auto border-collapse">
-      <thead>
-        <tr class="bg-gray-200 text-gray-800">
-          <th class="p-3 text-sm">Identificador</th>
-          <th class="p-3 text-sm">Id producto</th>
-          <th class="p-3 text-sm">Id proveedor</th>
-          <th class="p-3 text-sm">Fecha</th>
-          <th class="p-3 text-sm">Unidades</th>
-          <th class="p-3 text-sm">Precio</th>
-          <th class="p-3 text-sm">Impuestos</th>
-            <th class="p-3 text-sm">Total</th>
-
-            <th class="p-3 text-sm">Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (shopping of shoppings; track shopping.shoID) {
-        <tr (click)="goToShoppingDetail(shopping.shoID)" class="hover:bg-gray-100 border-b cursor-pointer">
-          <td class="p-3 text-sm">{{shopping.shoID}}</td>
-          <td class="p-3 text-sm">{{shopping.proID}}</td>
-          <td class="p-3 text-sm">{{shopping.deaName}}</td>
-          <td class="p-3 text-sm">{{shopping.shoDate}}</td>
-          <td class="p-3 text-sm">{{shopping.shoProductUnits}}</td>
-          <td class="p-3 text-sm">{{shopping.shoPrice}}</td>
-          <td class="p-3 text-sm">{{shopping.shoTaxes}}</td>
-          <td class="p-3 text-sm">{{shopping.shoTotal}}</td>
-          <td class="p-3 text-sm">
-            <button class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 transition mr-2">
-              Edit
-            </button>
-            <button (click)="deleteShopping(shopping.shoID)" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition">
-              Delete
-            </button>
-          </td>
-        </tr>
-        }
-      </tbody>
-    </table>
-  </div>
-  
-</div>
 </main>

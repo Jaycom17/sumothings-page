@@ -3,14 +3,13 @@ import { InventoryAsideBarComponent } from '../../components/inventory-aside-bar
 import { ProductsServiciesService } from '../../services/products/products-servicies.service';
 
 @Component({
-  selector: 'app-create-sale-page',
+  selector: 'app-create-shopping-page',
   standalone: true,
   imports: [InventoryAsideBarComponent],
-  templateUrl: './create-sale-page.component.html',
-  styleUrl: './create-sale-page.component.css'
+  templateUrl: './create-shopping-page.component.html',
+  styleUrl: './create-shopping-page.component.css'
 })
-export class CreateSalePageComponent implements OnInit{
-
+export class CreateShoppingPageComponent implements OnInit {
   constructor(private productsService: ProductsServiciesService) { }
 
   productsToSelect:any = []
@@ -30,35 +29,35 @@ export class CreateSalePageComponent implements OnInit{
     this.productAux = { proID: (Number.parseInt(this.productAux.proID) +1).toString(), proName: '', proPrice: 0, proQuantity: 0, proTax: 0 };
   }
 
-  clients = [
-    { cliID: '1', cliName: 'Juan Perez' },
-    { cliID: '2', cliName: 'Maria Lopez' },
-    { cliID: '3', cliName: 'Pedro Ramirez' },
-    { cliID: '4', cliName: 'Ana Jimenez' },
-    { cliID: '5', cliName: 'Carlos Rodriguez' },
-    { cliID: '5', cliName: 'Carlos Rodriguez' },
-    { cliID: '5', cliName: 'Carlos Rodriguez' },
-    { cliID: '5', cliName: 'Carlos Rodriguez' },
-    { cliID: '5', cliName: 'Carlos Rodriguez' }
+  dealers = [
+    { deaID: '1', deaName: 'Juan Perez' },
+    { deaID: '2', deaName: 'Maria Lopez' },
+    { deaID: '3', deaName: 'Pedro Ramirez' },
+    { deaID: '4', deaName: 'Ana Jimenez' },
+    { deaID: '5', deaName: 'Carlos Rodriguez' },
+    { deaID: '5', deaName: 'Carlos Rodriguez' },
+    { deaID: '5', deaName: 'Carlos Rodriguez' },
+    { deaID: '5', deaName: 'Carlos Rodriguez' },
+    { deaID: '5', deaName: 'Carlos Rodriguez' }
   ];
 
-  clientsCopy = this.clients;
+  dealersCopy = this.dealers;
 
-  searchClient(event: Event) {
+  searchDealer(event: Event) {
     const value = (event.target as HTMLInputElement).value.toLowerCase();
-    this.clients = this.clientsCopy.filter(client => client.cliName.toLowerCase().includes(value));
+    this.dealers = this.dealersCopy.filter(dealer => dealer.deaName.toLowerCase().includes(value));
   }
 
-  actualClient? = { cliID: '', cliName: '' }
+  actualDealer? = { deaID: '', deaName: '' }
 
-  selectClient(cliID: string) {
-    this.actualClient = this.clients.find(client => client.cliID === cliID);
-    this.changeClientStatus();
-    this.showClient = false;
-    this.clients = this.clientsCopy;
+  selectDealer(deaID: string) {
+    this.actualDealer = this.dealers.find(dealer => dealer.deaID === deaID);
+    this.changeDealerStatus();
+    this.showDealer = false;
+    this.dealers = this.dealersCopy;
   }
 
-  saleToCreate = {
+  shoppingToCreate = {
     salDate: '2021-06-01',
     proveedor: 'Juan Perez',
     total: 1000,
@@ -73,18 +72,18 @@ export class CreateSalePageComponent implements OnInit{
     ]
   };
 
-  showClient = false;
+  showDealer = false;
 
-  changeClientStatus() {
-    this.showClient = !this.showClient;
-    this.clients = this.clientsCopy;
+  changeDealerStatus() {
+    this.showDealer = !this.showDealer;
+    this.dealers = this.dealersCopy;
   }
 
   deleteProduct(proID: any) {
     this.products = this.products.filter((p: any) => p.proID !== proID);
   }
 
-  addProductToSale(previusProID: any, event: Event) {
+  addProductToShop(previusProID: any, event: Event) {
 
     const proID = (event.target as HTMLSelectElement).value;
 
