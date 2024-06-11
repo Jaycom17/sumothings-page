@@ -25,9 +25,10 @@ export class ProductsServiciesService {
     return this.httpClient.get(`${this.apiUrl}/${ProductId}`).pipe(res => res);
   }
 
-  updateProduct(Product: any): Observable<HttpResponse<any>> {
+  updateProduct(Product: any , proID: string): Observable<HttpResponse<any>> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.httpClient.put<any>(this.apiUrl, Product, { headers, observe: 'response' });
+    return this.httpClient.put(`${this.apiUrl}/${proID}`, Product, { headers, observe: 'response' });
+    
   }
 
   deleteProduct(ProductId: string): Observable<HttpResponse<any>> {
