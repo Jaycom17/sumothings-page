@@ -1,6 +1,8 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { AuthServiceService } from '../services/Auth/auth-service.service';
+import { HttpResponse } from '@angular/common/http';
+import { lastValueFrom, firstValueFrom } from 'rxjs'; 
 
 export const authGuardClient: CanActivateFn = async (route, state) => {
 
@@ -19,13 +21,21 @@ export const authGuardAdmin: CanActivateFn = async () => {
 
     const authService = inject(AuthServiceService);
     const router = inject(Router);
+    let valueBol=false;
+    let responseStatus:any= null;
+    let res:any = await lastValueFrom(authService.isLoggedInAdmin()).catch((response: HttpResponse<any>) => {
+      responseStatus=response;
+    })
 
-    let res = await authService.isLoggedInAdmin().toPromise().catch(() => {});
-    
-    if (res.isLoggedIn) {
-      return true;
+    if (res === undefined){
+      if(responseStatus.status === 401){
+        router.navigate(['/admin-login']);
+        valueBol = false;
+      }
+    }else if (res.isLoggedIn) {
+      valueBol = true;
     }
 
-    router.navigate(['/admin-login']);
-    return false;
+  return valueBol; 
+
   };
