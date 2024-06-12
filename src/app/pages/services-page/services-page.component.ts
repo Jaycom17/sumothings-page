@@ -12,34 +12,40 @@ import { FooterComponent } from '../../components/footer/footer.component';
 export class ServicesPageComponent {
   services = [
     {
-      serImage: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg',
-      serTitle: 'SumoArt1',
+      serImage: 'https://cdn.pixabay.com/photo/2019/01/08/10/58/smart-home-3920905_1280.jpg',
+      serTitle: 'Domótica',
       serDescripcion:
-        'lorem ipaojnbcdaonj oa joefoifjoiswedhf uhriu hswoeufh hijwhe idugfh iuw fuwhiuwi9fuwhgi wih',
+        'Ofrecemos objetos inteligentes fáciles de instalar y utilizar, para que usted invierta su tiempo en lo importante.',
     },
     {
-      serImage: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg',
-      serTitle: 'SumoArt2',
+      serImage: 'https://cdn.pixabay.com/photo/2018/09/04/10/35/smart-home-3653452_1280.jpg',
+      serTitle: 'Entornos Inteligentes IoT',
       serDescripcion:
-        'lorem ipaojnbcdaonj oa joefoifjoiswedhf uhriu hswoeufh hijwhe idugfh iuw fuwhiuwi9fuwhgi wih',
+        'Creamos entornos de objetos inteligentes que ofrecen servicios ajustados a las necesidades de las personas.',
     },
     {
-      serImage: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg',
-      serTitle: 'SumoArt3',
+      serImage: 'https://cdn.pixabay.com/photo/2016/11/19/21/01/analysis-1841158_1280.jpg',
+      serTitle: 'Servicios de Datos IoT',
       serDescripcion:
-        'lorem ipaojnbcdaonj oa joefoifjoiswedhf uhriu hswoeufh hijwhe idugfh iuw fuwhiuwi9fuwhgi wih',
+        'Proveemos servicios de datos en tiempo real para el acceso a los objetos inteligentes.',
     },
     {
-      serImage: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg',
-      serTitle: 'SumoArt4',
+      serImage: 'https://cdn.pixabay.com/photo/2017/08/06/06/18/laptop-2589420_1280.jpg',
+      serTitle: 'Desarrollo Software Interoperable M2M',
       serDescripcion:
-        'lorem ipaojnbcdaonj oa joefoifjoiswedhf uhriu hswoeufh hijwhe idugfh iuw fuwhiuwi9fuwhgi wih',
+        'Desarrollamos software para dotar de inteligencia a tus dispositivos, incluso si son de otros fabricantes.',
     },
     {
-      serImage: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg',
-      serTitle: 'SumoArt5',
+      serImage: 'https://cdn.pixabay.com/photo/2017/12/21/12/08/consulting-3031678_1280.jpg',
+      serTitle: 'Consultoria IT',
       serDescripcion:
-        'lorem ipaojnbcdaonj oa joefoifjoiswedhf uhriu hswoeufh hijwhe idugfh iuw fuwhiuwi9fuwhgi wih',
+        'Realizamos consultoría en Internet de las Cosas y desarrollo de objetos inteligentes.',
+    },
+    {
+      serImage: 'https://cdn.pixabay.com/photo/2015/12/03/22/15/tablet-1075790_960_720.jpg',
+      serTitle: 'Interoperabilidad semántica',
+      serDescripcion:
+        'Incorporamos objetos inteligentes que brindan información de tu entorno.',
     },
   ];
 }
