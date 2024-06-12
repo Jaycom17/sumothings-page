@@ -53,7 +53,6 @@ export class CreateProductPageComponent implements OnInit{
     proMinStock: new FormControl('', [Validators.required]),
     proMaxStock: new FormControl('', [Validators.required]),
     proDescription: new FormControl('', [Validators.required]),
-    file: new FormControl([Validators.required]),
     proTypeID: new FormControl('', [Validators.required])
   });
 
@@ -76,8 +75,6 @@ export class CreateProductPageComponent implements OnInit{
     if (this.file) {
       updateForm.append('file', this.file, this.file.name);
     }
-
-    console.log(this.productForms.value)
 
     this.productService.createProduct(updateForm).subscribe(
       (response: HttpResponse<any>) => {

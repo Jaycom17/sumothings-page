@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { InventoryAsideBarComponent } from '../../../components/inventory-aside-bar/inventory-aside-bar.component';
 import {FormGroup,FormControl,ReactiveFormsModule,Validators} from '@angular/forms';
 import { ProductsServiciesService } from '../../../services/products/products-servicies.service';
@@ -17,27 +17,13 @@ import { TypeproductService } from '../../../services/typeProduct/typeproduct.se
   styleUrl: './update-product-page.component.css',
 })
 
-export class UpdateProductPageComponent {
+export class UpdateProductPageComponent implements OnInit{
   constructor(private route: ActivatedRoute ,private productService: ProductsServiciesService,private router: Router , private typeProductsService: TypeproductService) {}
 
   file: File | null = null;
  
   proID: string | any = '';
-  product:Product = {
-    proName: "", 
-    proStock: 0, 
-    proHeight: 0, 
-    proWidth: 0, 
-    proLength: 0, 
-    proWeight: 0, 
-    proBuyPrice: 0, 
-    proSellPrice: 0, 
-    proMinStock: 0, 
-    proMaxStock: 0, 
-    proDescription: "", 
-    proImage: "", 
-    proTypeID: ""
-  }
+
 
   typeProducts= [
     {
@@ -52,20 +38,20 @@ export class UpdateProductPageComponent {
       this.file = file;
     }
   }
+
   productForms: FormGroup = new FormGroup({
-    proName: new FormControl(this.product.proName, [Validators.required]),
-    proStock: new FormControl(this.product.proHeight, [Validators.required]),
-    proHeight: new FormControl(this.product.proHeight, [Validators.required]),
-    proWidth: new FormControl(this.product.proWidth, [Validators.required]),
-    proLength: new FormControl(this.product.proLength, [Validators.required]),
-    proWeight: new FormControl(this.product.proWeight, [Validators.required]),
-    proBuyPrice: new FormControl(this.product.proBuyPrice, [Validators.required]),
-    proSellPrice: new FormControl(this.product.proSellPrice, [Validators.required]),
-    proMinStock: new FormControl(this.product.proMinStock, [Validators.required]),
-    proMaxStock: new FormControl(this.product.proMaxStock, [Validators.required]),
-    proDescription: new FormControl(this.product.proDescription, [Validators.required]),
-    file: new FormControl([Validators.required]),
-    proTypeID: new FormControl(this.product.proTypeID, [Validators.required])
+    proName: new FormControl('', [Validators.required]),
+    proStock: new FormControl('', [Validators.required]),
+    proHeight: new FormControl('', [Validators.required]),
+    proWidth: new FormControl('', [Validators.required]),
+    proLength: new FormControl('', [Validators.required]),
+    proWeight: new FormControl('', [Validators.required]),
+    proBuyPrice: new FormControl('', [Validators.required]),
+    proSellPrice: new FormControl('', [Validators.required]),
+    proMinStock: new FormControl('', [Validators.required]),
+    proMaxStock: new FormControl('', [Validators.required]),
+    proDescription: new FormControl('', [Validators.required]),
+    proTypeID: new FormControl('', [Validators.required])
   });
 
   ngOnInit(): void {
@@ -74,29 +60,27 @@ export class UpdateProductPageComponent {
       this.typeProducts = typeProducts;
     });
     this.proID = this.route.snapshot.paramMap.get('id');
+
     this.productService.getProductById(this.proID).subscribe((product: Product) => {
-      this.product = product;
-      this.productForms = new FormGroup({
-        proName: new FormControl(this.product.proName, [Validators.required]),
-        proStock: new FormControl(this.product.proHeight, [Validators.required]),
-        proHeight: new FormControl(this.product.proHeight, [Validators.required]),
-        proWidth: new FormControl(this.product.proWidth, [Validators.required]),
-        proLength: new FormControl(this.product.proLength, [Validators.required]),
-        proWeight: new FormControl(this.product.proWeight, [Validators.required]),
-        proBuyPrice: new FormControl(this.product.proBuyPrice, [Validators.required]),
-        proSellPrice: new FormControl(this.product.proSellPrice, [Validators.required]),
-        proMinStock: new FormControl(this.product.proMinStock, [Validators.required]),
-        proMaxStock: new FormControl(this.product.proMaxStock, [Validators.required]),
-        proDescription: new FormControl(this.product.proDescription, [Validators.required]),
-        proImage: new FormControl(this.product.proImage, [Validators.required]),
-        proTypeID: new FormControl(this.product.proTypeID, [Validators.required])
-        });
+      this.productForms.setValue({
+        proName: product.proName,
+        proStock: product.proStock,
+        proHeight: product.proHeight,
+        proWidth: product.proWidth,
+        proLength: product.proLength,
+        proWeight: product.proWeight,
+        proBuyPrice: product.proBuyPrice,
+        proSellPrice: product.proSellPrice,
+        proMinStock: product.proMinStock,
+        proMaxStock: product.proMaxStock,
+        proDescription: product.proDescription,
+        proTypeID: product.proTypeID
+      });
     });
   }
 
   updateProduct() {
 
-    
     let updateForm = new FormData();
 
     updateForm.append('proName', this.productForms.value.proName);
@@ -115,9 +99,9 @@ export class UpdateProductPageComponent {
       updateForm.append('file', this.file, this.file.name);
     }
 
-    console.log(this.productForms.value)
+    console.log(updateForm.get('file'));
 
-    this.productService.updateProduct(updateForm,this.proID).subscribe(
+    this.productService.updateProduct(updateForm, this.proID).subscribe(
       (response: HttpResponse<any>) => {
         if (response.status === 200) {
           alert('Product saved successfully');

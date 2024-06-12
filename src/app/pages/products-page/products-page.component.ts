@@ -3,6 +3,8 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { ProductsServiciesService } from '../../services/products/products-servicies.service';
 import { Product } from '../../interfaces/Product.interface';
+import { ShoppingCarServiceService } from '../../services/shoppingCar/shopping-car-service.service';
+
 @Component({
   selector: 'app-product-list',
   imports: [NavbarComponent, FooterComponent],
@@ -15,7 +17,7 @@ import { Product } from '../../interfaces/Product.interface';
 export class ProductListComponent implements OnInit{
    // Creamos un array de productos
     arrow = true;
-  constructor(private productService: ProductsServiciesService) { }
+  constructor(private productService: ProductsServiciesService, private shoppingService: ShoppingCarServiceService) { }
   products: any[] = [];
 
   productsCopy:any[] = [];
@@ -53,9 +55,11 @@ export class ProductListComponent implements OnInit{
   }
 
   // Creamos un método para agregar productos al carrito
-  addToCart(product: any) {
+  addToCart(product: any, proQuantity: number) {
+    product.quantity = proQuantity;
     if (product.quantity > 0) {
-      alert(`Agregando ${product.quantity} de ${product.name} al carrito`);
+      this.shoppingService.addProductToShoppingCar(product);
+      product.quantity = 1;
     }
     
   }

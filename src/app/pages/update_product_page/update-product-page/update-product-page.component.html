@@ -11,7 +11,7 @@
               <label class="block text-sm font-medium text-gray-700" for="image">
                 Imagen del Producto
               </label>
-              <input type="file" formControlName="proImage" name="image" id="image" class="w-full p-2 border rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <input type="file" (change)="onFileSelected($event)" name="image" id="image" class="w-full p-2 border rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
         
             <!-- Campo para nombre del producto -->
@@ -89,8 +89,8 @@
             <div class="mb-4">
               <label class="block text-sm font-medium text-gray-700" for="Category">
                 Categoria
-              </label>
-              <select name="" id="" class="w-full p-2 border rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              </label> 
+              <select name="" id="" formControlName="proTypeID" class="w-full p-2 border rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 @for (typeProduct of typeProducts; track typeProduct.ptID) {
                   <option value="{{typeProduct.ptID}}">{{typeProduct.ptName}}</option>
                 }

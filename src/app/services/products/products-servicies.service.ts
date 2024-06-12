@@ -14,7 +14,7 @@ export class ProductsServiciesService {
   constructor(private httpClient: HttpClient) { }
 
   getAllProducts(): Observable<any>{
-    return this.httpClient.get(this.apiUrl).pipe(res => res);
+    return this.httpClient.get(this.apiUrl).pipe((res:any) => res);
   }
 
   createProduct(Product: FormData): Observable<HttpResponse<any>> {
@@ -22,13 +22,11 @@ export class ProductsServiciesService {
   }
 
   getProductById(ProductId: string): Observable<any> {
-    return this.httpClient.get(`${this.apiUrl}/${ProductId}`).pipe(res => res);
+    return this.httpClient.get(`${this.apiUrl}/${ProductId}`).pipe((res:any) => res);
   }
 
-  updateProduct(Product: any , proID: string): Observable<HttpResponse<any>> {
-    const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.httpClient.put(`${this.apiUrl}/${proID}`, Product, { headers, observe: 'response' });
-    
+  updateProduct(Product: FormData, proID: string): Observable<HttpResponse<any>> {
+    return this.httpClient.put<any>(`${this.apiUrl}/${proID}`, Product, { observe: 'response' });
   }
 
   deleteProduct(ProductId: string): Observable<HttpResponse<any>> {

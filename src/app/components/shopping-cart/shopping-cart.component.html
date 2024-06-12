@@ -5,7 +5,8 @@
                 <img src="{{ product.proImage }}" alt="{{ product.proName }}" class="w-14 md:w-10 lg_w-10">
                 <div class="flex justify-between content-between items-center flex-col w-48 md:flex-row lg:flex-row">
                     <h2 class="truncate max-w-24 font-bold">{{ product.proName }}</h2>
-                    <p class="max-w-24">${{ convertToCurrency(product.proPrice) }}</p>
+                    <p class="max-w-24">{{ product.quantity }} x</p>
+                    <p class="max-w-24">${{ convertToCurrency(product.proSellPrice) }}</p>
                 </div>
                 <button class="bg-[#FCAF3B] h-8 p-1 font-bold w-16 rounded-xl" (click)="quitProduct(product.proID)">Quitar</button>
             </article>

@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { InventoryAsideBarComponent } from '../../components/inventory-aside-bar/inventory-aside-bar.component';
+import { ShoppingServiceService } from '../../services/shopping/shopping-service.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-shopping-page',
@@ -8,28 +10,32 @@ import { InventoryAsideBarComponent } from '../../components/inventory-aside-bar
   templateUrl: './shopping-page.component.html',
   styleUrl: './shopping-page.component.css'
 })
-export class ShoppingPageComponent {
-  factura = {
-    id: 1,
-    fecha: '2021-06-01',
-    cliente: 'Juan Perez',
-    total: 1000,
-    productos: [
-      {
-        id: 1,
-        nombre: 'Producto 1',
-        cantidad: 2,
-        precio: 500,
-        impuesto: 20
+export class ShoppingPageComponent implements OnInit{
+
+  constructor(private shoppingService: ShoppingServiceService, private route: ActivatedRoute) { }
+
+  receipt: any = {};
+
+  ngOnInit(): void {
+    let shoReciept: string | any = this.route.snapshot.paramMap.get('id');
+    console.log(shoReciept)
+    this.shoppingService.getShoppingById(shoReciept).subscribe(
+      (res: any) => {
+        this.receipt = res;
+        console.log(res)
       }
-    ]
-  };
+    )
+  }
 
-  subtotal = this.factura.productos.reduce((acc, producto) => {
-    return acc + producto.precio * producto.cantidad;
-  }, 0);
+  getSubtotal(): number {
+    return this.receipt.products.reduce((acc: number, producto:any) => {
+      return acc + producto.shoPrice * producto.shoProductUnits;
+    }, 0);
+  }
 
-  totalImpuestos = this.factura.productos.reduce((acc, producto) => {
-    return acc + producto.cantidad * producto.impuesto;
-  }, 0);
+  getTaxes(): number {
+    return this.receipt.products.reduce((acc: number, producto:any) => {
+      return acc + producto.shoProductUnits * producto.shoTaxes;
+    }, 0);
+  }
 }

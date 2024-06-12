@@ -14,12 +14,12 @@ export class DealerServicesService {
   constructor(private httpClient: HttpClient) { }
 
   getDealers(): Observable<any>{
-    return this.httpClient.get(this.apiUrl).pipe(res => res);
+    return this.httpClient.get(this.apiUrl, {withCredentials: true}).pipe(res => res);
   }
 
   saveDealer(dealer: any): Observable<HttpResponse<any>> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.httpClient.post<any>(this.apiUrl, dealer, { headers, observe: 'response' });
+    return this.httpClient.post<any>(this.apiUrl, dealer, { headers, observe: 'response', withCredentials: true });
   }
 
   getDealerById(dealerId: string): Observable<any> {

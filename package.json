@@ -26,12 +26,13 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
+    "axios": "^1.7.2",
     "esbuild": "^0.21.4",
     "express": "^4.18.2",
     "feather-icons": "^4.29.2",
     "ngx-owl-carousel-o": "^17.0.0",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
+    "tslib": "^2.6.3",
     "zone.js": "~0.14.3"
   },
   "devDependencies": {
