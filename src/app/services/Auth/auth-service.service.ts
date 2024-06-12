@@ -4,6 +4,8 @@ import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs'
 import axios from 'axios';
 
+import { tap } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,11 +20,14 @@ export class AuthServiceService {
   constructor(private httpClient: HttpClient) { }
 
   loginClient(user: any): Observable<any>{
-    return this.httpClient.post(`${this.apiUrl}/login`, user).pipe(res => res);
+    return this.httpClient.post(`${this.apiUrl}/loginClient`, user).pipe(
+      tap(res => console.log("Respuesta:", res))
+    );
   }
+  
 
   loginAdmin(user: any): Observable<any>{
-    return this.httpClient.post(`${this.apiUrl}/login-admin`, user, {withCredentials: true,
+    return this.httpClient.post(`${this.apiUrl}/adminUser`, user, {withCredentials: true,
       observe: 'response'});
   }
 
