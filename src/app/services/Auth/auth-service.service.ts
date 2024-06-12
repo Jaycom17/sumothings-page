@@ -24,10 +24,9 @@ export class AuthServiceService {
       tap(res => console.log("Respuesta:", res))
     );
   }
-  
 
   loginAdmin(user: any): Observable<any>{
-    return this.httpClient.post(`${this.apiUrl}/adminUser`, user, {withCredentials: true,
+    return this.httpClient.post(`${this.apiUrl}/login-admin`, user, {withCredentials: true,
       observe: 'response'});
   }
 
