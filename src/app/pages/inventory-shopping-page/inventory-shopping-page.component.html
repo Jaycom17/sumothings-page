@@ -45,12 +45,6 @@
         >
           Por fecha
         </button>
-        <button
-          (click)="orderByProduct()"
-          class="bg-[#FCAF3B] p-1 rounded hover:bg-[#daab66]"
-        >
-          Por producto
-        </button>
       </div>
     </div>
 
@@ -58,21 +52,9 @@
       <table class="w-full text-left table-auto border-collapse md:table">
         <thead class="hidden md:table-header-group">
           <tr class="bg-gray-200 text-gray-800">
-            <th class="p-3 text-xs md:text-sm">Identificador</th>
-            <th
-              (click)="orderByProduct()"
-              class="p-3 text-sm cursor-pointer hover:scale-[1.03] duration-300"
-            >
-              <div class="flex">
-                Id Producto
-                <img
-                  class="pl-2 h-5"
-                  src="../../../assets/pointer-down-svgrepo-com.svg"
-                  alt="flecha"
-                />
-              </div>
-            </th>
+            <th class="p-3 text-xs md:text-sm">Factura</th>
             <th class="p-3 text-xs md:text-sm">Proveedor</th>
+            <th class="p-3 text-xs md:text-sm">Numero de productos</th>
             <th
               (click)="orderByDate()"
               class="p-3 text-sm cursor-pointer hover:scale-[1.03] duration-300"
@@ -86,27 +68,23 @@
                 />
               </div>
             </th>
-            <th class="p-3 text-xs md:text-sm">Unidades</th>
-            <th class="p-3 text-xs md:text-sm">Precio</th>
             <th class="p-3 text-xs md:text-sm">Impuestos</th>
             <th class="p-3 text-xs md:text-sm">Total</th>
             <th class="p-3 text-xs md:text-sm">Acciones</th>
           </tr>
         </thead>
         <tbody>
-          @for (shopping of shoppings; track shopping.shoID) {
+          @for (shopping of shoppings; track shopping.shoReceipt) {
           <tr
-            (click)="goToShoppingDetail(shopping.shoID)"
+            (click)="goToShoppingDetail(shopping.shoReceipt)"
             class="flex flex-col md:table-row border-b hover:bg-gray-100 p-3 cursor-pointer"
           >
-            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Identificador: </span>{{ shopping.shoID }}</td>
-            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Producto: </span>{{ shopping.proID }}</td>
+            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Factura: </span>{{ shopping.shoReceipt }}</td>
             <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Proveedor: </span>{{ shopping.deaName }}</td>
+            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Numero de productos: </span>{{ shopping.products.length }}</td>
             <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Fecha: </span>{{ shopping.shoDate }}</td>
-            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Unidades: </span>{{ shopping.shoProductUnits }}</td>
-            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Precio: </span>{{ shopping.shoPrice }}</td>
-            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Impuestos: </span>{{ shopping.shoTaxes }}</td>
-            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Total: </span>{{ shopping.shoTotal }}</td>
+            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Impuestos: </span>{{ calculateTax(shopping.products) }}</td>
+            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Total: </span>{{ calculateTotal(shopping.products) }}</td>
             <td class="p-2 text-sm md:table-cell">
               <button
                 class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 transition mr-2"
@@ -114,7 +92,7 @@
                 Edit
               </button>
               <button
-                (click)="deleteShopping(shopping.shoID)"
+                (click)="deleteShopping(shopping.shoReceipt)"
                 class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition"
               >
                 Delete

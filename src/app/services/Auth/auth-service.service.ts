@@ -31,7 +31,9 @@ export class AuthServiceService {
   }
 
   isLoggedInAdmin(): Observable<any> {
-    return this.httpClient.post(`${this.apiUrl}/validate-admin`,{}, {withCredentials: true}).pipe(res => res);
+    return this.httpClient.post(`${this.apiUrl}/validate-admin`,{}, {withCredentials: true, headers:{
+      "content-type": "application/json"
+    }}).pipe(res => res);
   }
 
   logout(): Observable<any> {

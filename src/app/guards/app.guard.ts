@@ -20,7 +20,10 @@ export const authGuardAdmin: CanActivateFn = async () => {
     const authService = inject(AuthServiceService);
     const router = inject(Router);
 
-    let res = await authService.isLoggedInAdmin().toPromise().catch(() => {});
+    let res = await authService.isLoggedInAdmin().toPromise().catch(() => {
+      router.navigate(['/admin-login']);
+      return false;
+    });
     
     if (res.isLoggedIn) {
       return true;
