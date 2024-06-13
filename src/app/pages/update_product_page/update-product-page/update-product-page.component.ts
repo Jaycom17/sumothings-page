@@ -8,6 +8,7 @@ import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { TypeproductService } from '../../../services/typeProduct/typeproduct.service';
 
+
 @Component({
   selector: 'app-update-product-page',
   standalone: true,
@@ -19,9 +20,10 @@ import { TypeproductService } from '../../../services/typeProduct/typeproduct.se
 export class UpdateProductPageComponent implements OnInit{
   constructor(private route: ActivatedRoute ,private productService: ProductsServiciesService,private router: Router , private typeProductsService: TypeproductService) {}
 
+  file: File | null = null;
+ 
   proID: string | any = '';
 
-  file: File | null = null;
 
   typeProducts= [
     {
@@ -111,11 +113,13 @@ export class UpdateProductPageComponent implements OnInit{
       },
       (error) => {
         // Maneja el error aquí, por ejemplo:
+        console.error('Error saving product', error);
         alert('Error saving product: ' + (error.message || 'Unknown error'));
       }
     );
   }
-  
-
-
 }
+    
+
+
+  
