@@ -8,11 +8,12 @@ import {
 import { Router } from '@angular/router';
 import { ClientService } from '../../services/client/client.service';
 import { HttpResponse } from '@angular/common/http';
+import { CommonModule } from '@angular/common';  // Importa CommonModule
 
 @Component({
   selector: 'app-register-user-page',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './register-user-page.component.html',
   styleUrl: './register-user-page.component.css'
 })
@@ -20,46 +21,46 @@ export class RegisterUserPageComponent {
   constructor(private clientService: ClientService, private router: Router) {}
 
     clientObject = {
-      name: '',
-      email: '',
-      password: '',
-      phone: '',
-      address: '',
-      nit: '',
-      company: '',
-      city: '',
-      postal: '',
-      identification: '',
+      cliFullName: '',
+      cliEmail: '',
+      cliPassword: '',
+      cliPhone: '',
+      cliAddress: '',
+      cliNIT: '',
+      cliCompanyName: '',
+      cliCity: '',
+      cliPostalCode: '',
+      cliCedula: '',
     };
 
     clientForms: FormGroup = new FormGroup({
-      name: new FormControl ('', Validators.required),
-      email: new FormControl ('', [Validators.required, Validators.email]),
-      password: new FormControl ('', Validators.required),
-      phone: new FormControl ('', Validators.required),
-      address: new FormControl ('', Validators.required),
-      nit: new FormControl ('', Validators.required),
-      company: new FormControl ('', Validators.required),
-      city: new FormControl ('', Validators.required),
-      postal: new FormControl ('', Validators.required),
-      identification: new FormControl ('', Validators.required)
+      cliFullName: new FormControl ('', Validators.required),
+      cliEmail: new FormControl ('', [Validators.required, Validators.email]),
+      cliPassword: new FormControl ('', Validators.required),
+      cliPhone: new FormControl ('', Validators.required),
+      cliAddress: new FormControl ('', Validators.required),
+      cliNIT: new FormControl ('', Validators.required),
+      cliCompanyName: new FormControl ('', Validators.required),
+      cliCity: new FormControl ('', Validators.required),
+      cliPostalCode: new FormControl ('', Validators.required),
+      cliCedula: new FormControl ('', Validators.required)
     })
 
   saveClient() {
     this.clientObject = this.clientForms.value;
 
-    this.clientObject.password = this.clientObject.password.toString();
-    this.clientObject.phone = this.clientObject.phone.toString();
-    this.clientObject.nit = this.clientObject.nit.toString();
-    this.clientObject.postal = this.clientObject.postal.toString();
-    this.clientObject.identification = this.clientObject.identification.toString();
+    this.clientObject.cliPassword = this.clientObject.cliPassword.toString();
+    this.clientObject.cliPhone = this.clientObject.cliPhone.toString();
+    this.clientObject.cliNIT = this.clientObject.cliNIT.toString();
+    this.clientObject.cliPostalCode = this.clientObject.cliPostalCode.toString();
+    this.clientObject.cliCedula = this.clientObject.cliCedula.toString();
 
     this.clientService.saveClient(this.clientObject).subscribe(
       (response: HttpResponse<any>) => {
         if (response.status === 200) {
           alert('Client saved successfully');
           this.clientForms.reset();
-          this.router.navigate(['/']);
+          this.router.navigate(['/login']);
         } else {
           alert('Error saving client');
         }
@@ -69,5 +70,10 @@ export class RegisterUserPageComponent {
         alert('Error saving client: ' + (error.message || 'Unknown error'));
       }
     );
+  }
+
+  // Manejo de los campos oblitarorios
+  isFormValid() {
+    return this.clientForms.valid;
   }
 }

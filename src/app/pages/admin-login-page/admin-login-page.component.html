@@ -16,9 +16,10 @@
                 <label for="email" class="block text-base font-medium leading-6 text-gray-900 ml-2">Correo</label>
                 <div class="email relative h-14">
                     <fa-icon [icon]="faUserCircle" class="absolute top-0 bottom-0 left-5 text-xl flex items-center"></fa-icon>
-                    <input formControlName="admEmail" type="email" name="email" id="email" 
+                    <input formControlName="admEmail" type="email" name="email" id="email" placeholder="name@example.com" required
                         class="block h-14 w-full rounded-full border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-xl sm:leading-6 pl-16 text-xl ">
                 </div>
+                <div *ngIf="loginForms.get('admEmail')?.hasError('required') && loginForms.get('admEmail')?.touched" class="text-red-600 font-bold">El correo es obligatorio.</div>
             </div>
 
             <!-- Contraseña -->
@@ -32,14 +33,15 @@
                 </div>
                 <div class="password relative h-14">
                     <fa-icon [icon]="faLock" class="absolute top-0 bottom-0 left-5 text-xl flex items-center"></fa-icon>
-                    <input formControlName="admPassword" type="password" name="password" id="password" autocomplete="current-password" required 
+                    <input formControlName="admPassword" type="password" name="admPassword" id="admPassword" autocomplete="current-password" placeholder="password" required 
                         class="block h-14 w-full rounded-full border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-xl sm:leading-6 pl-16 text-xl ">
                 </div>
+                <div *ngIf="loginForms.get('admPassword')?.hasError('required') && loginForms.get('admPassword')?.touched" class="text-red-600 font-bold">La contraseña es obligatoria.</div>
             </div>
 
             <!-- Iniciar sesión -->
             <div>
-                <button type="submit"
+                <button type="submit" [disabled]="!isFormValid()"
                     class="flex w-full justify-center rounded-full bg-green-700 px-3 py-2.5 text-xl font-semibold leading-6 text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Iniciar
                     sesión</button>
             </div>

@@ -49,4 +49,9 @@ export class LoginPageComponent {
       }
     );
   }
+
+  // Manejo de los campos oblitarorios
+  isFormValid() {
+    return this.loginForms.valid;
+  }
 }

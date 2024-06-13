@@ -10,11 +10,12 @@ import {
 import { Router } from '@angular/router';
 import { HttpResponse } from '@angular/common/http'; 
 import { AuthServiceService } from '../../services/Auth/auth-service.service';
+import { CommonModule } from '@angular/common';  // Importa CommonModule
 
 @Component({
   selector: 'app-admin-login-page',
   standalone: true,
-  imports: [FontAwesomeModule, ReactiveFormsModule],
+  imports: [CommonModule, FontAwesomeModule, ReactiveFormsModule],
   templateUrl: './admin-login-page.component.html',
   styleUrl: './admin-login-page.component.css'
 })
@@ -31,7 +32,7 @@ export class AdminLoginPageComponent {
   }
 
   loginForms: FormGroup = new FormGroup({
-    admEmail: new FormControl('', [Validators.required]),
+    admEmail: new FormControl('', [Validators.required, Validators.email]),
     admPassword: new FormControl('', [Validators.required]),
   });
 
@@ -52,5 +53,10 @@ export class AdminLoginPageComponent {
         alert('Error logging in: ' + (error.message || 'Unknown error'));
       }
     );
+  }
+  
+  // Manejo de los campos oblitarorios
+  isFormValid() {
+    return this.loginForms.valid;
   }
 }
