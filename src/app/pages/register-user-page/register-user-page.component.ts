@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ClientService } from '../../services/client/client.service';
+import { ClientServiceService } from '../../services/clients/client-service.service';
 import { HttpResponse } from '@angular/common/http';
 import { CommonModule } from '@angular/common';  // Importa CommonModule
 
@@ -18,7 +18,7 @@ import { CommonModule } from '@angular/common';  // Importa CommonModule
   styleUrl: './register-user-page.component.css'
 })
 export class RegisterUserPageComponent {
-  constructor(private clientService: ClientService, private router: Router) {}
+  constructor(private clientService: ClientServiceService, private router: Router) {}
 
     clientObject = {
       cliFullName: '',
@@ -55,7 +55,7 @@ export class RegisterUserPageComponent {
     this.clientObject.cliPostalCode = this.clientObject.cliPostalCode.toString();
     this.clientObject.cliCedula = this.clientObject.cliCedula.toString();
 
-    this.clientService.saveClient(this.clientObject).subscribe(
+    this.clientService.createClient (this.clientObject).subscribe(
       (response: HttpResponse<any>) => {
         if (response.status === 200) {
           alert('Client saved successfully');

@@ -15,7 +15,7 @@ export class AuthServiceService {
   constructor(private httpClient: HttpClient) { }
 
   loginClient(user: any): Observable<any>{
-    return this.httpClient.post(`${this.apiUrl}/loginClient`, user).pipe(
+    return this.httpClient.post(`${this.apiUrl}/login`, user).pipe(
       tap(res => console.log("Respuesta:", res))
     );
   }
@@ -30,9 +30,7 @@ export class AuthServiceService {
   }
 
   isLoggedInAdmin(): Observable<any> {
-    return this.httpClient.post(`${this.apiUrl}/validate-admin`,{}, {withCredentials: true, headers:{
-      "content-type": "application/json"
-    }}).pipe(res => res);
+    return this.httpClient.post(`${this.apiUrl}/validate-admin`,{}, {withCredentials: true}).pipe(res => res);
   }
 
   logout(): Observable<any> {

@@ -50,7 +50,7 @@ export class AdminLoginPageComponent {
       },
       (error) => {
         // Handle error here, for example:
-        alert('Error logging in: ' + (error.message || 'Unknown error'));
+        alert('Usuario o contraseña incorrectos, por favor intente de nuevo');
       }
     );
   }

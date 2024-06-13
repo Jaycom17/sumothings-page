@@ -26,13 +26,13 @@ export class LoginPageComponent {
   constructor(private authService: AuthServiceService, private router: Router) { }
 
   user: any = {
-    email: '',
-    password: ''
+    cliEmail: '',
+    cliPpassword: ''
   }
 
   loginForms: FormGroup = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required]),
+    cliEmail: new FormControl('', [Validators.required, Validators.email]),
+    cliPassword: new FormControl('', [Validators.required]),
   });
 
   loginClient() {
@@ -45,7 +45,7 @@ export class LoginPageComponent {
       },
       (error) => {
         // Handle error here, for example:
-        alert('Error logging in: ' + (error.message || 'Unknown error'));
+        alert('Usuario o contraseña incorrectos, por favor intente de nuevo');
       }
     );
   }

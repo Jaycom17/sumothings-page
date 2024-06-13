@@ -16,10 +16,10 @@
                 <label for="email" class="block text-base font-medium leading-6 text-gray-900 ml-2">Correo</label>
                 <div class="email relative h-14">
                     <fa-icon [icon]="faUserCircle" class="absolute top-0 bottom-0 left-5 text-xl flex items-center"></fa-icon>
-                    <input formControlName="email" type="email" name="email" id="email" placeholder="name@example.com" required
+                    <input formControlName="cliEmail" type="email" name="email" id="email" placeholder="name@example.com" required
                         class="block h-14 w-full rounded-full border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-xl sm:leading-6 pl-16 text-xl ">
                 </div>
-                <div *ngIf="loginForms.get('email')?.hasError('required') && loginForms.get('email')?.touched" class="text-red-600 font-bold">El correo es obligatorio.</div>
+                <div *ngIf="loginForms.get('cliEmail')?.hasError('required') && loginForms.get('cliEmail')?.touched" class="text-red-600 font-bold">El correo es obligatorio.</div>
             </div>
 
             <!-- Contraseña -->
@@ -33,10 +33,10 @@
                 </div>
                 <div class="password relative h-14">
                     <fa-icon [icon]="faLock" class="absolute top-0 bottom-0 left-5 text-xl flex items-center"></fa-icon>
-                    <input formControlName="password" type="password" name="password" id="password" autocomplete="current-password" placeholder="password" required
+                    <input formControlName="cliPassword" type="password" name="password" id="password" autocomplete="current-password" placeholder="password" required
                         class="block h-14 w-full rounded-full border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-xl sm:leading-6 pl-16 text-xl ">
                 </div>
-                <div *ngIf="loginForms.get('password')?.hasError('required') && loginForms.get('password')?.touched" class="text-red-600 font-bold">La contraseña es obligatoria.</div>
+                <div *ngIf="loginForms.get('cliPassword')?.hasError('required') && loginForms.get('cliPassword')?.touched" class="text-red-600 font-bold">La contraseña es obligatoria.</div>
 
             </div>
 
