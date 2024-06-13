@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { InventoryAsideBarComponent } from '../../components/inventory-aside-bar/inventory-aside-bar.component';
-
+import { SaleServiceService } from '../../services/sale/sale-service.service';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-sale-page',
   standalone: true,
@@ -8,28 +9,31 @@ import { InventoryAsideBarComponent } from '../../components/inventory-aside-bar
   templateUrl: './sale-page.component.html',
   styleUrl: './sale-page.component.css'
 })
-export class SalePageComponent {
-  factura = {
-    id: 1,
-    fecha: '2021-06-01',
-    proveedor: 'Juan Perez',
-    total: 1000,
-    productos: [
-      {
-        id: 1,
-        nombre: 'Producto 1',
-        cantidad: 2,
-        precio: 500,
-        impuesto: 20
+export class SalePageComponent implements OnInit{
+  receipt:any = {};
+
+  constructor(private saleService: SaleServiceService, private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    let salReciept: string | any = this.route.snapshot.paramMap.get('id');
+    console.log(salReciept)
+    this.saleService.getSaleById(salReciept).subscribe(
+      (res: any) => {
+        this.receipt = res;
+        console.log(res)
       }
-    ]
-  };
+    )
+  }
 
-  subtotal = this.factura.productos.reduce((acc, producto) => {
-    return acc + producto.precio * producto.cantidad;
-  }, 0);
+  getSubtotal(): number {
+    return this.receipt.products.reduce((acc: number, producto:any) => {
+      return acc + producto.salPrice * producto.salProductUnits;
+    }, 0);
+  }
 
-  totalImpuestos = this.factura.productos.reduce((acc, producto) => {
-    return acc + producto.cantidad * producto.impuesto;
-  }, 0);
+  getTaxes(): number {
+    return this.receipt.products.reduce((acc: number, producto:any) => {
+      return acc + producto.salProductUnits * producto.salTaxes;
+    }, 0);
+  }
 }

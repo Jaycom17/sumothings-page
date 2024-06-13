@@ -23,6 +23,7 @@ export class TypesPageComponent implements OnInit{
   showCreateTypeProduct = false;
   showEditTypeProduct = false;
   nameToEdit = '';
+  
   typeProductForm: FormGroup = new FormGroup({
     ptName: new FormControl('', [Validators.required]),
   });
@@ -78,7 +79,6 @@ export class TypesPageComponent implements OnInit{
 
   createTypeProduct(): void {
     let typeProduct = this.typeProductForm.value;
-    console.log(typeProduct)
     
     this.typeProductService.createTypeProduct(typeProduct).subscribe(() => {
       this.ngOnInit();

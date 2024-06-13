@@ -28,6 +28,7 @@
           <th class="p-3 text-xs md:text-sm">Email</th>
           <th class="p-3 text-xs md:text-sm">Telefono</th>
           <th class="p-3 text-xs md:text-sm">Nit</th>
+          <th class="p-3 text-xs md:text-sm">Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -47,6 +48,11 @@
             </td>
             <td class="p-2 text-sm md:table-cell">
               <span class="md:hidden font-bold">NIT: </span>{{client.cliNit || "no aplica"}}
+            </td>
+            <td class="p-2 text-sm md:table-cell">
+              <button (click)="deleteClient(client.cliID)"  class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition">
+                Borrar
+              </button>
             </td>
           </tr>
         }

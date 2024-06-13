@@ -11,7 +11,11 @@ export class ShoppingCarServiceService {
   constructor() {}
 
   private getProductsFromLocalStorage(): any[] {
-    return JSON.parse(localStorage.getItem('shoppingCar') || '[]');
+    if (typeof localStorage !== 'undefined') {
+      return JSON.parse(localStorage.getItem('shoppingCar') || '[]');
+    } else {
+      return [];
+    }
   }
 
   addProductToShoppingCar(product: any) {

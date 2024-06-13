@@ -28,6 +28,7 @@ import { UpdateProductPageComponent } from './pages/update_product_page/update-p
 import { UpdateDealerPageComponent } from './pages/update-dealer-page/update-dealer-page.component';
 import { TypesPageComponent } from './pages/types-page/types-page.component';
 import { CreateShoppingPageComponent } from './pages/create-shopping-page/create-shopping-page.component';
+import { AdminAccountPageComponent } from './pages/admin-account-page/admin-account-page.component';
 
 import { authGuardAdmin } from './guards/app.guard';
 
@@ -60,5 +61,6 @@ export const routes: Routes = [
     { path: 'update-dealer/:id', component: UpdateDealerPageComponent, canActivate: [authGuardAdmin]},
     { path: 'inventory-types', component: TypesPageComponent, canActivate: [authGuardAdmin]},
     { path: 'update-product/:id', component: UpdateProductPageComponent, canActivate: [authGuardAdmin]},
-    { path: 'create-shopping', component: CreateShoppingPageComponent, canActivate: [authGuardAdmin]}
+    { path: 'create-shopping', component: CreateShoppingPageComponent, canActivate: [authGuardAdmin]},
+    { path: 'admin-account', component: AdminAccountPageComponent, canActivate: [authGuardAdmin]}
 ];

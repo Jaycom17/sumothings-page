@@ -14,8 +14,8 @@
       <section
         class="grid grid-cols-1 gap-4 items-center content-center p-4 md:grid-cols-3 lg:grid-cols-2 big-lg:grid-cols-3"
       >
-        @for (product of mostSalingProducts; track product.proID) {
-        <div class="flex justify-center items-center gap-1">
+        @for (product of information.mostSalingProducts; track product.proID) {
+        <div class="flex justify-start items-center gap-1">
           <img
             src="{{ product.proImage }}"
             alt="{{ product.proName }}"
@@ -37,14 +37,14 @@
       <section
         class="grid grid-cols-1 gap-4 items-center content-center p-4 md:grid-cols-3 lg:grid-cols-2 big-lg:grid-cols-3"
       >
-        @for (product of productsWithLowStock; track product.proID) {
-        <div class="flex justify-center items-center gap-1">
+        @for (product of information.productsWithLowStock; track product.proID) {
+        <div class="flex justify-start items-center gap-1">
           <div>
             <h3 class="truncate max-w-44">
               <span class="font-bold">Nombre: </span> {{ product.proName }}
             </h3>
             <p><span class="font-bold">Precio:</span> {{ product.proPrice }}</p>
-            <p><span class="font-bold">Stock:</span> {{ product.stock }}</p>
+            <p><span class="font-bold">Stock:</span> {{ product.proStock }}</p>
           </div>
         </div>
         }
@@ -59,10 +59,10 @@
         class="grid grid-cols-1 gap-4 items-center content-center p-4 md:grid-cols-3 lg:grid-cols-2 big-lg:grid-cols-3"
       >
             <p>
-              <span class="font-bold">Stock actual: </span> {{ inventorySummary.productsNumber }}
+              <span class="font-bold">Stock actual: </span> {{ information.inventorySummary.productsNumber }}
             </p>
-            <p><span class="font-bold">Numero de clientes:</span> {{ inventorySummary.totalClients }}</p>
-            <p><span class="font-bold">Numero de ventas:</span> {{ inventorySummary.totalSales }}</p>
+            <p><span class="font-bold">Numero de clientes:</span> {{ information.inventorySummary.totalClients }}</p>
+            <p><span class="font-bold">Numero de ventas:</span> {{ information.inventorySummary.totalSales }}</p>
       </section>
     </article>
   </div>

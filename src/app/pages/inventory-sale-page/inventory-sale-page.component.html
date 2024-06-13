@@ -58,21 +58,9 @@
       <table class="w-full text-left table-auto border-collapse md:table">
         <thead class="hidden md:table-header-group">
           <tr class="bg-gray-200 text-gray-800">
-            <th class="p-3 text-xs md:text-sm">Identificador</th>
-            <th
-              (click)="orderByProduct()"
-              class="p-3 text-xs md:text-sm cursor-pointer hover:scale-[1.03] duration-300"
-            >
-              <div class="flex">
-                Id Producto
-                <img
-                  class="pl-2 h-5"
-                  src="../../../assets/pointer-down-svgrepo-com.svg"
-                  alt="flecha"
-                />
-              </div>
-            </th>
+            <th class="p-3 text-xs md:text-sm">Factura</th>
             <th class="p-3 text-xs md:text-sm">Cliente</th>
+            <th class="p-3 text-xs md:text-sm">Numero de productos</th>
             <th
               (click)="orderByDate()"
               class="p-3 text-xs md:text-sm cursor-pointer hover:scale-[1.03] duration-300"
@@ -86,8 +74,6 @@
                 />
               </div>
             </th>
-            <th class="p-3 text-xs md:text-sm">Unidades</th>
-            <th class="p-3 text-xs md:text-sm">Precio</th>
             <th class="p-3 text-xs md:text-sm">Impuestos</th>
             <th class="p-3 text-sm">Total</th>
 
@@ -95,19 +81,17 @@
           </tr>
         </thead>
         <tbody>
-          @for (sale of sales; track sale.salID) {
+          @for (sale of sales; track sale.salRaceipt) {
           <tr
-            (click)="goToSaleDetail(sale.salID)"
+            (click)="goToSaleDetail(sale.salReceipt)"
             class="flex flex-col md:table-row border-b hover:bg-gray-100 p-3 cursor-pointer"
           >
-            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Identificador: </span>{{ sale.salID }}</td>
-            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Producto: </span>{{ sale.proID }}</td>
+            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Factura: </span>{{ sale.salReceipt }}</td>
             <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Cliente: </span>{{ sale.cliName }}</td>
+            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Numero de productos: </span>{{ sale.products.length }}</td>
             <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Fecha: </span>{{ sale.salDate }}</td>
-            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Unidades: </span>{{ sale.salProductUnits }}</td>
-            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Precio: </span>{{ sale.salPrice }}</td>
-            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Impuestos: </span>{{ sale.salTaxes }}</td>
-            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Total: </span>{{ sale.salTotal }}</td>
+            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Impuestos: </span>{{ calculateTax(sale.products) }}</td>
+            <td class="p-2 text-sm md:table-cell"><span class="md:hidden font-bold">Total: </span>{{ calculateTotal(sale.products) }}</td>
             <td class="p-2 text-sm md:table-cell">
               <button
                 class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 transition mr-2"
