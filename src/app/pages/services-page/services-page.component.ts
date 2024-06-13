@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 
+/**
+ * Componente de la página de servicios.
+ */
 @Component({
   selector: 'app-services-page',
   standalone: true,
@@ -10,10 +13,22 @@ import { FooterComponent } from '../../components/footer/footer.component';
   styleUrl: './services-page.component.css',
 })
 export class ServicesPageComponent {
+  /**
+   * Lista de servicios.
+   */
   services = [
     {
+      /**
+       * URL de la imagen del servicio.
+       */
       serImage: 'https://cdn.pixabay.com/photo/2019/01/08/10/58/smart-home-3920905_1280.jpg',
+      /**
+       * Título del servicio.
+       */
       serTitle: 'Domótica',
+      /**
+       * Descripción del servicio.
+       */
       serDescripcion:
         'Ofrecemos objetos inteligentes fáciles de instalar y utilizar, para que usted invierta su tiempo en lo importante.',
     },

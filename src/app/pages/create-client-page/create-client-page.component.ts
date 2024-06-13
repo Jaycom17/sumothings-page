@@ -9,6 +9,9 @@ import {
 } from '@angular/forms';
 import { HttpResponse } from '@angular/common/http';
 
+/**
+ * Componente para la página de creación de clientes.
+ */
 @Component({
   selector: 'app-create-client-page',
   standalone: true,
@@ -20,6 +23,9 @@ export class CreateClientPageComponent {
 
   constructor(private clientService: ClientServiceService) { }
 
+  /**
+   * Formulario para la creación de clientes.
+   */
   clienForm: FormGroup = new FormGroup({
     cliFullName: new FormControl('', [Validators.required]),
     cliEmail: new FormControl('', [Validators.required, Validators.email]),
@@ -33,6 +39,9 @@ export class CreateClientPageComponent {
     cliPassword: new FormControl('', [Validators.required]),
   });
 
+  /**
+   * Guarda el cliente en el servidor.
+   */
   saveClient() {
     const clientObject = this.clienForm.value;
 
@@ -44,15 +53,15 @@ export class CreateClientPageComponent {
     this.clientService.createClient(clientObject).subscribe(
       (response: HttpResponse<any>) => {
         if (response.status === 200) {
-          alert('Client saved successfully');
+          alert('Cliente guardado exitosamente');
           this.clienForm.reset();
         } else {
-          alert('Error saving client');
+          alert('Error al guardar el cliente');
         }
       },
       (error) => {
         // Maneja el error aquí, por ejemplo:
-        alert('Error saving client: ' + (error.message || 'Unknown error'));
+        alert('Error al guardar el cliente: ' + (error.message || 'Error desconocido'));
       }
     );
   }

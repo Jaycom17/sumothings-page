@@ -9,6 +9,9 @@ import { ActivatedRoute } from '@angular/router';
 import { TypeproductService } from '../../../services/typeProduct/typeproduct.service';
 
 
+/**
+ * Componente para la página de actualización de productos.
+ */
 @Component({
   selector: 'app-update-product-page',
   standalone: true,
@@ -16,22 +19,29 @@ import { TypeproductService } from '../../../services/typeProduct/typeproduct.se
   templateUrl: './update-product-page.component.html',
   styleUrl: './update-product-page.component.css',
 })
-
-export class UpdateProductPageComponent implements OnInit{
-  constructor(private route: ActivatedRoute ,private productService: ProductsServiciesService,private router: Router , private typeProductsService: TypeproductService) {}
+export class UpdateProductPageComponent implements OnInit {
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductsServiciesService,
+    private router: Router,
+    private typeProductsService: TypeproductService
+  ) {}
 
   file: File | null = null;
- 
+
   proID: string | any = '';
 
-
-  typeProducts= [
+  typeProducts = [
     {
-      ptID: "",
-      ptName: ""
-    }
+      ptID: '',
+      ptName: '',
+    },
   ];
 
+  /**
+   * Método que se ejecuta cuando se selecciona un archivo.
+   * @param event El evento de selección de archivo.
+   */
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
     if (file) {
@@ -51,7 +61,7 @@ export class UpdateProductPageComponent implements OnInit{
     proMinStock: new FormControl('', [Validators.required]),
     proMaxStock: new FormControl('', [Validators.required]),
     proDescription: new FormControl('', [Validators.required]),
-    proTypeID: new FormControl('', [Validators.required])
+    proTypeID: new FormControl('', [Validators.required]),
   });
 
   ngOnInit(): void {
@@ -74,13 +84,15 @@ export class UpdateProductPageComponent implements OnInit{
         proMinStock: product.proMinStock,
         proMaxStock: product.proMaxStock,
         proDescription: product.proDescription,
-        proTypeID: product.proTypeID
+        proTypeID: product.proTypeID,
       });
     });
   }
 
+  /**
+   * Método para actualizar un producto.
+   */
   updateProduct() {
-
     let updateForm = new FormData();
 
     updateForm.append('proName', this.productForms.value.proName);
@@ -104,17 +116,17 @@ export class UpdateProductPageComponent implements OnInit{
     this.productService.updateProduct(updateForm, this.proID).subscribe(
       (response: HttpResponse<any>) => {
         if (response.status === 200) {
-          alert('Product saved successfully');
+          alert('Producto guardado exitosamente');
           this.productForms.reset();
           this.router.navigate(['/inventory-product']);
         } else {
-          alert('Error saving product');
+          alert('Error al guardar el producto');
         }
       },
       (error) => {
         // Maneja el error aquí, por ejemplo:
-        console.error('Error saving product', error);
-        alert('Error saving product: ' + (error.message || 'Unknown error'));
+        console.error('Error al guardar el producto', error);
+        alert('Error al guardar el producto: ' + (error.message || 'Error desconocido'));
       }
     );
   }

@@ -16,6 +16,9 @@ export class InventoryProductPageComponent implements OnInit{
   products: Product[] = [];
   productsCopy: Product[] = [];
 
+  /**
+   * Inicializa el componente y obtiene todos los productos.
+   */
   ngOnInit(): void{
     this.productService.getAllProducts().subscribe((products: Product[]) => {
       this.products = products;
@@ -23,26 +26,43 @@ export class InventoryProductPageComponent implements OnInit{
     });
   }
 
+  /**
+   * Ordena los productos por nombre.
+   */
   orderByName(){
     this.products.sort((a, b) => a.proName.localeCompare(b.proName));
   }
 
+  /**
+   * Ordena los productos por stock.
+   */
   orderByStock(){
     this.products.sort((a, b) => (a.proStock) - (b.proStock));
   }
 
+  /**
+   * Ordena los productos por categoría.
+   */
   orderByCategory(){
     this.products.sort((a, b) => a.proTypeID.localeCompare(b.proTypeID));
   }
 
+  /**
+   * Elimina un producto por su ID.
+   * @param id El ID del producto a eliminar.
+   */
   deleteProduct(id: any){
-    const confirmDelete = confirm('Are you sure you want to delete this product?');
+    const confirmDelete = confirm('¿Estás seguro de que quieres eliminar este producto?');
     if(!confirmDelete) return;
     this.products = this.products.filter(product => product.proID !== id);  
     this.productsCopy = this.productsCopy.filter(product => product.proID !== id);
     this.productService.deleteProduct(id).subscribe();
   }
 
+  /**
+   * Busca productos por su nombre.
+   * @param event El evento de entrada.
+   */
   searchProduct(event: Event){
     let search = (event.target as HTMLInputElement).value.toLowerCase();
     this.products = this.productsCopy.filter(product => product.proName.toLowerCase().includes(search));

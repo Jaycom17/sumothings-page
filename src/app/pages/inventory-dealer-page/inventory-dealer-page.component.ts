@@ -19,6 +19,10 @@ export class InventoryDealerPageComponent implements OnInit{
 
   dealersCopy: Dealer[] = [];
 
+  /**
+   * Método que se ejecuta al inicializar el componente.
+   * Obtiene la lista de dealers y la asigna a las variables 'dealers' y 'dealersCopy'.
+   */
   ngOnInit(): void {
     this.dealerService.getDealers().subscribe((dealers: Dealer[]) => {
       this.dealers = dealers;
@@ -26,21 +30,37 @@ export class InventoryDealerPageComponent implements OnInit{
     });
   }
 
+  /**
+   * Método que realiza la búsqueda de un dealer en base al valor ingresado en el campo de búsqueda.
+   * Actualiza la lista de dealers mostrados en función del resultado de la búsqueda.
+   * @param event El evento de entrada que desencadena la búsqueda.
+   */
   searchDealer(event: Event){
     const searchValue = (event.target as HTMLInputElement).value;
     this.dealers = this.dealersCopy.filter(dealer => dealer.deaFullName.toLowerCase().includes(searchValue.toLowerCase()) || dealer.deaCedula.includes(searchValue));
   }
 
+  /**
+   * Método que ordena la lista de dealers por nombre de forma ascendente.
+   */
   orderByName(){
     this.dealers.sort((a, b) => a.deaFullName.localeCompare(b.deaFullName));
   }
 
+  /**
+   * Método que ordena la lista de dealers por cédula de forma ascendente.
+   */
   orderByCedula(){
     this.dealers.sort((a, b) => a.deaCedula.localeCompare(b.deaCedula));
   }
 
+  /**
+   * Método que elimina un dealer de la lista.
+   * Muestra una confirmación antes de eliminar el dealer.
+   * @param deaID El ID del dealer a eliminar.
+   */
   deleteDealer(deaID: string | any){
-    const confirmDelete = confirm('Are you sure you want to delete this dealer?');
+    const confirmDelete = confirm('¿Estás seguro de que deseas eliminar este dealer?');
 
     if(!confirmDelete) return;
 
@@ -49,6 +69,10 @@ export class InventoryDealerPageComponent implements OnInit{
     this.dealerService.deleteDealer(deaID).subscribe();
   }
 
+  /**
+   * Método que redirige a la página de actualización de un dealer.
+   * @param deaID El ID del dealer a actualizar.
+   */
   goToUpdate(deaID: string | any){
     this.router.navigate([`update-dealer/${deaID}`]);
   }

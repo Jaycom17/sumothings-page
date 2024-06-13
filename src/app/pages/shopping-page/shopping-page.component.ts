@@ -16,6 +16,10 @@ export class ShoppingPageComponent implements OnInit{
 
   receipt: any = {};
 
+  /**
+   * Método que se ejecuta al inicializar el componente.
+   * Obtiene el ID del recibo desde la ruta y realiza una llamada al servicio de compras para obtener los detalles del recibo.
+   */
   ngOnInit(): void {
     let shoReciept: string | any = this.route.snapshot.paramMap.get('id');
     console.log(shoReciept)
@@ -27,12 +31,20 @@ export class ShoppingPageComponent implements OnInit{
     )
   }
 
+  /**
+   * Método que calcula el subtotal de los productos en el recibo.
+   * @returns El subtotal de los productos en el recibo.
+   */
   getSubtotal(): number {
     return this.receipt.products.reduce((acc: number, producto:any) => {
       return acc + producto.shoPrice * producto.shoProductUnits;
     }, 0);
   }
 
+  /**
+   * Método que calcula los impuestos totales de los productos en el recibo.
+   * @returns Los impuestos totales de los productos en el recibo.
+   */
   getTaxes(): number {
     return this.receipt.products.reduce((acc: number, producto:any) => {
       return acc + producto.shoProductUnits * producto.shoTaxes;

@@ -10,6 +10,9 @@ import { DealerServicesService } from '../../services/dealer/dealer-services.ser
 import { Router } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
 
+/**
+ * Componente para la creación de un distribuidor.
+ */
 @Component({
   selector: 'app-create-dealer-page',
   standalone: true,
@@ -18,8 +21,16 @@ import { HttpResponse } from '@angular/common/http';
   styleUrl: './create-dealer-page.component.css',
 })
 export class CreateDealerPageComponent {
+  /**
+   * Constructor de la clase CreateDealerPageComponent.
+   * @param dealerService - Servicio para manejar las operaciones relacionadas con los distribuidores.
+   * @param router - Router para la navegación entre páginas.
+   */
   constructor(private dealerService: DealerServicesService, private router: Router) {}
 
+  /**
+   * Objeto que representa los datos del distribuidor.
+   */
   dealerObject = {
     deaFullName: '',
     deaEmail: '',
@@ -27,6 +38,9 @@ export class CreateDealerPageComponent {
     deaCedula: '',
   };
 
+  /**
+   * Formulario para la validación de los datos del distribuidor.
+   */
   dealerForms: FormGroup = new FormGroup({
     deaFullName: new FormControl('', [Validators.required]),
     deaEmail: new FormControl('', [Validators.required, Validators.email]),
@@ -34,6 +48,9 @@ export class CreateDealerPageComponent {
     deaCedula: new FormControl('', [Validators.required]),
   });
 
+  /**
+   * Método para guardar los datos del distribuidor.
+   */
   saveDealer() {
     this.dealerObject = this.dealerForms.value;
 
@@ -43,16 +60,16 @@ export class CreateDealerPageComponent {
     this.dealerService.saveDealer(this.dealerObject).subscribe(
       (response: HttpResponse<any>) => {
         if (response.status === 200) {
-          alert('Dealer saved successfully');
+          alert('Distribuidor guardado exitosamente');
           this.dealerForms.reset();
           this.router.navigate(['/inventory-dealer']);
         } else {
-          alert('Error saving dealer');
+          alert('Error al guardar el distribuidor');
         }
       },
       (error) => {
         // Maneja el error aquí, por ejemplo:
-        alert('Error saving dealer: ' + (error.message || 'Unknown error'));
+        alert('Error al guardar el distribuidor: ' + (error.message || 'Error desconocido'));
       }
     );
   } 

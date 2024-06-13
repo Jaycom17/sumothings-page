@@ -14,20 +14,36 @@ export class InventoryArticlesPageComponent implements OnInit {
 
   constructor(private articleService: ArticleServicesService) { }
 
+  /**
+   * Lista de artículos.
+   */
   articles: Article[] = []
 
+  /**
+   * Copia de la lista de artículos.
+   */
   articlesCopy: Article[] = [];
 
 
   ngOnInit(): void {
+    /**
+     * Obtiene la lista de artículos al inicializar el componente.
+     */
     this.articleService.getArticles().subscribe((article: Article[]) => {
       this.articles = article;
       this.artclesCopy = article;
     });
   }
 
+  /**
+   * Copia de la lista de artículos.
+   */
   artclesCopy = this.articles;
 
+  /**
+   * Filtra los artículos según el valor de búsqueda.
+   * @param event El evento de entrada.
+   */
   searchArticle(event: Event) {
     const searchValue = (event.target as HTMLInputElement).value;
     this.articles = this.artclesCopy.filter((article) => {
@@ -35,20 +51,33 @@ export class InventoryArticlesPageComponent implements OnInit {
     });
   }
 
+  /**
+   * Ordena los artículos por fecha.
+   */
   orderByDate(){
     this.articles.sort((a, b) => a.artDate.localeCompare(b.artDate))
   }
 
+  /**
+   * Ordena los artículos por título.
+   */
   orderByTitle(){
     this.articles.sort((a, b) => a.artTitle.localeCompare(b.artTitle))
   }
 
+  /**
+   * Ordena los artículos por autor.
+   */
   orderByAuthor(){
     this.articles.sort((a, b) => a.artAuthor.localeCompare(b.artAuthor))
   }
   
+  /**
+   * Elimina un artículo.
+   * @param artID El ID del artículo a eliminar.
+   */
   deleteArticle(artID: string|any){
-    const confirmDelete = confirm('Are you sure you want to delete this article?');
+    const confirmDelete = confirm('¿Estás seguro de que quieres eliminar este artículo?');
 
     if(!confirmDelete) return;
 

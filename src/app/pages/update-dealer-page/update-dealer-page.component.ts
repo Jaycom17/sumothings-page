@@ -10,6 +10,9 @@ import { DealerServicesService } from '../../services/dealer/dealer-services.ser
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
 
+/**
+ * Componente para la página de actualización de un distribuidor.
+ */
 @Component({
   selector: 'app-update-dealer-page',
   standalone: true,
@@ -21,10 +24,16 @@ export class UpdateDealerPageComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private dealerService: DealerServicesService, private router: Router) {}
 
+  /**
+   * ID del distribuidor.
+   */
   deaID: string | any = '';
 
+  /**
+   * Método que se ejecuta al inicializar el componente.
+   * Obtiene el valor del parámetro de la URL y carga los datos del distribuidor correspondiente.
+   */
   ngOnInit(): void {
-    // Obtiene el valor del parámetro de la URL
     this.deaID = this.route.snapshot.paramMap.get('id');
     this.dealerService.getDealerById(this.deaID).subscribe((dealer: any) => {
       this.dealerObject = dealer;
@@ -37,6 +46,9 @@ export class UpdateDealerPageComponent implements OnInit {
     });
   }
 
+  /**
+   * Objeto que representa los datos del distribuidor.
+   */
   dealerObject = {
     deaFullName: '',
     deaEmail: '',
@@ -44,6 +56,9 @@ export class UpdateDealerPageComponent implements OnInit {
     deaCedula: '',
   };
 
+  /**
+   * Formulario para la edición de los datos del distribuidor.
+   */
   dealerForms: FormGroup = new FormGroup({
     deaFullName: new FormControl('', [Validators.required]),
     deaEmail: new FormControl('', [Validators.required, Validators.email]),
@@ -51,6 +66,12 @@ export class UpdateDealerPageComponent implements OnInit {
     deaCedula: new FormControl('', [Validators.required]),
   });
 
+  /**
+   * Método para actualizar los datos del distribuidor.
+   * Actualiza el objeto del distribuidor con los valores del formulario y realiza la llamada al servicio para actualizar los datos en el backend.
+   * Si la actualización es exitosa, muestra una alerta de éxito y redirige al usuario a la página de inventario de distribuidores.
+   * Si ocurre un error, muestra una alerta de error.
+   */
   updateDealer() {
     this.dealerObject = this.dealerForms.value;
 
@@ -60,16 +81,16 @@ export class UpdateDealerPageComponent implements OnInit {
     this.dealerService.updateDealer(this.deaID, this.dealerObject).subscribe(
       (response: HttpResponse<any>) => {
         if (response.status === 200) {
-          alert('Dealer updated successfully');
+          alert('Distribuidor actualizado exitosamente');
           this.dealerForms.reset();
           this.router.navigate(['/inventory-dealer']);
         } else {
-          alert('Error updatting dealer');
+          alert('Error al actualizar el distribuidor');
         }
       },
       (error) => {
         // Maneja el error aquí, por ejemplo:
-        alert('Error saving dealer: ' + (error.message || 'Unknown error'));
+        alert('Error al guardar el distribuidor: ' + (error.message || 'Error desconocido'));
       }
     );
   } 

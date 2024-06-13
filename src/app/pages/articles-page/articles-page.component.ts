@@ -16,20 +16,36 @@ export class ArticlesPageComponent implements OnInit {
 
   constructor(private articleService: ArticleServicesService) { }
 
+  /**
+   * Lista de artículos.
+   */
   articles: Article[] = []
 
+  /**
+   * Copia de la lista de artículos.
+   */
   articlesCopy: Article[] = [];
 
 
   ngOnInit(): void {
+    /**
+     * Obtiene la lista de artículos al inicializar el componente.
+     */
     this.articleService.getArticles().subscribe((article: Article[]) => {
       this.articles = article;
       this.artclesCopy = article;
     });
   }
 
+  /**
+   * Copia de la lista de artículos.
+   */
   artclesCopy = this.articles;
 
+  /**
+   * Filtra los artículos según el valor de búsqueda.
+   * @param event El evento de entrada.
+   */
   searchArticle(event: Event) {
     const searchValue = (event.target as HTMLInputElement).value;
     this.articles = this.artclesCopy.filter((article) => {
@@ -37,6 +53,11 @@ export class ArticlesPageComponent implements OnInit {
     });
   }
 
+  /**
+   * Convierte una fecha en formato de cadena a un objeto de fecha.
+   * @param date La fecha en formato de cadena.
+   * @returns La fecha convertida en formato de cadena.
+   */
   convertDate(date: string){
     return new Date(date).toDateString();
   }

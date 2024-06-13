@@ -6,6 +6,9 @@ import { Router } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
 import { TypeproductService } from '../../services/typeProduct/typeproduct.service';
 
+/**
+ * Componente para la página de creación de productos.
+ */
 @Component({
   selector: 'app-create-product-page',
   standalone: true,
@@ -13,27 +16,43 @@ import { TypeproductService } from '../../services/typeProduct/typeproduct.servi
   templateUrl: './create-product-page.component.html',
   styleUrl: './create-product-page.component.css',
 })
+export class CreateProductPageComponent implements OnInit {
+  constructor(
+    private productService: ProductsServiciesService,
+    private router: Router,
+    private typeProductsService: TypeproductService
+  ) {}
 
-
-
-export class CreateProductPageComponent implements OnInit{
-  constructor(private productService: ProductsServiciesService, private router: Router, private typeProductsService: TypeproductService) {}
-  
+  /**
+   * Archivo seleccionado por el usuario.
+   */
   file: File | null = null;
 
-  typeProducts= [
+  /**
+   * Lista de tipos de productos.
+   */
+  typeProducts = [
     {
       ptID: "",
       ptName: ""
     }
   ];
 
+  /**
+   * Método que se ejecuta al inicializar el componente.
+   * Obtiene todos los tipos de productos disponibles.
+   */
   ngOnInit(): void {
     this.typeProductsService.getAllTypeProducts().subscribe((typeProducts: any) => {
       this.typeProducts = typeProducts;
     });
   }
-  
+
+  /**
+   * Método que se ejecuta cuando se selecciona un archivo.
+   * Actualiza el valor de la propiedad 'file' con el archivo seleccionado.
+   * @param event El evento de selección de archivo.
+   */
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
     if (file) {
@@ -41,6 +60,9 @@ export class CreateProductPageComponent implements OnInit{
     }
   }
 
+  /**
+   * Formulario de creación de productos.
+   */
   productForms: FormGroup = new FormGroup({
     proName: new FormControl('', [Validators.required]),
     proStock: new FormControl('', [Validators.required]),
@@ -56,8 +78,11 @@ export class CreateProductPageComponent implements OnInit{
     proTypeID: new FormControl('', [Validators.required])
   });
 
+  /**
+   * Método para crear un nuevo producto.
+   * Envía los datos del formulario al servicio de productos para su creación.
+   */
   createProduct() {
-    
     let updateForm = new FormData();
 
     updateForm.append('proName', this.productForms.value.proName);
@@ -79,21 +104,18 @@ export class CreateProductPageComponent implements OnInit{
     this.productService.createProduct(updateForm).subscribe(
       (response: HttpResponse<any>) => {
         if (response.status === 200) {
-          alert('Product saved successfully');
+          alert('Producto guardado exitosamente');
           this.productForms.reset();
           this.router.navigate(['/inventory-product']);
         } else {
-          alert('Error saving product');
+          alert('Error al guardar el producto');
         }
       },
       (error) => {
         // Maneja el error aquí, por ejemplo:
-        console.error('Error saving product', error);
-        alert('Error saving product: ' + (error.message || 'Unknown error'));
+        console.error('Error al guardar el producto', error);
+        alert('Error al guardar el producto: ' + (error.message || 'Error desconocido'));
       }
     );
   }
-
-
-
 }

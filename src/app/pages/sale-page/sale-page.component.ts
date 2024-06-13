@@ -14,6 +14,10 @@ export class SalePageComponent implements OnInit{
 
   constructor(private saleService: SaleServiceService, private route: ActivatedRoute) {}
 
+  /**
+   * Método que se ejecuta al inicializar el componente.
+   * Obtiene el ID del recibo de venta de la ruta y llama al servicio para obtener los detalles de la venta.
+   */
   ngOnInit(): void {
     let salReciept: string | any = this.route.snapshot.paramMap.get('id');
     console.log(salReciept)
@@ -25,12 +29,22 @@ export class SalePageComponent implements OnInit{
     )
   }
 
+  /**
+   * Método que calcula el subtotal de la venta.
+   * Suma el precio de venta por la cantidad de unidades de cada producto en el recibo.
+   * @returns El subtotal de la venta.
+   */
   getSubtotal(): number {
     return this.receipt.products.reduce((acc: number, producto:any) => {
       return acc + producto.salPrice * producto.salProductUnits;
     }, 0);
   }
 
+  /**
+   * Método que calcula los impuestos de la venta.
+   * Suma los impuestos de cada producto en el recibo multiplicados por la cantidad de unidades.
+   * @returns Los impuestos de la venta.
+   */
   getTaxes(): number {
     return this.receipt.products.reduce((acc: number, producto:any) => {
       return acc + producto.salProductUnits * producto.salTaxes;
