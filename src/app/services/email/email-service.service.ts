@@ -12,7 +12,11 @@ export class EmailServiceService {
   apiUrl = `${environment.apiUrl}/send-email`;
 
   constructor(private httpClient: HttpClient) { }
-
+  /**
+    * Envía un correo electrónico.
+    * @param email - El objeto que contiene la información del correo electrónico a enviar.
+    * @returns Una observable que emite la respuesta HTTP del servidor.
+    */
   sendEmail(email: any): Observable<HttpResponse<any>> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.httpClient.post<any>(this.apiUrl, email, { headers, observe: 'response', withCredentials: true });
