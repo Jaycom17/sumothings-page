@@ -6,9 +6,9 @@
         <div class="mb-6">
             <h1 class="text-2xl font-bold">Factura</h1>
             <div class="mt-4">
-                <p><strong>Código de la factura:</strong> {{factura.id}}</p>
-                <p><strong>Nombre del proveedor:</strong> {{factura.proveedor}}</p>
-                <p><strong>Fecha:</strong> {{factura.fecha}}</p>
+                <p><strong>Código de la factura:</strong> {{receipt.salReceipt}}</p>
+                <p><strong>Nombre del cliente:</strong> {{receipt.cliName}}</p>
+                <p><strong>Fecha:</strong> {{receipt.salDate}}</p>
             </div>
         </div>
 
@@ -24,12 +24,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for (product of factura.productos; track product.id) {
+                    @for (product of receipt.products; track product.id) {
                         <tr class="flex flex-col md:table-row border-b p-3">
-                            <td class="py-2 text-sm md:table-cell"><span class="md:hidden font-bold">Producto: </span>{{product.nombre}}</td>
-                            <td class="py-2 text-sm md:table-cell"><span class="md:hidden font-bold">Cantidad: </span>{{product.cantidad}}</td>
-                            <td class="py-2 text-sm md:table-cell"><span class="md:hidden font-bold">Precio Unitario: </span>{{product.precio}}</td>
-                            <td class="py-2 text-sm md:table-cell"><span class="md:hidden font-bold">Impuestos: </span>{{product.impuesto}}</td>
+                            <td class="py-2 text-sm md:table-cell"><span class="md:hidden font-bold">Producto: </span>{{product.proName}}</td>
+                            <td class="py-2 text-sm md:table-cell"><span class="md:hidden font-bold">Cantidad: </span>{{product.salProductUnits}}</td>
+                            <td class="py-2 text-sm md:table-cell"><span class="md:hidden font-bold">Precio Unitario: </span>{{product.salPrice}}</td>
+                            <td class="py-2 text-sm md:table-cell"><span class="md:hidden font-bold">Impuestos: </span>{{product.salTaxes}}</td>
                         </tr>
                     }
                 </tbody>
@@ -39,11 +39,11 @@
         <!-- Resumen de la factura -->
         <div class="mt-6 text-right">
             <div class="mb-2">
-                <p><strong>Subtotal:</strong> {{subtotal}}</p>
-                <p><strong>Impuestos:</strong> {{totalImpuestos}}</p>
+                <p><strong>Subtotal:</strong> {{getSubtotal()}}</p>
+                <p><strong>Impuestos:</strong> {{getTaxes()}}</p>
             </div>
             <div class="text-xl font-bold">
-                <p>Total: {{subtotal+totalImpuestos}}</p>
+                <p>Total: {{getSubtotal()+getTaxes()}}</p>
             </div>
         </div>
     </div>

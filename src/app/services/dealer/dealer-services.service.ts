@@ -23,15 +23,15 @@ export class DealerServicesService {
   }
 
   getDealerById(dealerId: string): Observable<any> {
-    return this.httpClient.get(`${this.apiUrl}/${dealerId}`).pipe(res => res);
+    return this.httpClient.get(`${this.apiUrl}/${dealerId}`, { withCredentials: true }).pipe(res => res);
   }
 
   updateDealer(dealerId: string, dealer: any): Observable<HttpResponse<any>> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.httpClient.put<any>(`${this.apiUrl}/${dealerId}`, dealer, { headers, observe: 'response' });
+    return this.httpClient.put<any>(`${this.apiUrl}/${dealerId}`, dealer, { headers, observe: 'response', withCredentials: true});
   }
 
   deleteDealer(dealerId: string): Observable<HttpResponse<any>> {
-    return this.httpClient.delete<any>(`${this.apiUrl}/${dealerId}`, { observe: 'response' });
+    return this.httpClient.delete<any>(`${this.apiUrl}/${dealerId}`, { observe: 'response', withCredentials: true});
   }
 }

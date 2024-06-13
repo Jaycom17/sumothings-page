@@ -23,7 +23,7 @@ export class ProductListComponent implements OnInit{
   productsCopy:any[] = [];
 
   ngOnInit(): void{
-    this.productService.getAllProducts().subscribe((products: Product[]) => {
+    this.productService.getProductBrief().subscribe((products: Product[]) => {
       this.products = products;
       this.products.forEach((product) => {
         product.quantity = 1;

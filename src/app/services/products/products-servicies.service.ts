@@ -14,22 +14,30 @@ export class ProductsServiciesService {
   constructor(private httpClient: HttpClient) { }
 
   getAllProducts(): Observable<any>{
-    return this.httpClient.get(this.apiUrl).pipe((res:any) => res);
+    return this.httpClient.get(this.apiUrl, { withCredentials: true }).pipe((res:any) => res);
   }
 
   createProduct(Product: FormData): Observable<HttpResponse<any>> {
-    return this.httpClient.post<any>(this.apiUrl, Product, { observe: 'response' });
+    return this.httpClient.post<any>(this.apiUrl, Product, { observe: 'response', withCredentials: true});
   }
 
   getProductById(ProductId: string): Observable<any> {
-    return this.httpClient.get(`${this.apiUrl}/${ProductId}`).pipe((res:any) => res);
+    return this.httpClient.get(`${this.apiUrl}/${ProductId}`, { withCredentials: true }).pipe((res:any) => res);
   }
 
   updateProduct(Product: FormData, proID: string): Observable<HttpResponse<any>> {
-    return this.httpClient.put<any>(`${this.apiUrl}/${proID}`, Product, { observe: 'response' });
+    return this.httpClient.put<any>(`${this.apiUrl}/${proID}`, Product, { observe: 'response', withCredentials: true });
   }
 
   deleteProduct(ProductId: string): Observable<HttpResponse<any>> {
-    return this.httpClient.delete<any>(`${this.apiUrl}/${ProductId}`, { observe: 'response' });
+    return this.httpClient.delete<any>(`${this.apiUrl}/${ProductId}`, { observe: 'response',  withCredentials: true });
+  }
+
+  getProductBrief(): Observable<any>{
+    return this.httpClient.get(`${this.apiUrl}/brief`, { withCredentials: true }).pipe((res:any) => res);
+  }
+
+  getProductsStatus(): Observable<any>{
+    return this.httpClient.get(`${this.apiUrl}/status`, { withCredentials: true }).pipe((res:any) => res);
   }
 }

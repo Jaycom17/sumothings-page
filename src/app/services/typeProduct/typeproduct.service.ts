@@ -15,21 +15,21 @@ export class TypeproductService {
   constructor(private httpClient: HttpClient) { }
 
   getAllTypeProducts(): Observable<any>{
-    return this.httpClient.get(this.apiUrl).pipe((res:any) => res);
+    return this.httpClient.get(this.apiUrl, { withCredentials: true }).pipe((res:any) => res);
   }
   getTypeProductById(typeProductId: string): Observable<any> {
-    return this.httpClient.get(`${this.apiUrl}/${typeProductId}`).pipe((res:any) => res);
+    return this.httpClient.get(`${this.apiUrl}/${typeProductId}`, { withCredentials: true }).pipe((res:any) => res);
   }
   createTypeProduct(typeProduct: any): Observable<HttpResponse<any>> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.httpClient.post<any>(this.apiUrl, typeProduct, { headers, observe: 'response' });
+    return this.httpClient.post<any>(this.apiUrl, typeProduct, { headers, observe: 'response', withCredentials: true});
   }
   updateTypeProduct(ptID: string, typeProduct: any): Observable<HttpResponse<any>> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.httpClient.put<any>(`${this.apiUrl}/${ptID}`, typeProduct, { headers, observe: 'response' });
+    return this.httpClient.put<any>(`${this.apiUrl}/${ptID}`, typeProduct, { headers, observe: 'response', withCredentials: true});
   }
   deleteTypeProduct(typeProductId: string): Observable<HttpResponse<any>> {
-    return this.httpClient.delete<any>(`${this.apiUrl}/${typeProductId}`, { observe: 'response' });
+    return this.httpClient.delete<any>(`${this.apiUrl}/${typeProductId}`, { observe: 'response', withCredentials: true});
   }
 
 }

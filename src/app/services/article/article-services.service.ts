@@ -14,24 +14,24 @@ export class ArticleServicesService {
   constructor(private httpClient: HttpClient) { }
 
   getArticles(): Observable<any>{
-    return this.httpClient.get(this.apiUrl).pipe(res => res);
+    return this.httpClient.get(this.apiUrl, { withCredentials: true }).pipe(res => res);
   }
 
   createArticle(article: any): Observable<HttpResponse<any>> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.httpClient.post<any>(this.apiUrl, article, { headers, observe: 'response' });
+    return this.httpClient.post<any>(this.apiUrl, article, { headers, observe: 'response', withCredentials: true});
   }
 
   getArticleById(articleId: string): Observable<any> {
-    return this.httpClient.get(`${this.apiUrl}/${articleId}`).pipe(res => res);
+    return this.httpClient.get(`${this.apiUrl}/${articleId}`, { withCredentials: true }).pipe(res => res);
   }
 
   updateArticle(articleId: string ,article: any): Observable<HttpResponse<any>> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.httpClient.put<any>(`${this.apiUrl}/${articleId}`, article, { headers, observe: 'response' });
+    return this.httpClient.put<any>(`${this.apiUrl}/${articleId}`, article, { headers, observe: 'response', withCredentials: true});
   }
 
   deleteArticle(articleId: string): Observable<HttpResponse<any>> {
-    return this.httpClient.delete<any>(`${this.apiUrl}/${articleId}`, { observe: 'response' });
+    return this.httpClient.delete<any>(`${this.apiUrl}/${articleId}`, { observe: 'response', withCredentials: true});
   }
 }
