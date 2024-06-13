@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { InventoryAsideBarComponent } from '../../../components/inventory-aside-bar/inventory-aside-bar.component';
 import {FormGroup,FormControl,ReactiveFormsModule,Validators} from '@angular/forms';
 import { ProductsServiciesService } from '../../../services/products/products-servicies.service';
@@ -8,6 +8,7 @@ import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { TypeproductService } from '../../../services/typeProduct/typeproduct.service';
 
+
 @Component({
   selector: 'app-update-product-page',
   standalone: true,
@@ -16,26 +17,13 @@ import { TypeproductService } from '../../../services/typeProduct/typeproduct.se
   styleUrl: './update-product-page.component.css',
 })
 
-export class UpdateProductPageComponent {
+export class UpdateProductPageComponent implements OnInit{
   constructor(private route: ActivatedRoute ,private productService: ProductsServiciesService,private router: Router , private typeProductsService: TypeproductService) {}
 
+  file: File | null = null;
+ 
   proID: string | any = '';
 
-  product:Product = {
-    proName: "", 
-    proStock: 0, 
-    proHeight: 0, 
-    proWidth: 0, 
-    proLength: 0, 
-    proWeight: 0, 
-    proBuyPrice: 0, 
-    proSellPrice: 0, 
-    proMinStock: 0, 
-    proMaxStock: 0, 
-    proDescription: "", 
-    proImage: "", 
-    proTypeID: ""
-  }
 
   typeProducts= [
     {
@@ -44,20 +32,26 @@ export class UpdateProductPageComponent {
     }
   ];
 
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.file = file;
+    }
+  }
+
   productForms: FormGroup = new FormGroup({
-    proName: new FormControl(this.product.proName, [Validators.required]),
-    proStock: new FormControl(this.product.proHeight, [Validators.required]),
-    proHeight: new FormControl(this.product.proHeight, [Validators.required]),
-    proWidth: new FormControl(this.product.proWidth, [Validators.required]),
-    proLength: new FormControl(this.product.proLength, [Validators.required]),
-    proWeight: new FormControl(this.product.proWeight, [Validators.required]),
-    proBuyPrice: new FormControl(this.product.proBuyPrice, [Validators.required]),
-    proSellPrice: new FormControl(this.product.proSellPrice, [Validators.required]),
-    proMinStock: new FormControl(this.product.proMinStock, [Validators.required]),
-    proMaxStock: new FormControl(this.product.proMaxStock, [Validators.required]),
-    proDescription: new FormControl(this.product.proDescription, [Validators.required]),
-    proImage: new FormControl(this.product.proImage, [Validators.required]),
-    proTypeID: new FormControl(this.product.proTypeID, [Validators.required])
+    proName: new FormControl('', [Validators.required]),
+    proStock: new FormControl('', [Validators.required]),
+    proHeight: new FormControl('', [Validators.required]),
+    proWidth: new FormControl('', [Validators.required]),
+    proLength: new FormControl('', [Validators.required]),
+    proWeight: new FormControl('', [Validators.required]),
+    proBuyPrice: new FormControl('', [Validators.required]),
+    proSellPrice: new FormControl('', [Validators.required]),
+    proMinStock: new FormControl('', [Validators.required]),
+    proMaxStock: new FormControl('', [Validators.required]),
+    proDescription: new FormControl('', [Validators.required]),
+    proTypeID: new FormControl('', [Validators.required])
   });
 
   ngOnInit(): void {
@@ -68,30 +62,46 @@ export class UpdateProductPageComponent {
     this.proID = this.route.snapshot.paramMap.get('id');
 
     this.productService.getProductById(this.proID).subscribe((product: Product) => {
-      this.product = product;
-      console.log(this.product)
       this.productForms.setValue({
-        proName: this.product.proName,
-        proStock: this.product.proStock,
-        proHeight: this.product.proHeight,
-        proWidth: this.product.proWidth,
-        proLength: this.product.proLength,
-        proWeight: this.product.proWeight,
-        proBuyPrice: this.product.proBuyPrice,
-        proSellPrice: this.product.proSellPrice,
-        proMinStock: this.product.proMinStock,
-        proMaxStock: this.product.proMaxStock,
-        proDescription: this.product.proDescription,
-        proImage: this.product.proImage,
-        proTypeID: this.product.proTypeID
+        proName: product.proName,
+        proStock: product.proStock,
+        proHeight: product.proHeight,
+        proWidth: product.proWidth,
+        proLength: product.proLength,
+        proWeight: product.proWeight,
+        proBuyPrice: product.proBuyPrice,
+        proSellPrice: product.proSellPrice,
+        proMinStock: product.proMinStock,
+        proMaxStock: product.proMaxStock,
+        proDescription: product.proDescription,
+        proTypeID: product.proTypeID
       });
     });
   }
 
   updateProduct() {
-    this.product = this.productForms.value;
 
-    this.productService.updateProduct(this.product).subscribe(
+    let updateForm = new FormData();
+
+    updateForm.append('proName', this.productForms.value.proName);
+    updateForm.append('proStock', this.productForms.value.proStock);
+    updateForm.append('proHeight', this.productForms.value.proHeight);
+    updateForm.append('proWidth', this.productForms.value.proWidth);
+    updateForm.append('proLength', this.productForms.value.proLength);
+    updateForm.append('proWeight', this.productForms.value.proWeight);
+    updateForm.append('proBuyPrice', this.productForms.value.proBuyPrice);
+    updateForm.append('proSellPrice', this.productForms.value.proSellPrice);
+    updateForm.append('proMinStock', this.productForms.value.proMinStock);
+    updateForm.append('proMaxStock', this.productForms.value.proMaxStock);
+    updateForm.append('proDescription', this.productForms.value.proDescription);
+    updateForm.append('proTypeID', this.productForms.value.proTypeID);
+    if (this.file) {
+      updateForm.append('file', this.file, this.file.name);
+    }
+
+    console.log(updateForm.get('file'));
+
+    this.productService.updateProduct(updateForm, this.proID).subscribe(
       (response: HttpResponse<any>) => {
         if (response.status === 200) {
           alert('Product saved successfully');
@@ -103,11 +113,13 @@ export class UpdateProductPageComponent {
       },
       (error) => {
         // Maneja el error aquí, por ejemplo:
+        console.error('Error saving product', error);
         alert('Error saving product: ' + (error.message || 'Unknown error'));
       }
     );
   }
-  
-
-
 }
+    
+
+
+  

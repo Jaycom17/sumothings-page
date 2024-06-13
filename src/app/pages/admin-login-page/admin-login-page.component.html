@@ -9,13 +9,13 @@
     <!-- Formulario -->
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         
-        <form class="space-y-6" action="#" method="POST">
+        <form class="space-y-6" [formGroup]="loginForms" (submit)="loginAdmin()">
             <!-- Correo -->
             <div>
                 <label for="email" class="block text-base font-medium leading-6 text-gray-900 ml-2">Correo</label>
                 <div class="email relative h-14">
                     <fa-icon [icon]="faUserCircle" class="absolute top-0 bottom-0 left-5 text-xl flex items-center"></fa-icon>
-                    <input type="email" name="email" id="email" 
+                    <input formControlName="admEmail" type="email" name="email" id="email" 
                         class="block h-14 w-full rounded-full border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-xl sm:leading-6 pl-16 text-xl ">
                 </div>
             </div>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="password relative h-14">
                     <fa-icon [icon]="faLock" class="absolute top-0 bottom-0 left-5 text-xl flex items-center"></fa-icon>
-                    <input type="password" name="password" id="password" autocomplete="current-password" required 
+                    <input formControlName="admPassword" type="password" name="password" id="password" autocomplete="current-password" required 
                         class="block h-14 w-full rounded-full border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-xl sm:leading-6 pl-16 text-xl ">
                 </div>
             </div>

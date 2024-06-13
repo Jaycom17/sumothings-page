@@ -16,8 +16,7 @@
         </div>
         <div class="px-6 py-4">
           @for (linea of article.artContent.split("\n"); track $index) {
-          <p class="text-gray-700 text-lg leading-relaxed">{{linea}}</p>
-          <br>
+          <p class="text-gray-700 text-lg leading-relaxed">{{linea}}<br></p>
           }
         </div>
       </div>

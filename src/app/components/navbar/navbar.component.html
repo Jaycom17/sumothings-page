@@ -26,10 +26,21 @@
         <div class="flex items-center gap-3">
             <!-- Barra de búsqueda -->
             <!-- Icono de persona -->
-            <a href="/perfil">
-                <img src="https://t4.ftcdn.net/jpg/02/29/75/83/240_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"
+            <article class="relative flex justify-center">
+                <button (click)="setShowProfile()">
+                    <img src="https://t4.ftcdn.net/jpg/02/29/75/83/240_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"
                     alt="Icono de persona" class="h-10 w-10 text-black">
-            </a>
+                </button>
+                @if (showProfile) {
+                    <div class="absolute border flex justify-center gap-2 rounded-lg bg-white p-2 w-32" style="top: 100%; left: 50%; transform: translateX(-50%);">
+                        <ol>
+                            <li><a href="/">Perfil</a></li>
+                            <li><a href="/admin-login">Admin</a></li>
+                            <li><a href="">Cerrar Sesión</a></li>
+                        </ol>
+                    </div>
+                }
+            </article>
             <!-- Icono de carrito de compra -->
             <button (click)="showCart()">
                 <img src="https://cdn-icons-png.flaticon.com/128/4202/4202388.png" alt="Icono de carrito de compra"

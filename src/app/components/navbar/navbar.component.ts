@@ -18,6 +18,12 @@ export class NavbarComponent {
     this.showShoppingCart = this.showShoppingCart ? false : true;
   }
 
+  showProfile = false;
+
+  setShowProfile() {
+    this.showProfile = !this.showProfile;
+  }
+
   constructor(private elementRef: ElementRef) {}
 
   closeShoppingCart(event: MouseEvent) {
